@@ -1,0 +1,17 @@
+{
+  "firstName":"string",
+  "lastName":"string",
+  "email":"email,string",
+  "password":"cognito",
+  "type":"enum,student,doctor,individual",
+  "skills":[{}],
+  "interests":[{}],
+  "profilePic":"string",
+  "resume":"string",
+  "id":"string",
+  "universty":"",
+  "school":"String",
+  "department":"string",
+  "projects":"string",
+  "mobilePhone":"profile"
+}

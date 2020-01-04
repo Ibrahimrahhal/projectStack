@@ -1,0 +1,51 @@
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.w-100vw{
+  width:100vw;
+}
+
+
+.h-100vh{
+  height:100vh;
+}
+
+.bg-white{
+  background-color: #efefef;
+}
+.color-white{
+  color: #efefef;
+
+}
+.much-rounded{
+  border-radius: 2rem !important;
+}
+button{
+outline: 0 !important;
+}
+.w-40{
+  width: 40%;
+}
+.bg-pink{
+  background-color: #e25252;
+}
+.color-pink{
+ color: #e25252;
+}
+.w-60{
+  width: 60%;
+}
+
+.font-small{
+  font-size: 0.8rem;
+}
+
+.font-main{
+  font-family: Montserrat, Roboto, "Helvetica Neue", sans-serif;;
+}
+.pointer{
+  cursor: pointer;
+}

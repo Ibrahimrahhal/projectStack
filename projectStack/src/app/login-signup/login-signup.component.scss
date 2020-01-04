@@ -1,0 +1,40 @@
+.loginSlideAnimation{
+  transition: 0.3s;
+  right:0;
+  z-index:20;
+}
+.loginSide{
+  transform: translateX(-66.66%);
+}
+@keyframes slideFromBottom{
+  0%{
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+.completeYourDataCont{
+  position: absolute;
+  bottom: 10vh;
+  left:0;
+  right: 0;
+  margin: auto;
+  height: 75vh;
+  width: 50vw;
+  z-index: 100;
+  animation-name: slideFromBottom;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+  animation-delay: 0.6s;
+  border-radius: 0.5rem;
+}
+
+
+// ::ng-deep app-login-signup .mat-progress-spinner circle, .mat-spinner circle{
+// // stroke: #ffffff;
+// }

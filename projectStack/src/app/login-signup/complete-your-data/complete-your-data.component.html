@@ -1,0 +1,30 @@
+<div class="py-3 px-2">
+<img src="/assets/email.svg" height="185px" width="auto" class="d-flex mx-auto">
+<h3 class="font-weight-bold text-center font-main">
+  Glad To Have You Onboard
+</h3>
+<h5 class="font-weight-light text-center font-main">
+  We have sent you a code to verify your email, <br/> Please enter it below.
+</h5>
+<div class="d-flex justify-content-center">
+  <mat-form-field  class="mx-2 mt-4 col-3" style="">
+    <input matInput autofocus>
+  </mat-form-field>
+</div>
+<button mat-button
+color="primary"
+class="mx-auto d-block mt-0 mb-4 much-rounded px-5  font-weight-normal color-white"
+[class.py-1]="!loading"
+[class.py-2]="loading"
+[disabled]="loading"
+(click)="validateEmail()">
+  <span *ngIf="!loading">
+    Confirm Your Email
+  </span>
+  <mat-spinner
+  *ngIf="loading"
+  color='primary'
+  diameter="20"></mat-spinner>
+
+</button>
+</div>

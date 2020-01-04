@@ -1,0 +1,123 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$mainColor: (
+    50 : #fceaea,
+    100 : #f6cbcb,
+    200 : #f1a9a9,
+    300 : #eb8686,
+    400 : #e66c6c,
+    500 : #e25252,
+    600 : #df4b4b,
+    700 : #da4141,
+    800 : #d63838,
+    900 : #cf2828,
+    A100 : #ffffff,
+    A200 : #ffdada,
+    A400 : #ffa7a7,
+    A700 : #ff8d8d,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$accentColor: (
+    50 : #e7f8f4,
+    100 : #c3ece5,
+    200 : #9ce0d3,
+    300 : #74d4c1,
+    400 : #56cab4,
+    500 : #38c1a7,
+    600 : #32bb9f,
+    700 : #2bb396,
+    800 : #24ab8c,
+    900 : #179e7c,
+    A100 : #d3fff3,
+    A200 : #a0ffe5,
+    A400 : #6dffd7,
+    A700 : #53ffd0,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$warnColor: (
+    50 : #e7e7e7,
+    100 : #c2c2c2,
+    200 : #999999,
+    300 : #707070,
+    400 : #525252,
+    500 : #333333,
+    600 : #2e2e2e,
+    700 : #272727,
+    800 : #202020,
+    900 : #141414,
+    A100 : #ef6e6e,
+    A200 : #ea4040,
+    A400 : #f60000,
+    A700 : #dd0000,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+
+
+/* ======== Angular material custom themes ======== */
+$my-custom-primary: mat-palette($mainColor);
+$my-custom-accent: mat-palette($mainColor, 100, 500, A100);
+$my-custom-warn: mat-palette($mainColor);
+
+$my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-custom-warn);
+
+@include angular-material-theme($my-custom-theme);
+
+
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+ .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element{
+ background: #e25252;
+}
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+ .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+  background-color: #e25252;
+
+ }
