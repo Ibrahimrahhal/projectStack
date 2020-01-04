@@ -1,0 +1,18 @@
+.iconBox{
+  border: solid 0.5px rgba(226, 82, 82,0.3);
+  border-radius: 0.5rem;
+  width: 10vw;
+  min-width: 100px;
+  height: 10vw;
+  min-height: 100px;
+  box-shadow: 0px 0px 30px -4px rgba(0,0,0,0.2);
+  background: #ffffff;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+.iconBox:hover{
+  border: solid 0.5px rgba(226, 82, 82,0.7);
+  box-shadow: 0px 0px 15px -4px rgba(0,0,0,0.4);
+
+}

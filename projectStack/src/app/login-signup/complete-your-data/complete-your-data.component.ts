@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-complete-your-data',
@@ -7,12 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompleteYourDataComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router:Router
+  ) { }
   loading:boolean;
   ngOnInit() {
   }
 
   validateEmail(){
+    this.loading = true;
+    setTimeout(()=>{
+      this.router.navigate(['/login/complete']);
+    },3000)
 
   }
 

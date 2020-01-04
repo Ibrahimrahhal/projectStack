@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './login-signup/login/login.component';
 import { SignupComponent } from './login-signup/signup/signup.component';
 import { CompleteYourDataComponent } from './login-signup/complete-your-data/complete-your-data.component';
+import { AddingUserDataComponent } from './login-signup/adding-user-data/adding-user-data.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CompleteYourDataComponent } from './login-signup/complete-your-data/com
     LoginSignupComponent,
     LoginComponent,
     SignupComponent,
-    CompleteYourDataComponent
+    CompleteYourDataComponent,
+    AddingUserDataComponent
   ],
   imports: [
     BrowserModule,
