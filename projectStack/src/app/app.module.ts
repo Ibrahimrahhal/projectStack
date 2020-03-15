@@ -1,6 +1,6 @@
+import { DashboardModule } from './dashboard.module/dashboard.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginSignupComponent } from './login-signup/login-signup.component';
@@ -10,6 +10,8 @@ import { LoginComponent } from './login-signup/login/login.component';
 import { SignupComponent } from './login-signup/signup/signup.component';
 import { CompleteYourDataComponent } from './login-signup/complete-your-data/complete-your-data.component';
 import { AddingUserDataComponent } from './login-signup/adding-user-data/adding-user-data.component';
+import { AuthServiceService } from './services/auth-service.service';
+import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,11 @@ import { AddingUserDataComponent } from './login-signup/adding-user-data/adding-
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    DashboardModule,
+
   ],
-  providers: [],
+  providers: [AuthServiceService, AmplifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

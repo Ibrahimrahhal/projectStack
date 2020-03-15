@@ -1,0 +1,15 @@
+{
+	"auth": {
+		"projectstackad3c7d3c": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	},
+	"storage": {
+		"dynamo2352b6c0": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}

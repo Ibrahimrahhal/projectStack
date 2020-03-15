@@ -1,4 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -10,19 +12,29 @@ export class SignupComponent implements OnInit {
   @Output('signingUpFinished') signingUpFinished = new EventEmitter();
   passwordHide:boolean = true;
   passwordConfirmHide:boolean = true;
+  signUpFormGroup:FormGroup;
   loading = false;
-  constructor() { }
+  constructor(private auth:AuthServiceService, private fb:FormBuilder) { }
 
   ngOnInit() {
+    this.signUpFormGroup = this.fb.group({
+      firstName:null,
+      lastName:null,
+      email:null,
+      password:null,
+      confirmPassword:null
+    });
   }
 
   signUp(){
     this.signingUp.emit();
     this.loading = true;
-    setInterval(()=>{
+    this.auth.signup(this.signUpFormGroup.getRawValue().email, this.signUpFormGroup.getRawValue().password, this.signUpFormGroup.getRawValue().email, null).then((result)=>{
       this.loading = false;
       this.signingUpFinished.emit();
-    },5000)
+    }).catch((error)=>{
+
+    });
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,9 @@ export class LoginComponent implements OnInit {
 
   passwordHide:boolean = true;
   loading = false;
-  constructor() { }
+  constructor(private auth:AuthServiceService) {
+
+   }
 
   ngOnInit() {
   }

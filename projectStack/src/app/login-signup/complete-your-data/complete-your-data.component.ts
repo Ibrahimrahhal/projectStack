@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
   selector: 'app-complete-your-data',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 export class CompleteYourDataComponent implements OnInit {
 
   constructor(
-    private router:Router
+    private router:Router,
+    private auth:AuthServiceService
   ) { }
   loading:boolean;
   ngOnInit() {
@@ -17,6 +19,7 @@ export class CompleteYourDataComponent implements OnInit {
 
   validateEmail(){
     this.loading = true;
+    this.auth
     setTimeout(()=>{
       this.router.navigate(['/login/complete']);
     },3000)

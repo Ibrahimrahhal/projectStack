@@ -1,0 +1,36 @@
+header{
+  min-height: 65px;
+  height: 12vh;
+  background-color: #e25252;
+  box-shadow: 0px 2px 14px 0px rgba(0,0,0,0.2);
+
+}
+
+.headerLogoHolder{
+  height: 80%;
+  width: 30%;
+  background: #707070;
+}
+
+nav span {
+  margin-right: 1rem;
+  margin-left: 1rem;
+  color: white;
+  font-weight: lighter;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+nav span:hover{
+  // font-weight: bold;
+}
+
+
+.bellIconCont{
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.05);
+}

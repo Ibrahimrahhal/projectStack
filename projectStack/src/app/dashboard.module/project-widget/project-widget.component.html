@@ -1,0 +1,10 @@
+<div class="projectContainer d-flex align-items-center px-3">
+  <div *ngIf="!isNewProject">
+    <div class="d-flex justify-content-center align-items-center projectIcon">
+      {{firstLetter}}
+    </div>
+  </div>
+  <div class="h-100 w-100 d-flex justify-content-center align-items-center" *ngIf="isNewProject">
+    <i class="fa fa-plus-circle color-pink" style="font-size: 2.2rem;"></i>
+  </div>
+</div>
