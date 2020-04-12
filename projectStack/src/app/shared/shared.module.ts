@@ -8,7 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { AuthServiceService } from '../services/auth-service.service';
 import { AmplifyAngularModule } from 'aws-amplify-angular';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { CustomButtonComponent } from './custom-button/custom-button.component';
+import { ToastrModule } from 'ngx-toastr';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -16,20 +17,23 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, CustomButtonComponent],
   imports: [
     CommonModule,
     MaterialModule,
     PerfectScrollbarModule,
     AmplifyAngularModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule
   ],
   exports:[
     MaterialModule,
     PerfectScrollbarModule,
     HeaderComponent,
     AmplifyAngularModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CustomButtonComponent,
+    ToastrModule
   ],
   providers: [
     {

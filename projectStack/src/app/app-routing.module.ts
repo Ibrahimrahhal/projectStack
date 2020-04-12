@@ -7,23 +7,15 @@ import { NewProjectComponent } from './dashboard.module/new-project/new-project.
 import { ProjectDashboardComponent } from './dashboard.module/project.module/project-dashboard/project-dashboard.component';
 
 const routes: Routes = [{
-  path: 'login',
-  children:[
-    {
-      path:'complete',
-      component: AddingUserDataComponent
-    },
-    {
-      path:'',
-      component: LoginSignupComponent
-    }
-  ]
-},
-{
+  path: 'external/:type',
+  component: LoginSignupComponent
+},{
+  path:'user/complete',
+  component: AddingUserDataComponent,
+},{
   path:"dashboard",
   component:DashboardComponent
-},
-{
+},{
   path:"project",
   children:[{
     path:'new',
@@ -32,6 +24,10 @@ const routes: Routes = [{
     component:ProjectDashboardComponent,
     path:':projectid/dashboard'
   }]
+},{
+  path:'',
+  redirectTo:'external/login',
+  pathMatch: 'full'
 }];
 
 @NgModule({

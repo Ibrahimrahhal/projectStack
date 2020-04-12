@@ -12,7 +12,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="w-50 px-2">
             <mat-label>Last Name</mat-label>
-            <input matInput formContorlName="lastName" placeholder="Millar">
+            <input matInput formControlName="lastName" placeholder="Millar">
         </mat-form-field>
     </div>
     <mat-form-field appearance="outline" class="w-100 px-2">
@@ -33,26 +33,20 @@
         </mat-form-field>
     </div>
     <div class="px-3">
+      <span class="font-main font-weight-bold font-small">Already Have An Account? <a  class="font-weight-light" [routerLink]="['/external/login']"> Login To Your Account</a> </span>
+    </div>
+    <div class="px-3 mt-2">
         <mat-checkbox>
             <span class="font-main font-weight-light font-small">I <span class="font-weight-bold">Agree</span> On All The <span class="font-weight-bold">Terms</span> & <span class="font-weight-bold">Conditions.</span></span>
         </mat-checkbox>
     </div>
-    <button mat-flat-button
-    color="primary"
-    class="mx-auto d-block mt-4 much-rounded px-5  font-weight-light color-white"
-    [class.py-1]="!loading"
-    [class.py-2]="loading"
-    [disabled]="loading"
-    (click)="signUp()">
-      <span *ngIf="!loading">
-        Register
-      </span>
-      <mat-spinner
-      *ngIf="loading"
-      color='primary'
-      diameter="20"></mat-spinner>
 
-    </button>
+    <custom-button
+    color="primary"
+    [passedClass]="{'mx-auto':true,  'd-block':true, 'mt-4':true, 'much-rounded':true, 'px-5':true,  'font-weight-light':true, 'color-white':true}"
+    (click)="signUp()">
+        Register
+    </custom-button>
   </form>
 
 

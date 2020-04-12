@@ -11,18 +11,21 @@ export class CompleteYourDataComponent implements OnInit {
 
   constructor(
     private router:Router,
-    private auth:AuthServiceService
+    private auth:AuthServiceService,
   ) { }
   loading:boolean;
+  code:string;
   ngOnInit() {
   }
 
   validateEmail(){
     this.loading = true;
-    this.auth
-    setTimeout(()=>{
-      this.router.navigate(['/login/complete']);
-    },3000)
+    this.auth.confirmEmail(this.code).then((data)=>{
+      this.router.navigate(['/external/login']);
+    }).catch((err)=>{
+
+    });
+
 
   }
 

@@ -12,6 +12,9 @@ import { CompleteYourDataComponent } from './login-signup/complete-your-data/com
 import { AddingUserDataComponent } from './login-signup/adding-user-data/adding-user-data.component';
 import { AuthServiceService } from './services/auth-service.service';
 import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
     BrowserAnimationsModule,
     SharedModule,
     DashboardModule,
-
+    FormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [AuthServiceService, AmplifyService],
   bootstrap: [AppComponent]
