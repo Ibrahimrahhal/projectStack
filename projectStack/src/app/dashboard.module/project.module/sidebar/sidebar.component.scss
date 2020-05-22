@@ -1,0 +1,45 @@
+.projectSidebarContainer{
+  height: 100%;
+  min-width: 235px;
+  max-width: 300px;
+  background-color: rgba($color: #ffffff, $alpha: 0.4);
+  border-right: solid 1.5px rgba(226, 82, 82, 0.3);
+}
+
+
+.projectIcon{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: #79c79c;
+  font-weight: bold;
+}
+.menuItem{
+  display: flex;
+  align-items: center;
+  height: 43px;
+  cursor: pointer;
+  background-color: rgba($color: #666666, $alpha: 0);
+  transition: all 0.4s ease-out ;
+}
+.menuItem:hover, .menuItem.active{
+  background-color: rgba($color: #666666, $alpha: 0.1);
+}
+.menuItem .activeIcon{
+  height: 100%;
+  width: 20px;
+  background-color: rgba(226, 82, 82, 0);
+  transition: all 0.2s ease-out;
+}
+.menuItem.active .activeIcon,
+.menuItem:hover .activeIcon {
+  background-color: rgba(226, 82, 82, 1);
+
+}
+.menuItem .label{
+  padding: 0 1rem;
+}
