@@ -2,21 +2,25 @@ import { Injectable } from '@angular/core';
 import { AmplifyService }  from 'aws-amplify-angular';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { decryptData } from '../../util/util';
+import { decryptData, encryptData } from '../../util/util';
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
-  isUserSignedIn:boolean = false;
+  isUserSignedIn:boolean;
   user;
   hldEmail;
+  signInState:Subject<any> = new Subject()
   constructor(
     private amplifyService:AmplifyService,
     private http:HttpClient) {
-    window["auth"] = this.amplifyService.auth();
     this.amplifyService.authStateChange$
     .subscribe(authState => {
         this.isUserSignedIn = authState.state === 'signedIn';
+        this.signInState.next(true);
+        if(this.isUserSignedIn)
+          this.getUserDate();
   });
 }
 
@@ -27,19 +31,32 @@ signup(username, password, email, phonenumber){
 
 login(email, password){
   return new Promise(async (resolve, reject) => {
-    await this.amplifyService.auth().signIn(email, password) as Promise<any>;
-    let { data } = await this.http.get( environment.baseApi + '/user', { headers: this.headers}).toPromise() as any;
-    this.user = JSON.parse(decryptData(data));
-    console.log(this.user, "user")
-    return resolve(this.user);
+    try {
+      await this.amplifyService.auth().signIn(email, password) as Promise<any>;
+    }catch(e){
+      reject(e);
+      return;
+    }
+    let user = await this.getUserDate();
+    return resolve(user);
   });
+}
+
+async getUserDate(){
+  let { data } = await this.http.get( environment.baseApi + '/user', { headers: this.headers}).toPromise() as any;
+  this.user = JSON.parse(decryptData(data));
+  return this.user;
 }
 
 confirmEmail(code){
   return new Promise(async(resolve, reject)=>{
-    let result = await this.amplifyService.auth().confirmSignUp(this.hldEmail, code) as Promise<any>;
-    this.hldEmail = null;
-    resolve(result);
+    try{
+      let result = await this.amplifyService.auth().confirmSignUp(this.hldEmail, code) as Promise<any>;
+      this.hldEmail = null;
+      resolve(result);
+    }catch(e){
+      reject(e)
+    }
   });
 }
 

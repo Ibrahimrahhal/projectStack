@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material/material.module';
@@ -7,9 +8,13 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { HeaderComponent } from './header/header.component';
 import { AuthServiceService } from '../services/auth-service.service';
 import { AmplifyAngularModule } from 'aws-amplify-angular';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CustomButtonComponent } from './custom-button/custom-button.component';
 import { ToastrModule } from 'ngx-toastr';
+import { HeaderMenuComponent } from './header-menu/header-menu.component';
+import { NotificationsSectionComponent } from './header-menu/notifications-section/notifications-section.component';
+import { SubmenuComponent } from './header-menu/submenu/submenu.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -17,14 +22,17 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 
 @NgModule({
-  declarations: [HeaderComponent, CustomButtonComponent],
+  declarations: [HeaderComponent, CustomButtonComponent, HeaderMenuComponent, NotificationsSectionComponent, SubmenuComponent],
   imports: [
     CommonModule,
     MaterialModule,
     PerfectScrollbarModule,
     AmplifyAngularModule,
     ReactiveFormsModule,
-    ToastrModule
+    ToastrModule,
+    RouterModule,
+    NgxSkeletonLoaderModule
+
   ],
   exports:[
     MaterialModule,
@@ -32,9 +40,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HeaderComponent,
     AmplifyAngularModule,
     ReactiveFormsModule,
+    FormsModule,
     CustomButtonComponent,
-    ToastrModule
+    ToastrModule,
+    NgxSkeletonLoaderModule
   ],
+  entryComponents:[ HeaderMenuComponent ],
   providers: [
     {
       provide: PERFECT_SCROLLBAR_CONFIG,

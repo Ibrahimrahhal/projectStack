@@ -1,0 +1,25 @@
+<div class="memberCard m-3">
+  <ng-container *ngIf="!loading">
+    <div class="memberImage my-4" [style.backgroundImage]="backgroundImageStyle" >
+
+    </div>
+    <h6 class="text-center color-black m-0">{{Username}}</h6>
+    <small class="d-block text-center color-black" style="opacity: 0.5;">{{user.headline}}</small>
+    <div class="sep mt-2">
+
+    </div>
+    <div class="tagContainer mt-3 px-3" >
+      <div class="tag" *ngFor="let skillID of skillsToShow">
+        {{staticData.getSkillNameByID(skillID)}}
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="loading">
+    <div class="item">
+      <ngx-skeleton-loader count="1" [theme]="{height:'70px', width:'70px', margin:'1.4rem auto', display:'block'}" appearance="circle" animation="progress"> </ngx-skeleton-loader>
+      <ngx-skeleton-loader count="1" [theme]="{width:'60%', height:'20px', margin:'0.7rem auto', display:'block'}" animation="progress"> </ngx-skeleton-loader>
+      <ngx-skeleton-loader count="1" [theme]="{width:'40%', height:'16px', margin:'0.7rem auto', display:'block'}" animation="progress"> </ngx-skeleton-loader>
+    </div>
+  </ng-container>
+
+</div>

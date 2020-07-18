@@ -1,10 +1,10 @@
 <div class="projectSidebarContainer">
   <div class="d-flex justify-content-center flex-column align-items-center py-3">
     <div class="projectIcon">
-      T
+      {{project?.projectName[0].toUpperCase()}}
     </div>
-    <h6 class="m-0 color-black mt-3">Trash Project</h6>
-    <small class="color-black" style="opacity: 0.5;">Where Trash Is Actually Cool</small>
+    <h6 class="m-0 color-black mt-3">{{project?.projectName}}</h6>
+    <small class="color-black" style="opacity: 0.5;">{{project?.slogan || 'Project Slogan'}}</small>
   </div>
 
   <div class="menuBlock mt-3">

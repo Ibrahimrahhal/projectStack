@@ -6,7 +6,14 @@
   position: absolute;
   top: 15px;
   left: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
+
+.backBtn:hover{
+  transform: scale(1.2);
+}
+
 
 .projectRegMiddleSection{
   width: 35vw;
@@ -24,8 +31,8 @@
 
 .projectIconContainer{
   color: #ffffff;
-  height: 60px;
-  width: 60px;
+  height: 85px;
+  width: 85px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -33,3 +40,5 @@
   font-weight: bold;
   font-size: 1.4rem;
 }
+
+

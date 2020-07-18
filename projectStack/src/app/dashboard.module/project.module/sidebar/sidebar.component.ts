@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import Project from 'src/app/types/Project';
 
 @Component({
@@ -8,11 +8,11 @@ import Project from 'src/app/types/Project';
 })
 export class SidebarComponent implements OnInit {
   @Input() project:Project;
-  activeTab:string;
+  @Input() activeTab:string;
+  @Output() activeTabChange:EventEmitter<string> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
-  this.activeTab = 'home';
   }
 
 }

@@ -61,3 +61,84 @@ outline: 0 !important;
   overflow-x: hidden;
   min-height: 100vh;
 }
+
+.resetList{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.widgetBlock{
+  border: solid 1px rgba(226,82,82,0.2);
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin:  1.5rem 0rem;
+}
+
+.cursorPointer{
+  cursor: pointer;
+  user-select: none;
+}
+.scaleOnHover{
+  transition: all 0.3s;
+}
+.scaleOnHover:hover{
+  transform: scale(1.1);
+}
+
+.tag{
+  padding: 0.3rem 1rem;
+  border-radius: 17px;
+  border: solid 1px rgba(226,82,82,0.3);
+  background-color: #fefefe;
+  font-size: 0.7rem;
+  color: #707070;
+  opacity: 0.8;
+  margin: 0.3rem 0.4rem;
+}
+.w-90{
+  width: 90%;
+}
+.w-40{
+  width: 40%;
+}
+.rawBlock{
+  min-height: 100px;
+  background-color: white;
+  padding: 1rem;
+}
+
+.rawBlock .label{
+  color: #707070;
+  opacity: 0.5;
+  font-weight: bold;
+  font-size: 0.8rem;
+
+}
+
+.w-55{
+  width: 55%;
+}
+.w-40{
+  width: 40%;
+}
+
+.min-h-100vh {
+  min-height: 100vh;
+}
+@media screen and (max-width:3000px){
+  .w-xl-50{
+    width: 50%;
+  }
+  .w-xl-100{
+    width: 100%;
+  }
+  }
+@media screen and (max-width:768px){
+.w-md-50{
+  width: 50%;
+}
+.w-md-100{
+  width: 100%;
+}
+}

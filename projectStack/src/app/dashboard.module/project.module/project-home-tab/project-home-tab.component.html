@@ -1,1 +1,29 @@
-<p>project-home-tab works!</p>
+<div class="w-100 d-flex justify-content-between">
+    <div style="width: 65%;">
+
+        <div class="widgetBlock ">
+            <div class="label color-black">
+              <small>Team Members</small>
+            </div>
+            <app-project-team [members]="project.members"></app-project-team>
+        </div>
+
+        <div class="widgetBlock ">
+          <div class="label color-black">
+            <small>Project Insights</small>
+          </div>
+          <app-project-report></app-project-report>
+        </div>
+
+      </div>
+
+    <div style="width: 30%;">
+      <div class="widgetBlock ">
+        <div class="label color-black">
+          <small>Join Request</small>
+        </div>
+        <app-join-requests></app-join-requests>
+      </div>
+    </div>
+
+</div>

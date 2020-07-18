@@ -1,9 +1,11 @@
 .projectSidebarContainer{
   height: 100%;
   min-width: 235px;
-  max-width: 300px;
+  max-width: 250px;
   background-color: rgba($color: #ffffff, $alpha: 0.4);
   border-right: solid 1.5px rgba(226, 82, 82, 0.3);
+  box-shadow: 10px 0px 9px -9px rgba(0,0,0,0.1);
+
 }
 
 

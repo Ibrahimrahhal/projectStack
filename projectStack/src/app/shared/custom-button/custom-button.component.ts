@@ -6,10 +6,12 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
   styleUrls: ['./custom-button.component.scss']
 })
 export class CustomButtonComponent implements OnInit {
-  @Output('click') click = new EventEmitter();
+  @Output('clickEvent') click = new EventEmitter();
   @Input() loading;
   @Input() passedClass;
   @Input() color;
+  @Input() styles;
+  @Input() disabled;
   constructor() { }
 
   ngOnInit() {

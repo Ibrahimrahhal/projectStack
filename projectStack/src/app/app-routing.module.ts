@@ -5,6 +5,7 @@ import { AddingUserDataComponent } from './login-signup/adding-user-data/adding-
 import { DashboardComponent } from './dashboard.module/dashboard/dashboard.component';
 import { NewProjectComponent } from './dashboard.module/new-project/new-project.component';
 import { ProjectDashboardComponent } from './dashboard.module/project.module/project-dashboard/project-dashboard.component';
+import AuthGaurdForProtectedRoutes from './routeGaurds/canActivateProtectedRoutes';
 
 const routes: Routes = [{
   path: 'external/:type',
@@ -12,11 +13,14 @@ const routes: Routes = [{
 },{
   path:'user/complete',
   component: AddingUserDataComponent,
+  canActivate: [AuthGaurdForProtectedRoutes]
 },{
   path:"dashboard",
-  component:DashboardComponent
+  component:DashboardComponent,
+  canActivate: [AuthGaurdForProtectedRoutes]
 },{
   path:"project",
+  canActivate: [AuthGaurdForProtectedRoutes],
   children:[{
     path:'new',
     component: NewProjectComponent
@@ -29,6 +33,8 @@ const routes: Routes = [{
   redirectTo:'external/login',
   pathMatch: 'full'
 }];
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,8 +1,7 @@
 .sidebar{
   width: 22vw;
-  height: calc(100vh - 12vh);
-  max-height:  calc(100vh - 65px);
-  position: fixed;
+  position: sticky;
+  height: 100vh;
   bottom: 0;
   left: 0;
 }

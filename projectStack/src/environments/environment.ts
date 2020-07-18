@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   encryptKey: "Gosh",
-  baseApi:"http://localhost:3000"
+  baseApi:"http://localhost:3000",
+  disableEncryption:true
 };
 
 /*

@@ -1,35 +1,17 @@
 <app-header></app-header>
 <div class="d-flex justify-content-end">
 <div class="sidebar">
-  <project-sidebar>
+  <project-sidebar [project]="project" [(activeTab)]="activeTab">
 
   </project-sidebar>
 </div>
 
 
-<!-- <section class="mainDashboard px-4 py-5">
-<div class="w-75">
-<h3 class="color-black font-weight-bold">
-  Project Description
-</h3>
-<div class="color-black font-weight-light px-3">
-  Lorem ipsum dolor sit amet, ei ius justo laoreet, dicam utinam quaeque nam et. Et lorem electram usu. In sea tantas suavitate reprimique, quo no putent feugait laboramus, eu aliquid eleifend consequat vel. Vivendum recteque his ne, ei brute nonumes nam.
-  <br>
-  No graece alienum vis, dicta euripidis consetetur mei in. No timeam aliquam adipiscing est, iusto everti voluptatum ad duo. Option corpora copiosae pro ea. Ne est choro graeco oblique, partiendo percipitur an mei, debitis petentium quaerendum an mel. Quo quis primis ad. Nonumy fastidii imperdiet nam ut.
-</div>
+<section class="mainDashboard px-4 py-5">
+  <project-home-tab
+    *ngIf="activeTab == 'home'"
+    [project]="project">
+  </project-home-tab>
 
-<h3 class="color-black font-weight-bold mt-3">
-  Project Members
-</h3>
-<div class="color-black font-weight-light px-3">
-  Lorem ipsum dolor sit amet, ei ius justo laoreet, dicam utinam quaeque nam et. Et lorem electram usu. In sea tantas suavitate reprimique, quo no putent feugait laboramus, eu aliquid eleifend consequat vel. Vivendum recteque his ne, ei brute nonumes nam.
-  <br>
-  No graece alienum vis, dicta euripidis consetetur mei in. No timeam aliquam adipiscing est, iusto everti voluptatum ad duo. Option corpora copiosae pro ea. Ne est choro graeco oblique, partiendo percipitur an mei, debitis petentium quaerendum an mel. Quo quis primis ad. Nonumy fastidii imperdiet nam ut.
-</div>
-</div>
-
-<div class="w-25">
-
-</div>
-</section> -->
+</section>
 </div>

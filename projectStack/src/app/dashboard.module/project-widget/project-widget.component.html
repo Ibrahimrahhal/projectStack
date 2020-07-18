@@ -1,10 +1,26 @@
-<div class="projectContainer d-flex align-items-center px-3">
-  <div *ngIf="!isNewProject">
-    <div class="d-flex justify-content-center align-items-center projectIcon">
-      {{firstLetter}}
+<ng-container *ngIf="!loading">
+  <div class="projectContainer d-flex align-items-center px-3" (click)="handleNavigation()">
+    <div *ngIf="!isNewProject" class="d-flex align-items-center " (click)="navigateToProject()">
+      <div class="d-flex justify-content-center align-items-center projectIcon">
+        {{firstLetter}}
+      </div>
+      <div class="px-3">
+        {{project?.projectName}}
+      </div>
+    </div>
+    <div class="h-100 w-100 d-flex justify-content-center align-items-center" *ngIf="isNewProject">
+      <i class="fa fa-plus-circle color-pink" style="font-size: 2.2rem;"></i>
     </div>
   </div>
-  <div class="h-100 w-100 d-flex justify-content-center align-items-center" *ngIf="isNewProject">
-    <i class="fa fa-plus-circle color-pink" style="font-size: 2.2rem;"></i>
+</ng-container>
+<ng-container *ngIf="loading">
+  <div class="projectContainer d-flex align-items-center px-3">
+    <div class="item d-flex align-items-center">
+      <ngx-skeleton-loader count="1" [theme]="{height:'50px', width:'50px', margin:'1.4rem auto', display:'block'}" appearance="circle" animation="progress"> </ngx-skeleton-loader>
+      <div class="d-flex flex-column align-items-start ml-3">
+        <ngx-skeleton-loader count="1" [theme]="{width:'100px', height:'14px', margin:'0.1rem auto', display:'block'}" animation="progress"> </ngx-skeleton-loader>
+        <ngx-skeleton-loader count="1" [theme]="{width:'70px', height:'10px', margin:'0.1rem auto', display:'block'}" animation="progress"> </ngx-skeleton-loader>
+      </div>
+    </div>
   </div>
-</div>
+</ng-container>

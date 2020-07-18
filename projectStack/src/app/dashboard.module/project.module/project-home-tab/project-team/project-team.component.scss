@@ -1,0 +1,21 @@
+.memberBlock{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.memberImage{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #da1f26;
+}
+
+.memberName{
+  margin: 0.2rem 0;
+}

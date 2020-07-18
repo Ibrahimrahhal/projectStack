@@ -6,7 +6,9 @@
     [class.py-1]="!loading"
     [class.py-2]="loading"
     [disabled]="loading"
-    (click)="click.emit($event);">
+    [ngStyle]="styles"
+    [disabled]="disabled"
+    (click)="disabled?'':click.emit($event);">
       <span *ngIf="!loading">
         <ng-content></ng-content>
       </span>

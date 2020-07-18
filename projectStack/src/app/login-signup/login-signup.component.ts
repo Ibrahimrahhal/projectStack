@@ -16,6 +16,7 @@ export class LoginSignupComponent implements OnInit {
     private activatedRoute:ActivatedRoute
     ) { }
   ngOnInit() {
+    window["loginSi"] = this;
     this.activatedRoute.paramMap.subscribe((data:any)=>{
       this.loginSideActive = data.params.type == 'login';
     })
@@ -27,6 +28,7 @@ export class LoginSignupComponent implements OnInit {
 
   signUpFinished(){
     this.isUserCompeletingHisData = true;
+    this.loginSideActive=false;
   }
   toggleLoginSignup(){
     if(this.isUserCompeletingHisData)

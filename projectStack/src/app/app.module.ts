@@ -15,6 +15,10 @@ import { AmplifyAngularModule, AmplifyService } from 'aws-amplify-angular';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { ExploreModule } from './explore/explore.module';
+import { ProfileModule } from './profile/profile.module';
+import { MessagesComponentComponent } from './messages-component/messages-component.component';
+import AuthGaurdForProtectedRoutes from './routeGaurds/canActivateProtectedRoutes';
 
 @NgModule({
   declarations: [
@@ -23,19 +27,23 @@ import { ToastrModule } from 'ngx-toastr';
     LoginComponent,
     SignupComponent,
     CompleteYourDataComponent,
-    AddingUserDataComponent
+    AddingUserDataComponent,
+    MessagesComponentComponent
   ],
   imports: [
     BrowserModule,
+    ExploreModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
     DashboardModule,
     FormsModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ProfileModule
+
   ],
-  providers: [AuthServiceService, AmplifyService],
+  providers: [AuthServiceService, AmplifyService, AuthGaurdForProtectedRoutes],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

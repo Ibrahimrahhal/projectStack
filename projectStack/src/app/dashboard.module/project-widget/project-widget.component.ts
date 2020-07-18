@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import Project from 'src/app/types/Project';
 
 @Component({
   selector: 'project-widget',
@@ -7,20 +9,27 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProjectWidgetComponent implements OnInit {
 
-  constructor() { }
-  @Input() project;
+  constructor(private router:Router) { }
+  @Input() project:Project;
   @Input() isNewProject;
+  @Input() loading:boolean;
   ngOnInit() {
 
   }
 
   get _project(){
-    return this.project || {
-      name: "Suzzi"
-    };
+    return this.project || { } as Project;
   }
   get firstLetter(){
-    return this._project.name[0]
+    return this._project.projectName[0];
+  }
+  handleNavigation():void {
+    if(this.isNewProject)
+       this.router.navigate(["/project/new"])
+  }
+
+  navigateToProject():void {
+    this.router.navigate([`/project/${this.project.ID}/dashboard`])
   }
 
 }

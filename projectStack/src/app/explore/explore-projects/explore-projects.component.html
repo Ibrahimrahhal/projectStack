@@ -1,0 +1,54 @@
+<app-header></app-header>
+
+<div class="mt-5 ml-5">
+  <h2 class="font-weight-bold color-pink mt-5">Explore Projects</h2>
+  <div class="d-flex mt-4  align-items-center">
+    <input type="text" class="customSearchBar px-3 mr-2"/>
+    <custom-button
+    mat-flat-button
+    color="primary"
+    [passedClass]="{'px-3':true, 'font-weight-normal':true, 'color-white':true, 'd-block':true, 'mx-auto':true,'d-flex':true,'align-items-center':true }"
+    >
+    <div class="d-flex align-items-center minScale" >
+      <mat-icon class="mx-1">filter_alt</mat-icon>Advanced Filters
+    </div>
+  </custom-button>
+  </div>
+
+<div class="px-3 mt-4">
+  <div class="d-flex">
+    <div class="mx-3 menuFastFilters active">
+      All
+      <div class="point">
+      </div>
+    </div>
+    <div class="mx-3 menuFastFilters">
+      Data science
+      <div class="point">
+      </div>
+    </div>
+    <div class="mx-3 menuFastFilters">
+      Technology
+      <div class="point">
+      </div>
+    </div>
+    <div class="mx-3 menuFastFilters ">
+      Competetors
+      <div class="point">
+      </div>
+    </div>
+
+</div>
+
+
+<div class="d-flex justify-content-between mt-5 px-3 searchSection">
+    <div class="projectSearchResults">
+      <app-projects-result></app-projects-result>
+    </div>
+
+    <div class="sideBar">
+      <app-hot-projects></app-hot-projects>
+    </div>
+</div>
+</div>
+</div>

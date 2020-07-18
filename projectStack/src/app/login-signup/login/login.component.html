@@ -1,6 +1,6 @@
 <div class="h-100 w-100 bg-white mt-5 pt-5">
     <h3 class="font-main color-pink text-center">
-      <span class="font-weight-bold">Welcome Back,</span>
+      <span class="font-weight-bold d-block">Welcome Back</span>
       <h4 class="font-weight-lighter d-inline"> Enter Your Credentials</h4>
     </h3>
 
@@ -28,7 +28,7 @@
         color="primary"
         [passedClass]='{"mx-auto":true, "d-block":true,  "mt-4":true, "much-rounded":true, "px-5":true, "font-weight-light":true, "color-white":true}'
         [loading]="loading"
-        (click)="login()">
+        (clickEvent)="login()">
             Login
         </custom-button>
 

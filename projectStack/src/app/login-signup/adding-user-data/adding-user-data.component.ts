@@ -1,3 +1,4 @@
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { University } from './../../types/University';
 import { StorageService } from './../../services/storage.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -7,6 +8,8 @@ import { APIResponse } from 'src/app/types/API.Response';
 import { Interest, Skill } from 'src/app/types/Interest.Skills';
 import { MatChipInputEvent, MatAutocompleteSelectedEvent } from '@angular/material';
 import { HttpService } from 'src/app/services/http.service';
+import { Router } from '@angular/router';
+import { StaticDataService } from 'src/app/services/static-data.service';
 var MB = 1024*1024;
 @Component({
   selector: 'app-adding-user-data',
@@ -17,61 +20,38 @@ export class AddingUserDataComponent implements OnInit {
   step:number = 1;
   group:FormGroup;
   loading:boolean = false;
-  skills:Skill[] = [{
-    Value:1,
-    Desc:"Angular"
-  },
-  {
-    Value:2,
-    Desc:"Angular"
-  },
-  {
-    Value:3,
-    Desc:"Angular"
-  }];
 
-  interests:Interest[] = [{
-    Value:1,
-    Desc:"Angular"
-  },
-  {
-    Value:2,
-    Desc:"Angular"
-  },
-  {
-    Value:3,
-    Desc:"Angular"
-  }];
-
-  university:University[]=[
-    {Name: "University Of Jordan", ID: 1},
-    {Name: "German University", ID: 2}
-  ];
   constructor(
     private fb:FormBuilder,
     private storage:StorageService,
-    private http:HttpService) { }
+    private auth:AuthServiceService,
+    private http:HttpService,
+    private router:Router,
+    public staticData:StaticDataService) { }
 
   ngOnInit() {
-    window["complete"] = this;
     this.group = this.fb.group({
       userType: [null],
       profileImage: [null],
       skills: [[]],
       resume: [null],
       interests: [[]],
-      university: [null]
+      university: [null],
+      department:[null],
+      yearOfGrad:[null],
+      headline:[null],
+      summery:[null]
     });
   }
 
   get notSelectedInterests(){
-    return this.interests.filter((inte)=>{
-      return !this.group.get('interests').value.includes(inte.Value)
+    return this.staticData.Interests.filter((inte)=>{
+      return !this.group.get('interests').value.includes(inte.ID)
     })
   }
-
+  log(e){console.log(e)}
   get isUniversityValid(){
-    return this.university.find((one:University)=>{
+    return this.staticData.Universities.find((one:University)=>{
       return one.ID == this.group.getRawValue().university;
     })
   }
@@ -120,15 +100,15 @@ export class AddingUserDataComponent implements OnInit {
     this.step++;
   }
 
-  removeInterestChip(value: number){
+  removeInterestChip(value: string){
     this.group.get('interests').setValue(this.group.get('interests').value.filter((int)=>{
       return int != value;
     }))
   }
 
-  findInterestFromValue(value: number): Interest{
-    return this.interests.find((int)=>{
-      return int.Value == value;
+  findInterestFromValue(value:string): Interest{
+    return this.staticData.Interests.find((int)=>{
+      return int.DESC == value;
     })
   }
 
@@ -136,10 +116,10 @@ export class AddingUserDataComponent implements OnInit {
   addInterestChip(event:MatChipInputEvent){
     const input = event.input;
     const value = event.value;
-    if(!this.interests.find(int=>int.Desc == value))
+    if(!this.staticData.Interests.find(int=>int.DESC == value))
       return;
 
-    this.group.get('interests').setValue(this.group.get('interests').value.concat([this.interests.find(int=>int.Desc == value).Value]))
+    this.group.get('interests').setValue(this.group.get('interests').value.concat([this.staticData.Interests.find(int=>int.DESC == value).ID]))
 
     if (input) {
       input.value = '';
@@ -160,17 +140,25 @@ export class AddingUserDataComponent implements OnInit {
 
 
   setUnivarsity(e:MatAutocompleteSelectedEvent): void{
-    let university:University = this.university.find((one)=>{
-      return one.Name == e.option.value;
+    let university:University = this.staticData.Universities.find((one)=>{
+      return one.DESC == e.option.value;
     });
     this.group.get('university').setValue(university.ID);
 
   }
-
+  setDepartment(e:MatAutocompleteSelectedEvent): void{
+    let department:University = this.staticData.Departments.find((one)=>{
+      return one.DESC == e.option.value;
+    });
+    this.group.get('department').setValue(department.ID);
+    console.log('this', this.group.get('department').value)
+  }
   async completeSignup(): Promise<boolean> {
-    await this.http.putUser(this.group.getRawValue());
+    this.loading = true;
+    await this.http.patchUser(this.group.getRawValue());
+    await this.auth.getUserDate();
+    this.router.navigate(['/dashboard']);
     return true;
-
   }
 
 }

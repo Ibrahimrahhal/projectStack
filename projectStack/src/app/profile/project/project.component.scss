@@ -1,0 +1,29 @@
+.projectMainInfo{
+  height: 160px;
+  background-color: #fff;
+}
+
+.projectIcon{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background-color: #707070;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.sep{
+  height: 60%;
+  width: 2px;
+  background-color: rgba($color:#707070, $alpha:0.1);
+}
+.prjectDesc{
+  font-size: 0.8rem;
+  opacity: 0.6;
+  max-height: 50%;
+  max-width: 60%;
+  overflow: hidden;
+}

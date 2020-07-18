@@ -1,54 +1,76 @@
 <div style="min-height: 100vh; width: 100vw; " class="d-flex justify-content-center">
-  <div class="backBtn bg-pink d-flex justify-content-center align-items-center">
+  <div class="backBtn bg-pink d-flex justify-content-center align-items-center" (click)="navigateBack()">
     <i class="fa fa-chevron-left"></i>
   </div>
   <div class="projectRegMiddleSection d-flex flex-column align-items-center  py-5">
-    <div class="logoContainer" style="height: 80px; width: 80%; text-align: center;">
+    <!-- <div class="logoContainer" style="height: 80px; width: 80%; text-align: center;">
         <h4>
           Project Stack
         </h4>
-    </div>
+    </div> -->
     <div class="projectRegForm py-4 px-3">
       <div class="projectIconContainer bg-pink mx-auto">
-        S
+        {{projectFirstLetter}}
       </div>
-      <h6 class="color-block">
+      <h6 class="color-block mt-4 px-3">
         <b>Create</b> New Project
       </h6>
-      <div class="w-100 d-flex flex-column align-items-center">
-        <mat-form-field appearance="outline" class="mt-4 w-75">
+      <form [formGroup]="projectFormGroup" class="w-100 d-flex flex-column align-items-center">
+        <mat-form-field appearance="outline" class="mt-2 w-75">
           <mat-label>Project Name</mat-label>
-          <input matInput placeholder="My Project">
+          <input matInput placeholder="My Project" formControlName="projectName">
           <mat-icon matSuffix>assignment</mat-icon>
           <mat-hint>Make Your Project Name Unique, Can Help Search Ranking</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="outline" class="mt-3 w-75">
+          <mat-label>Project Slogan</mat-label>
+          <input matInput placeholder="Save The World" formControlName="slogan">
+          <mat-icon matSuffix>polymer</mat-icon>
+          <mat-hint>What Best Describe Your Project</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="mt-2 w-75">
           <mat-label>Max Team Size</mat-label>
-          <input matInput placeholder="My Project">
+          <input matInput placeholder="5" formControlName="maxNumberOfMembers" type="number">
           <mat-icon matSuffix>people</mat-icon>
           <mat-hint>Your Project Will Be Hidden After Your Team Is Full</mat-hint>
         </mat-form-field>
-        <mat-form-field appearance="outline" class="mt-1 w-75">
+        <mat-form-field appearance="outline" class="mt-2 w-75">
           <mat-label>Project Type</mat-label>
-          <mat-select >
+          <mat-select formControlName="projectType">
             <mat-option>None</mat-option>
-            <mat-option value="option1">Option 1</mat-option>
-            <mat-option value="option2">Option 2</mat-option>
-            <mat-option value="option3">Option 3</mat-option>
+            <mat-option value="1">Option 1</mat-option>
+            <mat-option value="1">Option 2</mat-option>
+            <mat-option value="1">Option 3</mat-option>
           </mat-select>
+          <mat-hint>Project Type Will Help For Better User Matching</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="mt-1 w-75">
+          <mat-label>Project Tags</mat-label>
+          <mat-select formControlName="tags" multiple>
+            <mat-option value="1">Option 1</mat-option>
+            <mat-option value="1">Option 2</mat-option>
+            <mat-option value="1">Option 3</mat-option>
+          </mat-select>
+          <mat-hint>Tags Will Help For Better User Matching</mat-hint>
         </mat-form-field>
 
-
-        <div class="w-75">
-          <mat-checkbox>This is a public project</mat-checkbox>
+        <div class="w-75 mt-3">
+          <mat-checkbox formControlName="isPublic">This is a Public Project</mat-checkbox>
         </div>
         <div class="w-75">
-          <mat-checkbox>I <b>agree</b> to the terms of use</mat-checkbox>
+          <mat-checkbox [formControl]="agreeCheckbox">I <b>Agree</b> To The Terms Of Use</mat-checkbox>
         </div>
-        <button mat-flat-button color="primary" class="px-5 font-weight-normal mt-5 color-white d-block mx-auto" style="border-radius: 2rem;">
-          Create Your Project
-        </button>
-      </div>
+        <custom-button
+        mat-flat-button
+        color="primary"
+        [loading]="loading"
+        [disabled]="projectFormGroup.invalid || !agreeCheckbox.value"
+        [styles]="{borderRadius:'2rem'}"
+        [passedClass]="{'px-5':true, 'font-weight-normal':true, 'mt-4':true, 'color-white':true, 'd-block':true, 'mx-auto':true }"
+        (clickEvent)="createProject()">
+        Create Your Project
+        </custom-button>
+      </form>
     </div>
   </div>
 </div>

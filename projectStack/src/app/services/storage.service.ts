@@ -15,22 +15,30 @@ export class StorageService {
 
 
   async uploadProfileImage(file){
-    let buffer = await file.arrayBuffer();
-    let base64 = bufferToStr(buffer, 'base64');
+    let data = await this.bufferToBase64(file);
     let req = {
-      data: base64
+      data
     };
     req[encryptData('imgType')] = encryptData(file.name.split('.').reverse()[0]);
     return await this.http.put( environment.baseApi + '/storage/profile', req, { headers: this.auth.headers }).toPromise();
   }
 
   async uploadResume(file){
-    let buffer = await file.arrayBuffer();
-    let base64 = bufferToStr(buffer, 'base64');
+    let data = await this.bufferToBase64(file);
     let req = {
-      data: base64
+      data
     };
     req[encryptData('resumeType')] = encryptData(file.name.split('.').reverse()[0]);
     return await this.http.put( environment.baseApi + '/storage/resume', req, { headers: this.auth.headers }).toPromise();
   }
+
+  private async bufferToBase64(file):Promise<string> {
+   return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = error => reject(error);
+  });
+
+}
 }

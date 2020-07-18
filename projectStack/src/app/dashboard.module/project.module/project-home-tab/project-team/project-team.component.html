@@ -1,0 +1,10 @@
+<div class="d-flex flex-wrap py-3">
+  <div class="memberBlock" *ngFor="let member of members">
+    <div class="memberImage" [style.backgroundImage]="getSafeBackground(member.profileImage)">
+
+    </div>
+    <div class="memberName">
+      <small>{{member.firstName}} {{member.lastName}}</small>
+    </div>
+  </div>
+</div>

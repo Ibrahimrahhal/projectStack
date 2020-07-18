@@ -1,10 +1,10 @@
 export interface Interest{
-  Value:number;
-  Desc:String;
+  ID:string;
+  DESC:string;
 }
 
 
 export interface Skill{
-  Value:number;
-  Desc:String;
+  ID:string;
+  DESC:string;
 }

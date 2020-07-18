@@ -1,0 +1,113 @@
+<app-header></app-header>
+<div class="memberContainer">
+  <div class="backdrop"></div>
+  <div class="userImageNameBlock d-flex flex-column align-items-center">
+      <div class="userImage" [style.backgroundImage]="backgroundImageStyle">
+
+      </div>
+      <h5 class="color-black font-weight-bold mt-2 mb-0">
+        {{Username}}
+      </h5>
+      <small class="color-black" style="opacity: 0.8;">
+       {{member?.headline}}
+      </small>
+      <button mat-button><small>Invite {{member?.firstName}} To Your Project</small></button>
+  </div>
+  <div class="d-flex w-90 justify-content-center mx-auto">
+
+    <div class=" w-40 mx-4 ">
+
+      <div class="w-100 rawBlock">
+        <div class="label mb-2">
+          Summary
+        </div>
+        <small class="color-black">
+        {{member?.summery}}
+        </small>
+      </div>
+
+      <div class="w-100 rawBlock mt-4">
+        <div class="label mb-2">
+          Interests
+        </div>
+        <div class="d-flex flex-wrap justify-content-center">
+          <div class="tag" *ngFor="let interestDesc of member?.interests">
+            {{interestDesc}}
+          </div>
+        </div>
+      </div>
+      <div class="w-100 rawBlock mt-4">
+        <div class="label mb-2">
+          Projects
+        </div>
+        <div  class="d-flex flex-wrap justify-content-center">
+          <div class="projectBlock m-2">
+            <div class="projectImage">
+              T
+            </div>
+            <h6 class="color-black mt-1 mb-0">Trash Project</h6>
+            <small class="color-block" style="opacity: 0.8;">
+              Where Trash Is Acually
+            </small>
+          </div>
+          <div class="projectBlock m-2">
+            <div class="projectImage">
+              T
+            </div>
+            <h6 class="color-black mt-1 mb-0">Trash Project</h6>
+            <small class="color-block" style="opacity: 0.8;">
+              Where Trash Is Acually
+            </small>
+          </div>
+          <div class="projectBlock m-2">
+            <div class="projectImage">
+              T
+            </div>
+            <h6 class="color-black mt-1 mb-0">Trash Project</h6>
+            <small class="color-block" style="opacity: 0.8;">
+              Where Trash Is Acually
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=" w-40 mx-4 ">
+
+
+      <div class="w-100 rawBlock">
+        <div class="label mb-2">
+          Information
+        </div>
+        <table class="infoTable">
+          <tr>
+            <th>University</th>
+            <td>{{staticData.getUniversityNameByID(member?.university)}}</td>
+          </tr>
+          <tr>
+            <th>Department</th>
+            <td>{{staticData.getDepartmentNameByID(member?.department)}}</td>
+          </tr>
+          <tr>
+            <th>Graduation Year</th>
+            <td>{{member?.yearOfGrad}}</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>{{member?.email}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="w-100 rawBlock mt-4">
+        <div class="label mb-2">
+          Top Skills
+        </div>
+        <div class="d-flex flex-wrap justify-content-center">
+          <div class="tag" *ngFor="let skillID of member?.skills">
+            {{staticData.getSkillNameByID(skillID)}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

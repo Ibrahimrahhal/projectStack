@@ -1,4 +1,9 @@
 export interface University{
-  Name:String;
-  ID:number;
+  DESC:string;
+  ID:string;
+}
+
+export interface Department{
+  DESC:string;
+  ID:string;
 }
