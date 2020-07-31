@@ -1,6 +1,35 @@
 <div class="w-100 d-flex flex-column px-3">
   <div class="w-100 d-flex flex-row-reverse">
-    <small class="color-black mb-2 font-weight-bold" style="opacity:0.8;">1 Project Found</small>
+    <ng-container *ngIf="projects">
+      <small class="color-black mb-2 font-weight-bold" style="opacity:0.8;">
+        {{projects?.length}} Project Found
+      </small>
+    </ng-container>
+    <ng-container *ngIf="!projects">
+      <ngx-skeleton-loader count="1" [theme]="{width:'120px', height:'20px', margin:'0.7rem 0', display:'block'}" animation="progress"> </ngx-skeleton-loader>
+    </ng-container>
   </div>
-  <app-project-card></app-project-card>
+  <ng-container *ngIf="projects">
+    <ng-container *ngFor="let project of projects">
+      <div class="my-3">
+       <app-project-card [project]="project" ></app-project-card>
+      </div>
+     </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="!projects">
+    <div class="my-3">
+      <app-project-card [loading]="true" ></app-project-card>
+     </div>
+     <div class="my-3">
+      <app-project-card [loading]="true" ></app-project-card>
+     </div>
+     <div class="my-3">
+      <app-project-card [loading]="true" ></app-project-card>
+     </div>
+     <div class="my-3">
+      <app-project-card [loading]="true" ></app-project-card>
+     </div>
+  </ng-container>
+
 </div>

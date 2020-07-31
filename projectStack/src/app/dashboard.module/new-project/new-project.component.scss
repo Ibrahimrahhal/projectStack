@@ -16,7 +16,7 @@
 
 
 .projectRegMiddleSection{
-  width: 35vw;
+  width: 30vw;
   min-width: 300px;
 }
 
@@ -41,4 +41,16 @@
   font-size: 1.4rem;
 }
 
+
+.stepperItem{
+  width: 50px;
+  height: 5px;
+  border-radius: 3px;
+  background-color: #e25252;
+  opacity: 0.3;
+}
+
+.stepperItem.active{
+  opacity: 0.9;
+}
 

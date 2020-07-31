@@ -1,6 +1,6 @@
 import { HeaderMenuComponent } from './../header-menu/header-menu.component';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
 
 @Component({
@@ -12,9 +12,11 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router:Router,
-    private dialog:MatDialog) { }
+    private dialog:MatDialog,
+    private activeRoute:ActivatedRoute) { }
 
   ngOnInit() {
+    window["header"] = this;
   }
 
   navigate(location:string):void{
@@ -25,6 +27,13 @@ export class HeaderComponent implements OnInit {
     this.dialog.open(HeaderMenuComponent, {
       disableClose:false
     })
+  }
+
+  get hideShadow():boolean{
+    if(this.activeRoute.snapshot.url)
+      return this.activeRoute.snapshot.url[0].path == 'project';
+    else
+      return false;
   }
 
 }

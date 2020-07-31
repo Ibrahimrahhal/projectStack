@@ -1,16 +1,28 @@
 <div class="w-100 projectCard px-4 py-3">
-  <h5 class="color-black">Trash Project</h5>
-  <p style="opacity: 0.9;" class="font-weight-light mt-2"><small>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lectus sem, sollicitudin ac hendrerit a, convallis eget est. Mauris eget cursus felis. Pellentesque at sollicitudin eros, ut interdum mauris. In bibendum dapibus sem non pulvinar. Vestibulum facilisis augue est, eu iaculis velit mattis ultrices. Donec molestie sapien non urna tincidunt, in cursus enim sodales. Pellentesque quis est eu eros auctor posuere non convallis est. Donec ultricies turpis gravida dolor fringilla rutrum
-  </small></p>
-  <div class="w-100 d-flex flex-row-reverse">
-    <custom-button
-    mat-flat-button
-    color="primary"
-    [styles]="{'border-radius':'2rem','transform':'scale(0.8)', 'padding-top':'0 !important', 'padding-bottom':'0 !important'}"
-    [passedClass]="{'px-5':true, 'font-weight-normal':true, 'color-white':true, 'd-block':true, 'mx-auto':true,'d-flex':true,'align-items-center':true, 'py-0':true }"
-    >
-      More Details
-    </custom-button>
-  </div>
+  <ng-container *ngIf="loading">
+    <div class="item">
+      <ngx-skeleton-loader count="1" [theme]="{width:'40%', height:'24px', margin:'0.7rem 0', display:'block'}" animation="progress"> </ngx-skeleton-loader>
+      <ngx-skeleton-loader count="1" [theme]="{width:'80%', height:'16px', margin:'0.7rem 0', display:'block'}" animation="progress"> </ngx-skeleton-loader>
+      <ngx-skeleton-loader count="1" [theme]="{width:'80%', height:'16px', margin:'0.7rem 0', display:'block'}" animation="progress"> </ngx-skeleton-loader>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!loading">
+    <h5 class="color-black">{{project.projectName}}</h5>
+    <p style="opacity: 0.9;" class="font-weight-light mt-2">
+      <small>
+        {{project.projectDesc}}
+      </small>
+    </p>
+    <div class="w-100 d-flex flex-row-reverse">
+      <custom-button
+      mat-flat-button
+      color="primary"
+      (clickEvent)="navigateToProject()"
+      [styles]="{'border-radius':'2rem','transform':'scale(0.8)', 'padding-top':'0 !important', 'padding-bottom':'0 !important'}"
+      [passedClass]="{'px-5':true, 'font-weight-normal':true, 'color-white':true, 'd-block':true, 'mx-auto':true,'d-flex':true,'align-items-center':true, 'py-0':true }"
+      >
+        More Details
+      </custom-button>
+    </div>
+  </ng-container>
 </div>

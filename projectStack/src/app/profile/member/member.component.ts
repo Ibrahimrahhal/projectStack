@@ -21,9 +21,9 @@ export class MemberComponent implements OnInit {
   loading:boolean = true;
   member:User;
   ngOnInit(): void {
-    window["memberProfile"] = this;
     this.userID = this.route.snapshot.params["userID"];
     this.http.getUser(this.userID).then((user:User)=>{
+      this.loading = false;
       this.member = user;
     })
   }

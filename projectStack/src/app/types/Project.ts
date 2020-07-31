@@ -8,5 +8,7 @@ export default interface Project{
   timeCreated: String,
   projectType: String,
   members:Array<User>,
-  slogan:string
+  slogan:string,
+  projectDesc:string
+  tags:Array<string>
 }

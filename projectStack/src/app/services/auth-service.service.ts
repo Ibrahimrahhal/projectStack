@@ -3,7 +3,8 @@ import { AmplifyService }  from 'aws-amplify-angular';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { decryptData, encryptData } from '../../util/util';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { HttpService } from './http.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,42 +12,26 @@ export class AuthServiceService {
   isUserSignedIn:boolean;
   user;
   hldEmail;
-  signInState:Subject<any> = new Subject()
+  signInState:BehaviorSubject<any> = new BehaviorSubject(false);
+
   constructor(
-    private amplifyService:AmplifyService,
-    private http:HttpClient) {
+    private amplifyService:AmplifyService) {
     this.amplifyService.authStateChange$
     .subscribe(authState => {
         this.isUserSignedIn = authState.state === 'signedIn';
-        this.signInState.next(true);
-        if(this.isUserSignedIn)
-          this.getUserDate();
+        this.signInState.next(this.isUserSignedIn);
   });
 }
 
-signup(username, password, email, phonenumber){
-  this.hldEmail = email;
-  return this.amplifyService.auth().signUp(username, password, email, phonenumber) as Promise<any>;
+loginUser(email, password){
+  return this.amplifyService.auth().signIn(email, password);
 }
 
-login(email, password){
-  return new Promise(async (resolve, reject) => {
-    try {
-      await this.amplifyService.auth().signIn(email, password) as Promise<any>;
-    }catch(e){
-      reject(e);
-      return;
-    }
-    let user = await this.getUserDate();
-    return resolve(user);
-  });
+signUpUser(username, password, email, phonenumber){
+  return this.amplifyService.auth().signUp(username, password, email, phonenumber);
 }
 
-async getUserDate(){
-  let { data } = await this.http.get( environment.baseApi + '/user', { headers: this.headers}).toPromise() as any;
-  this.user = JSON.parse(decryptData(data));
-  return this.user;
-}
+
 
 confirmEmail(code){
   return new Promise(async(resolve, reject)=>{
@@ -60,13 +45,11 @@ confirmEmail(code){
   });
 }
 
-get headers(){
+async headers(){
   return {
-      authorization: this.amplifyService.auth().user.signInUserSession.idToken.jwtToken
+      authorization: (await this.amplifyService.auth().currentSession()).idToken.jwtToken
     };
 }
-
-
 
 
 }

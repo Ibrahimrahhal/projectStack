@@ -1,48 +1,92 @@
 <app-header></app-header>
-<div class="projectMainInfo d-flex justify-content-center my-4 align-items-center flex-wrap">
-  <div class="projectNameIconBlock d-flex align-items-center">
-    <div class="projectIcon">
-      T
-    </div>
-    <div class="d-flex flex-column mx-2 align-items-center">
-      <h3 class="color-black m-0">Trash Project</h3>
-      <small class="color-black"c style="opacity: 0.8;">Where Trash is Good</small>
-    </div>
-  </div>
-  <div class="sep mx-3"></div>
-  <div class="prjectDesc">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ultrices tortor eget tortor viverra ultricies. Praesent lorem purus, faucibus at lacus malesuada, sodales dapibus nulla. Vivamus a mauris ultrices, porta eros a, congue metus. Curabitur hendrerit eget lectus eu porta. Morbi posuere tempus erat, quis aliquam ipsum tristique id. Suspendisse consectetur aliquet odio, a maximus nibh facilisis quis. Pellentesque a consectetur diam.
-  </div>
+<div class="projectMainInfo bg-pink d-flex flex-column justify-content-center mb-4 align-items-center">
+  <ng-container *ngIf="!loading">
+    <h2 class="color-white"> {{project.projectName}}</h2>
+    <h6 class="color-white font-weight-light">{{project.slogan}}</h6>
+  </ng-container>
+  <ng-container *ngIf="loading">
+    <ngx-skeleton-loader count="1" [theme]="{width:'130px', height:'40px', margin:'0 auto', display:'block', opacity:'0.4'}" animation="progress"> </ngx-skeleton-loader>
+    <ngx-skeleton-loader count="1" [theme]="{width:'200px', height:'20px', margin:'0 auto', display:'block', opacity:'0.4', marginTop:'0.5rem', marginBottom:'0.5rem'}" animation="progress"> </ngx-skeleton-loader>
+  </ng-container>
+
+  <custom-button
+  color="primary"
+  [passedClass]="{'mx-2':true}"
+  [styles]="{ 'background-color':'#fff'}"
+  [rounded]="true"
+  [loading]="loading"
+  [stroked]="true"
+  [long]="true"
+  [thin]="true">
+    Join {{project.projectName}}
+  </custom-button>
+
+
 </div>
 
-<div class="d-flex w-90 mx-auto justify-content-center ">
-  <div class="d-flex w-40 flex-column mx-3">
-    <div class="w-100 rawBlock ">
-      <div class="label mb-2">
-        Tags
+<div class="w-90 mx-auto  my-5 ">
+  <h4 class="text-center mt-6 color-pink font-weight-bold">Our Project At Galance</h4>
+  <div class=" px-5 w-100 justify-content-between mt-3 mb-5">
+    <ng-container *ngIf="loading">
+      <ngx-skeleton-loader count="1" [theme]="{width:'80%', height:'20px', margin:'0.4rem auto', marginTop:'1rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+      <ngx-skeleton-loader count="1" [theme]="{width:'80%', height:'20px', margin:'0.4rem auto', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+      <ngx-skeleton-loader count="1" [theme]="{width:'60%', height:'20px', margin:'0.4rem auto', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+    </ng-container>
+    <ng-container  *ngIf="!loading">
+      <div class="text-center color-black">
+        {{project.projectDesc}}
       </div>
-      <small class="color-black">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius arcu in quam porta finibus. Duis rhoncus mollis quam ut efficitur. Sed rhoncus velit ac orci pulvinar eleifend et eget tortor. Aenean facilisis sollicitudin ornare. Aliquam euismod commodo velit finibus imperdiet. Nam eget sodales odio, nec viverra diam. Pellentesque neque felis, dapibus id mauris ut, feugiat laoreet erat. Pellentesque luctus convallis nulla, in volutpat neque lobortis nec. Nunc sit amet maximus lacus, et bibendum nisi.
-      </small>
-    </div>
+    </ng-container>
 
-    <div class="w-100 rawBlock mt-4 ">
-      <div class="label mb-2">
-        Project Superviser
-      </div>
-      <small class="color-black">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius arcu in quam porta finibus. Duis rhoncus mollis quam ut efficitur. Sed rhoncus velit ac orci pulvinar eleifend et eget tortor. Aenean facilisis sollicitudin ornare. Aliquam euismod commodo velit finibus imperdiet. Nam eget sodales odio, nec viverra diam. Pellentesque neque felis, dapibus id mauris ut, feugiat laoreet erat. Pellentesque luctus convallis nulla, in volutpat neque lobortis nec. Nunc sit amet maximus lacus, et bibendum nisi.
-      </small>
+      <div class="d-flex  mt-3 flex-wrap  w-100 justify-content-center">
+          <ng-container *ngIf="!loading">
+            <div *ngFor="let tag of project.tags" class="tag">
+              {{staticData.getProjectTagNameByID(tag)}}
+            </div>
+          </ng-container>
+          <ng-container *ngIf="loading">
+            <ngx-skeleton-loader count="1" [theme]="{width:'100px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{width:'90px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{width:'120px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+          </ng-container>
     </div>
   </div>
-  <div class="d-flex w-55 flex-column mx-3">
-    <div class="w-100 rawBlock">
-      <div class="label mb-2">
-        Team Members
-      </div>
-      <small class="color-black">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius arcu in quam porta finibus. Duis rhoncus mollis quam ut efficitur. Sed rhoncus velit ac orci pulvinar eleifend et eget tortor. Aenean facilisis sollicitudin ornare. Aliquam euismod commodo velit finibus imperdiet. Nam eget sodales odio, nec viverra diam. Pellentesque neque felis, dapibus id mauris ut, feugiat laoreet erat. Pellentesque luctus convallis nulla, in volutpat neque lobortis nec. Nunc sit amet maximus lacus, et bibendum nisi.
-      </small>
+  <div>
+    <h4 class="text-center mt-6 color-pink font-weight-bold">Meet The Team</h4>
+    <h6 class="text-center color-pink font-weight-light">{{selectedSlogen}}</h6>
+    <div class="d-flex flex-wrap justify-content-center mt-4">
+
+        <div *ngFor="let member of project.members" class="teamMemberBlock m-3 d-flex flex-column justify-content-center align-items-center">
+          <div class="teamMemberImage m-2" [style.backgroundImage]="getSafeBackgroundStyle(member.profileImage)">
+
+          </div>
+          <small class="d-block text-capitalize font-weight-bold color-black mt-3" style="opacity: 0.7;">
+            {{member.firstName}} {{member.lastName}}
+          </small>
+        </div>
+
     </div>
+  </div>
+
+  <div>
+    <h4 class="text-center mt-6 color-pink font-weight-bold">Wanna Join ?</h4>
+    <h6 class="text-center color-pink font-weight-light">Please Write a short message telling why are intersted in trash project & what can your provide for the team</h6>
+    <mat-form-field class="w-50 mx-auto d-block mt-5"  appearance="outline">
+      <textarea style="min-height: 200px;" matInput placeholder="Describe your added value..."></textarea>
+    </mat-form-field>
+    <custom-button
+    color="primary"
+    [passedClass]="{'mx-auto':true}"
+    [rounded]="true"
+    [loading]="false"
+    [long]="true"
+    [thin]="true">
+      <small class="font-weight-light">
+        Join {{project.projectName}}
+      </small>
+    </custom-button>
   </div>
 </div>

@@ -1,7 +1,7 @@
+import { HttpWrapperService } from './http-wrapper.service';
 import { environment } from './../../environments/environment';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import bufferToStr from 'arraybuffer-to-string';
 import { encryptData } from '../../util/util';
 @Injectable({
@@ -9,7 +9,7 @@ import { encryptData } from '../../util/util';
 })
 export class StorageService {
 
-  constructor(private http:HttpClient, private auth:AuthServiceService) {
+  constructor(private http:HttpWrapperService, private auth:AuthServiceService) {
     window["enc"] = encryptData
   }
 
@@ -20,7 +20,7 @@ export class StorageService {
       data
     };
     req[encryptData('imgType')] = encryptData(file.name.split('.').reverse()[0]);
-    return await this.http.put( environment.baseApi + '/storage/profile', req, { headers: this.auth.headers }).toPromise();
+    return await this.http.put( environment.baseApi + '/storage/profile', req, {}).toPromise();
   }
 
   async uploadResume(file){
@@ -29,7 +29,7 @@ export class StorageService {
       data
     };
     req[encryptData('resumeType')] = encryptData(file.name.split('.').reverse()[0]);
-    return await this.http.put( environment.baseApi + '/storage/resume', req, { headers: this.auth.headers }).toPromise();
+    return await this.http.put( environment.baseApi + '/storage/resume', req, {}).toPromise();
   }
 
   private async bufferToBase64(file):Promise<string> {
@@ -41,4 +41,5 @@ export class StorageService {
   });
 
 }
+
 }

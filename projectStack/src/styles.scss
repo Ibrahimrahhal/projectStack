@@ -142,3 +142,24 @@ outline: 0 !important;
   width: 100%;
 }
 }
+
+.white-button .mat-progress-spinner circle, .white-button .mat-spinner circle{
+  stroke: #ffffff !important;
+}
+
+.ps__rail-y{
+  z-index: 99;
+}
+
+.w-65{
+  width: 65%;
+}
+
+.w-30{
+  width: 30%;
+}
+
+
+.mt-6{
+  margin-top: 4rem !important;
+}

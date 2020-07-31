@@ -1,8 +1,9 @@
 <span>
-  <button
+  <ng-container *ngIf="!stroked">
+    <button
     mat-flat-button
     color="{{color}}"
-    [ngClass]="passedClass"
+    [ngClass]="classes"
     [class.py-1]="!loading"
     [class.py-2]="loading"
     [disabled]="loading"
@@ -10,7 +11,7 @@
     [disabled]="disabled"
     (click)="disabled?'':click.emit($event);">
       <span *ngIf="!loading">
-        <ng-content></ng-content>
+        <ng-container  *ngTemplateOutlet="content"></ng-container>
       </span>
 
       <mat-spinner
@@ -19,4 +20,31 @@
         diameter="20">
       </mat-spinner>
   </button>
+  </ng-container>
+
+  <ng-container *ngIf="stroked">
+    <button
+    mat-stroked-button
+    color="{{color}}"
+    [ngClass]="classes"
+    [class.py-1]="!loading"
+    [class.py-2]="loading"
+    [disabled]="loading"
+    [ngStyle]="styles"
+    [disabled]="disabled"
+    (click)="disabled?'':click.emit($event);">
+      <span *ngIf="!loading">
+        <ng-container  *ngTemplateOutlet="content"></ng-container>
+      </span>
+
+      <mat-spinner
+        *ngIf="loading"
+        color='primary'
+        diameter="20">
+      </mat-spinner>
+  </button>
+  </ng-container>
+
 </span>
+
+<ng-template #content><ng-content></ng-content></ng-template>

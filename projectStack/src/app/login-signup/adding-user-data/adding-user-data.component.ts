@@ -156,7 +156,7 @@ export class AddingUserDataComponent implements OnInit {
   async completeSignup(): Promise<boolean> {
     this.loading = true;
     await this.http.patchUser(this.group.getRawValue());
-    await this.auth.getUserDate();
+    await this.http.getUserDate();
     this.router.navigate(['/dashboard']);
     return true;
   }

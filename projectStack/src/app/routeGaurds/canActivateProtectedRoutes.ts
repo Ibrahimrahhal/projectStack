@@ -16,6 +16,8 @@ export default class AuthGaurdForProtectedRoutes implements CanActivate {
                   return new Promise((resolve, reject)=>{
                     if(typeof this.auth.isUserSignedIn == typeof undefined)
                         this.auth.signInState.subscribe(()=>{
+                      if(typeof this.auth.isUserSignedIn == typeof undefined)
+                        return;
                         if(this.auth.isUserSignedIn)
                             resolve(true);
                         else

@@ -1,3 +1,4 @@
+import { HttpService } from 'src/app/services/http.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
@@ -22,7 +23,8 @@ export class SignupComponent implements OnInit {
     private auth:AuthServiceService,
     private fb:FormBuilder,
     private toastr: ToastrService,
-    private messages:SystemMessagesService) { }
+    private messages:SystemMessagesService,
+    private http:HttpService) { }
 
   ngOnInit() {
     this.signUpFormGroup = this.fb.group({

@@ -1,6 +1,6 @@
 .projectMainInfo{
-  height: 160px;
-  background-color: #fff;
+  height: 220px;
+  border-radius: 0 0 10rem 10rem;
 }
 
 .projectIcon{
@@ -26,4 +26,20 @@
   max-height: 50%;
   max-width: 60%;
   overflow: hidden;
+}
+
+.teamMemberImage{
+  height: 135px;
+  width: 135px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  background-size: cover;
+  box-shadow: 0px 0px 0px 0px rgba($color:#e25252, $alpha:0.0);
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+.teamMemberImage:hover{
+  box-shadow: 0px 0px 0px 3px rgba($color:#e25252, $alpha:0.8);
+  transform: scale(1.05);
+
 }

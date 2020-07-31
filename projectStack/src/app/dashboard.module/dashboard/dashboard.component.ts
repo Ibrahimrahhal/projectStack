@@ -31,7 +31,10 @@ public loading:boolean = true;
   }
 
   get safeUserImage(){
+    if(this.user)
     return this.safe.bypassSecurityTrustStyle(`url(${this.user.profileImage})`)
+    else
+    return '';
   }
 
   get projects():Array<Project>{

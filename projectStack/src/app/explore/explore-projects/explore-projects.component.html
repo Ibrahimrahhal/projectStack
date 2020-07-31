@@ -7,9 +7,10 @@
     <custom-button
     mat-flat-button
     color="primary"
+    (clickEvent)="openFiltersSection()"
     [passedClass]="{'px-3':true, 'font-weight-normal':true, 'color-white':true, 'd-block':true, 'mx-auto':true,'d-flex':true,'align-items-center':true }"
     >
-    <div class="d-flex align-items-center minScale" >
+    <div class="d-flex align-items-center minScale">
       <mat-icon class="mx-1">filter_alt</mat-icon>Advanced Filters
     </div>
   </custom-button>
@@ -43,7 +44,7 @@
 
 <div class="d-flex justify-content-between mt-5 px-3 searchSection">
     <div class="projectSearchResults">
-      <app-projects-result></app-projects-result>
+        <app-projects-result [projects]="ProjectsToRender"></app-projects-result>
     </div>
 
     <div class="sideBar">

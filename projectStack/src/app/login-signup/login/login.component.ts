@@ -1,3 +1,4 @@
+import { HttpService } from 'src/app/services/http.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
     private auth:AuthServiceService,
     private fb:FormBuilder,
     private router:Router,
-    private messages:SystemMessagesService) {
+    private messages:SystemMessagesService,
+    private http:HttpService) {
 
    }
 
@@ -38,7 +40,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.auth.login(this.loginFormGroup.value.email, this.loginFormGroup.value.password).then((user:any)=>{
+    this.http.login(this.loginFormGroup.value.email, this.loginFormGroup.value.password).then((user:any)=>{
       this.loading =false;
 
       if(user.userCompletedSignup)

@@ -12,9 +12,25 @@ export class CustomButtonComponent implements OnInit {
   @Input() color;
   @Input() styles;
   @Input() disabled;
+  @Input() rounded;
+  @Input() stroked;
+  @Input() long;
+  @Input() thin;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  get classes(){
+    return {
+      ...(this.passedClass?this.passedClass:{}),
+      'strokedButton':this.stroked,
+      'roundedButton':this.rounded,
+      'longButton':this.long,
+      'thinButton':this.thin,
+      'color-white':!this.stroked,
+      'white-button':!this.stroked
+    }
   }
 
 }

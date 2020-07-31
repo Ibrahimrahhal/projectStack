@@ -13,6 +13,7 @@ export class NewProjectComponent implements OnInit {
 
   projectFormGroup:FormGroup;
   loading:boolean = false;
+  step:number = 1;
   agreeCheckbox:FormControl;
   constructor(
     private router:Router,
@@ -28,7 +29,8 @@ export class NewProjectComponent implements OnInit {
       projectType:[null, Validators.required],
       slogan:[null, Validators.required],
       tags:[null, Validators.required],
-      isPublic:[true]
+      isPublic:[true],
+      projectDesc:[null, Validators.required]
     });
     this.agreeCheckbox = new FormControl();
     window["newPP"] = this
@@ -38,6 +40,10 @@ export class NewProjectComponent implements OnInit {
   }
 
   async createProject():Promise<any>{
+    if(this.step < 2){
+      this.step++;
+      return;
+    }
     if(this.loading)
       return;
     this.loading = true;
@@ -49,6 +55,13 @@ export class NewProjectComponent implements OnInit {
 
   get projectFirstLetter():string{
     return (this.projectFormGroup.getRawValue().projectName[0] || "S").toUpperCase();
+  }
+
+  get isFeildsForFirstStepValid():boolean{
+    return (this.projectFormGroup.get('projectName').invalid
+    || this.projectFormGroup.get('slogan').invalid
+    || this.projectFormGroup.get('maxNumberOfMembers').invalid
+    || this.projectFormGroup.get('projectType').invalid);
   }
 
 }

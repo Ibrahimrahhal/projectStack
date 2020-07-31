@@ -15,61 +15,87 @@
       <h6 class="color-block mt-4 px-3">
         <b>Create</b> New Project
       </h6>
+      <div class="d-flex justify-content-center w-100 mt-4 mb-4">
+        <div class="stepperItem mx-2" [class.active]="step == 1">
+        </div>
+        <div class="stepperItem mx-2" [class.active]="step == 2">
+        </div>
+      </div>
       <form [formGroup]="projectFormGroup" class="w-100 d-flex flex-column align-items-center">
-        <mat-form-field appearance="outline" class="mt-2 w-75">
-          <mat-label>Project Name</mat-label>
-          <input matInput placeholder="My Project" formControlName="projectName">
-          <mat-icon matSuffix>assignment</mat-icon>
-          <mat-hint>Make Your Project Name Unique, Can Help Search Ranking</mat-hint>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="mt-3 w-75">
-          <mat-label>Project Slogan</mat-label>
-          <input matInput placeholder="Save The World" formControlName="slogan">
-          <mat-icon matSuffix>polymer</mat-icon>
-          <mat-hint>What Best Describe Your Project</mat-hint>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="mt-2 w-75">
-          <mat-label>Max Team Size</mat-label>
-          <input matInput placeholder="5" formControlName="maxNumberOfMembers" type="number">
-          <mat-icon matSuffix>people</mat-icon>
-          <mat-hint>Your Project Will Be Hidden After Your Team Is Full</mat-hint>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="mt-2 w-75">
-          <mat-label>Project Type</mat-label>
-          <mat-select formControlName="projectType">
-            <mat-option>None</mat-option>
-            <mat-option value="1">Option 1</mat-option>
-            <mat-option value="1">Option 2</mat-option>
-            <mat-option value="1">Option 3</mat-option>
-          </mat-select>
-          <mat-hint>Project Type Will Help For Better User Matching</mat-hint>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="mt-1 w-75">
-          <mat-label>Project Tags</mat-label>
-          <mat-select formControlName="tags" multiple>
-            <mat-option value="1">Option 1</mat-option>
-            <mat-option value="1">Option 2</mat-option>
-            <mat-option value="1">Option 3</mat-option>
-          </mat-select>
-          <mat-hint>Tags Will Help For Better User Matching</mat-hint>
-        </mat-form-field>
+        <ng-container *ngIf="step == 1">
+          <mat-form-field appearance="outline" class="mt-2 w-75">
+            <mat-label>Project Name</mat-label>
+            <input matInput placeholder="My Project" formControlName="projectName">
+            <mat-icon matSuffix>assignment</mat-icon>
+            <mat-hint>Make Your Project Name Unique, Can Help Search Ranking</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="mt-3 w-75">
+            <mat-label>Project Slogan</mat-label>
+            <input matInput placeholder="Save The World" formControlName="slogan">
+            <mat-icon matSuffix>polymer</mat-icon>
+            <mat-hint>What Best Describe Your Project</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="mt-2 w-75">
+            <mat-label>Max Team Size</mat-label>
+            <input matInput placeholder="5" formControlName="maxNumberOfMembers" type="number">
+            <mat-icon matSuffix>people</mat-icon>
+            <mat-hint>Your Project Will Be Hidden After Your Team Is Full</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="mt-2 w-75">
+            <mat-label>Project Type</mat-label>
+            <mat-select formControlName="projectType">
+              <mat-option>None</mat-option>
+              <mat-option value="1">Option 1</mat-option>
+              <mat-option value="1">Option 2</mat-option>
+              <mat-option value="1">Option 3</mat-option>
+            </mat-select>
+            <mat-hint>Project Type Will Help For Better User Matching</mat-hint>
+          </mat-form-field>
+        </ng-container>
+        <ng-container *ngIf="step == 2">
+          <mat-form-field appearance="outline" class="mt-2 w-75">
+            <mat-label>Project Type</mat-label>
+            <mat-select formControlName="projectType">
+              <mat-option>None</mat-option>
+              <mat-option value="1">Option 1</mat-option>
+              <mat-option value="1">Option 2</mat-option>
+              <mat-option value="1">Option 3</mat-option>
+            </mat-select>
+            <mat-hint>Project Type Will Help For Better User Matching</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="mt-1 w-75">
+            <mat-label>Project Tags</mat-label>
+            <mat-select formControlName="tags" multiple>
+              <mat-option value="1">Option 1</mat-option>
+              <mat-option value="1">Option 2</mat-option>
+              <mat-option value="1">Option 3</mat-option>
+            </mat-select>
+            <mat-hint>Tags Will Help For Better User Matching</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="mt-1 w-75">
+            <mat-label>Project Summary</mat-label>
+            <textarea matInput placeholder="...." formControlName="projectDesc"></textarea>
+            <mat-hint>Small Descriptive Summary</mat-hint>
 
-        <div class="w-75 mt-3">
-          <mat-checkbox formControlName="isPublic">This is a Public Project</mat-checkbox>
+          </mat-form-field>
+          <div class="w-75 mt-3">
+            <mat-checkbox formControlName="isPublic">This is a Public Project</mat-checkbox>
+          </div>
+          <div class="w-75">
+            <mat-checkbox [formControl]="agreeCheckbox">I <b>Agree</b> To The Terms Of Use</mat-checkbox>
+          </div>
+        </ng-container>
+        <div class="d-flex justify-content-center">
+          <custom-button
+          color="primary"
+          [loading]="loading"
+          [disabled]="step == 2 ? (projectFormGroup.invalid || !agreeCheckbox.value) : isFeildsForFirstStepValid"
+          [styles]="{borderRadius:'2rem'}"
+          [passedClass]="{'px-5':true, 'font-weight-normal':true, 'mt-5':true, 'color-white':true, 'd-block':true, 'mx-auto':true }"
+          (clickEvent)="createProject()">
+          {{step == 2 ? 'Create Your Project' : 'Procced'}}
+          </custom-button>
         </div>
-        <div class="w-75">
-          <mat-checkbox [formControl]="agreeCheckbox">I <b>Agree</b> To The Terms Of Use</mat-checkbox>
-        </div>
-        <custom-button
-        mat-flat-button
-        color="primary"
-        [loading]="loading"
-        [disabled]="projectFormGroup.invalid || !agreeCheckbox.value"
-        [styles]="{borderRadius:'2rem'}"
-        [passedClass]="{'px-5':true, 'font-weight-normal':true, 'mt-4':true, 'color-white':true, 'd-block':true, 'mx-auto':true }"
-        (clickEvent)="createProject()">
-        Create Your Project
-        </custom-button>
       </form>
     </div>
   </div>

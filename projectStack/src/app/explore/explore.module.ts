@@ -10,11 +10,12 @@ import { MemberCardComponent } from './explore-members/member-card/member-card.c
 import { HotProjectsComponent } from './explore-projects/hot-projects/hot-projects.component';
 import { ProjectsResultComponent } from './explore-projects/projects-result/projects-result.component';
 import { ProjectCardComponent } from './explore-projects/project-card/project-card.component';
+import { AdvancedFiltersComponent } from './explore-projects/advanced-filters/advanced-filters.component';
 
 
 
 @NgModule({
-  declarations: [ExploreComponent, ExploreMembersComponent, ExploreProjectsComponent, MemberCardComponent, HotProjectsComponent, ProjectsResultComponent, ProjectCardComponent],
+  declarations: [ExploreComponent, ExploreMembersComponent, ExploreProjectsComponent, MemberCardComponent, HotProjectsComponent, ProjectsResultComponent, ProjectCardComponent, AdvancedFiltersComponent],
   imports: [
     CommonModule,
     ExploreRoutingModule,
