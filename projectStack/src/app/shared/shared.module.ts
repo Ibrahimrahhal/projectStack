@@ -15,6 +15,8 @@ import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { NotificationsSectionComponent } from './header-menu/notifications-section/notifications-section.component';
 import { SubmenuComponent } from './header-menu/submenu/submenu.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { TagsComponent } from './tags/tags.component';
+import { TagsSelectComponent } from './tags-select/tags-select.component';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -22,7 +24,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 
 @NgModule({
-  declarations: [HeaderComponent, CustomButtonComponent, HeaderMenuComponent, NotificationsSectionComponent, SubmenuComponent],
+  declarations: [HeaderComponent, CustomButtonComponent, HeaderMenuComponent, NotificationsSectionComponent, SubmenuComponent, TagsComponent, TagsSelectComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -43,7 +45,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FormsModule,
     CustomButtonComponent,
     ToastrModule,
-    NgxSkeletonLoaderModule
+    NgxSkeletonLoaderModule,
+    TagsComponent,
+    TagsSelectComponent
   ],
   entryComponents:[ HeaderMenuComponent ],
   providers: [

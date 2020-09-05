@@ -34,6 +34,7 @@ export class ProjectComponent implements OnInit {
     this.http.getProject(this.projectID, true).then((project)=>{
       this.project = project;
       this.loading = false;
+
     });
   }
 

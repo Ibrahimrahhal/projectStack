@@ -146,7 +146,9 @@ outline: 0 !important;
 .white-button .mat-progress-spinner circle, .white-button .mat-spinner circle{
   stroke: #ffffff !important;
 }
-
+.white-button:disabled .mat-progress-spinner circle, .white-button:disabled .mat-spinner circle{
+  stroke: #e25252 !important;
+}
 .ps__rail-y{
   z-index: 99;
 }
@@ -157,6 +159,10 @@ outline: 0 !important;
 
 .w-30{
   width: 30%;
+}
+
+custom-button{
+  display: block;
 }
 
 

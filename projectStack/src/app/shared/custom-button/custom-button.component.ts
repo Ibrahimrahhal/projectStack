@@ -10,12 +10,14 @@ export class CustomButtonComponent implements OnInit {
   @Input() loading;
   @Input() passedClass;
   @Input() color;
-  @Input() styles;
+  @Input('styles') _styles;
   @Input() disabled;
   @Input() rounded;
   @Input() stroked;
   @Input() long;
   @Input() thin;
+  @Input() type;
+  @Input() strokeColor;
   constructor() { }
 
   ngOnInit() {
@@ -31,6 +33,14 @@ export class CustomButtonComponent implements OnInit {
       'color-white':!this.stroked,
       'white-button':!this.stroked
     }
+  }
+
+  get styles(){
+      return {
+        ...(this._styles?this._styles:{}),
+        borderColor:this.stroked?`${this.strokeColor}`:'',
+        color:this.strokeColor?`${this.strokeColor}`:''
+      }
   }
 
 }

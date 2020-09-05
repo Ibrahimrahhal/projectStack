@@ -1,0 +1,22 @@
+<div class="w-100">
+  <app-tags
+  [tagsArray]="selectedTags"
+  [deletable]="true"
+  (tagDeleted)="removeTag($event)"></app-tags>
+  <mat-form-field class="example-full-width mx-auto d-block w-50">
+    <input type="text"
+           matInput
+           [matAutocomplete]="auto"
+           [formControl]="searchFeild">
+    <mat-autocomplete #auto="matAutocomplete" [autoActiveFirstOption]="true" (optionSelected)="itemSelect($event)">
+      <mat-option *ngFor="let option of filteredOptions" [value]="option.ID">
+        {{option.DESC}}
+      </mat-option>
+    </mat-autocomplete>
+
+  </mat-form-field>
+  <div class="text-center" style="color: #da1f26;" *ngIf="control && control.errors">
+    <small *ngIf="control.errors.min">{{control.errors.min}}</small>
+    <small *ngIf="control.errors.max">{{control.errors.max}}</small>
+  </div>
+</div>

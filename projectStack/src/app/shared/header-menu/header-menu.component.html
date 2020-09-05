@@ -1,9 +1,9 @@
 <perfect-scrollbar class="mainHeaderMenuContainer">
-  <div class="menuUserImage">
+  <div class="menuUserImage" [style.backgroundImage]="userBackgroundImage">
 
   </div>
-  <h6 class="text-center m-0 mt-3">Ibrahim Rahhal</h6>
-  <small class="d-block text-center" style="opacity: 0.7;">Full Stack Engineer</small>
+  <h6 class="text-center m-0 mt-3">{{user?.firstName}} {{user?.lastName}}</h6>
+  <small class="d-block text-center" style="opacity: 0.7;">{{user?.headline}}</small>
   <section class="mt-4">
     <small>Notifications</small>
     <app-notifications-section></app-notifications-section>

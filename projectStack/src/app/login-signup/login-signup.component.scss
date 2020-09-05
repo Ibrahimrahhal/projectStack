@@ -3,8 +3,42 @@
   right:0;
   z-index:20;
 }
+.logo-container{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 99999;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-out;
+
+}
+.hideLogo{
+  opacity: 0;
+}
+
+.logoRight{
+  left: unset;
+  right: 10px;
+}
 .loginSide{
   transform: translateX(-66.66%);
+}
+.loginSignUpSliders{
+  z-index: 10;
+  opacity: 0.8;
+}
+
+.loginSignUpSlidersBackgound{
+  z-index: 2;
+  background-size: cover;
+  background-image: url('../../assets/teamsImage.jpg');
+  backdrop-filter: blur(30px);
+  background-position: right center;
+}
+
+.loginSignUpSlidersBackgound.loginSide{
+  background-position: left center;
+
 }
 @keyframes slideFromBottom{
   0%{
@@ -51,6 +85,11 @@
   .loginSlideAnimation{
     display: none;
   }
+
+
+
+
+
 
   .completeYourDataCont{
     bottom: 0;

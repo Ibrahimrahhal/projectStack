@@ -28,12 +28,19 @@
             <input matInput placeholder="My Project" formControlName="projectName">
             <mat-icon matSuffix>assignment</mat-icon>
             <mat-hint>Make Your Project Name Unique, Can Help Search Ranking</mat-hint>
+            <mat-error *ngIf="projectFormGroup.get('projectName').errors && projectFormGroup.get('projectName').errors.minlength">
+              Name must contain at least 10 characters
+            </mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline" class="mt-3 w-75">
             <mat-label>Project Slogan</mat-label>
             <input matInput placeholder="Save The World" formControlName="slogan">
             <mat-icon matSuffix>polymer</mat-icon>
             <mat-hint>What Best Describe Your Project</mat-hint>
+            <mat-error *ngIf="projectFormGroup.get('slogan').errors && projectFormGroup.get('slogan').errors.minlength">
+              Slogan must contain at least 10 characters
+            </mat-error>
+
           </mat-form-field>
           <mat-form-field appearance="outline" class="mt-2 w-75">
             <mat-label>Max Team Size</mat-label>
@@ -76,7 +83,9 @@
             <mat-label>Project Summary</mat-label>
             <textarea matInput placeholder="...." formControlName="projectDesc"></textarea>
             <mat-hint>Small Descriptive Summary</mat-hint>
-
+            <mat-error *ngIf="projectFormGroup.get('projectDesc').errors && projectFormGroup.get('projectDesc').errors.minlength">
+              Description must contain at least 120 characters
+            </mat-error>
           </mat-form-field>
           <div class="w-75 mt-3">
             <mat-checkbox formControlName="isPublic">This is a Public Project</mat-checkbox>

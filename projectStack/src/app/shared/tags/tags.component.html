@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-center flex-wrap px-3">
+  <div
+    class="tag {{themeClass}} text-capitalize d-flex justify-content-center align-items-center"
+    *ngFor="let tag of tags">
+    <span class="closeIconContaine" *ngIf="deletable" (click)="deleteTag(tag.ID)">
+      <mat-icon class="color-white">
+        close
+      </mat-icon>
+    </span>
+    <span>
+      {{ tag.DESC }}
+    </span>
+
+  </div>
+</div>

@@ -24,13 +24,13 @@ export class NewProjectComponent implements OnInit {
 
   ngOnInit() {
     this.projectFormGroup = this.fb.group({
-      projectName:['', Validators.required],
+      projectName: this.fb.control("", [Validators.required, Validators.minLength(10)]),
       maxNumberOfMembers:[null, Validators.required],
       projectType:[null, Validators.required],
-      slogan:[null, Validators.required],
+      slogan: this.fb.control(null, [Validators.required, Validators.minLength(10)]),
       tags:[null, Validators.required],
       isPublic:[true],
-      projectDesc:[null, Validators.required]
+      projectDesc: this.fb.control(null, [Validators.required, Validators.minLength(120)])
     });
     this.agreeCheckbox = new FormControl();
     window["newPP"] = this

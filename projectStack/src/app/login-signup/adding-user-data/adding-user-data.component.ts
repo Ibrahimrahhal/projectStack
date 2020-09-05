@@ -1,7 +1,7 @@
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { University } from './../../types/University';
 import { StorageService } from './../../services/storage.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { decryptData } from '../../../util/util';
 import { APIResponse } from 'src/app/types/API.Response';
@@ -31,17 +31,18 @@ export class AddingUserDataComponent implements OnInit {
 
   ngOnInit() {
     this.group = this.fb.group({
-      userType: [null],
-      profileImage: [null],
-      skills: [[]],
-      resume: [null],
-      interests: [[]],
-      university: [null],
-      department:[null],
-      yearOfGrad:[null],
-      headline:[null],
-      summery:[null]
+      userType: this.fb.control(null,  [Validators.required]),
+      profileImage: this.fb.control(null),
+      skills: this.fb.control([]),
+      resume: this.fb.control(null),
+      interests: this.fb.control([]),
+      university: this.fb.control(null,  [Validators.required]),
+      department: this.fb.control(null,  [Validators.required]),
+      yearOfGrad: this.fb.control(null,  [Validators.required]),
+      headline: this.fb.control(null,  [ Validators.required, Validators.minLength(10)]),
+      summery: this.fb.control(null, [Validators.required, Validators.minLength(120)])
     });
+    window["complete"] = this;
   }
 
   get notSelectedInterests(){
@@ -74,6 +75,17 @@ export class AddingUserDataComponent implements OnInit {
       this.loading = false;
       this.step++;
     });
+
+  }
+
+  skipImageUpload():void {
+    this.group.get('profileImage').setValue("");
+    this.step++;
+  }
+
+  skipResumeUpload():void {
+    this.group.get('resume').setValue("");
+    this.step++;
 
   }
 

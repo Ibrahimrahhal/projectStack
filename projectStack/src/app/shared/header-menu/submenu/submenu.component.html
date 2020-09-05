@@ -1,11 +1,17 @@
 <div class="d-flex flex-wrap p-3 justify-content-center">
-    <div class="menuItem mx-2 my-1">
-
+    <div class="menuItem mx-2 my-1" (click)="goToProfile()" matTooltip="Your Profile">
+      <mat-icon>
+        person
+      </mat-icon>
     </div>
-    <div class="menuItem mx-2 my-1">
-
+    <div class="menuItem mx-2 my-1" (click)="auth.signOut()" matTooltip="Logout">
+      <mat-icon>
+        exit_to_app
+      </mat-icon>
     </div>
-    <div class="menuItem mx-2 my-1">
-
+    <div class="menuItem mx-2 my-1" (click)="dialog.closeAll()" matTooltip="Close">
+      <mat-icon>
+        close
+      </mat-icon>
     </div>
 </div>

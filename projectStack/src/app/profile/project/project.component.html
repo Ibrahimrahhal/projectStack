@@ -1,8 +1,8 @@
 <app-header></app-header>
 <div class="projectMainInfo bg-pink d-flex flex-column justify-content-center mb-4 align-items-center">
   <ng-container *ngIf="!loading">
-    <h2 class="color-white"> {{project.projectName}}</h2>
-    <h6 class="color-white font-weight-light">{{project.slogan}}</h6>
+    <h2 class="color-white"> {{project?.projectName}}</h2>
+    <h6 class="color-white font-weight-light">{{project?.slogan}}</h6>
   </ng-container>
   <ng-container *ngIf="loading">
     <ngx-skeleton-loader count="1" [theme]="{width:'130px', height:'40px', margin:'0 auto', display:'block', opacity:'0.4'}" animation="progress"> </ngx-skeleton-loader>
@@ -18,7 +18,7 @@
   [stroked]="true"
   [long]="true"
   [thin]="true">
-    Join {{project.projectName}}
+    Join {{project?.projectName}}
   </custom-button>
 
 
@@ -34,13 +34,13 @@
     </ng-container>
     <ng-container  *ngIf="!loading">
       <div class="text-center color-black">
-        {{project.projectDesc}}
+        {{project?.projectDesc}}
       </div>
     </ng-container>
 
       <div class="d-flex  mt-3 flex-wrap  w-100 justify-content-center">
           <ng-container *ngIf="!loading">
-            <div *ngFor="let tag of project.tags" class="tag">
+            <div *ngFor="let tag of project?.tags" class="tag">
               {{staticData.getProjectTagNameByID(tag)}}
             </div>
           </ng-container>
@@ -58,8 +58,8 @@
     <h4 class="text-center mt-6 color-pink font-weight-bold">Meet The Team</h4>
     <h6 class="text-center color-pink font-weight-light">{{selectedSlogen}}</h6>
     <div class="d-flex flex-wrap justify-content-center mt-4">
-
-        <div *ngFor="let member of project.members" class="teamMemberBlock m-3 d-flex flex-column justify-content-center align-items-center">
+      <ng-container *ngIf="!loading">
+        <div *ngFor="let member of project?.members" class="teamMemberBlock m-3 d-flex flex-column justify-content-center align-items-center">
           <div class="teamMemberImage m-2" [style.backgroundImage]="getSafeBackgroundStyle(member.profileImage)">
 
           </div>
@@ -67,6 +67,25 @@
             {{member.firstName}} {{member.lastName}}
           </small>
         </div>
+      </ng-container>
+      <ng-container *ngIf="loading">
+        <div class="teamMemberBlock m-3 d-flex flex-column justify-content-center align-items-center">
+          <ngx-skeleton-loader count="1" [theme]="{height:'135px', width:'135px', margin:'0.7rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" appearance="circle" animation="progress"> </ngx-skeleton-loader>
+          <ngx-skeleton-loader count="1" [theme]="{width:'120px', height:'20px', margin:'0.4rem auto', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+        </div>
+        <div class="teamMemberBlock m-3 d-flex flex-column justify-content-center align-items-center">
+          <ngx-skeleton-loader count="1" [theme]="{height:'135px', width:'135px', margin:'0.7rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" appearance="circle" animation="progress"> </ngx-skeleton-loader>
+          <ngx-skeleton-loader count="1" [theme]="{width:'120px', height:'20px', margin:'0.4rem auto', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+        </div>
+        <div class="teamMemberBlock m-3 d-flex flex-column justify-content-center align-items-center">
+          <ngx-skeleton-loader count="1" [theme]="{height:'135px', width:'135px', margin:'0.7rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" appearance="circle" animation="progress"> </ngx-skeleton-loader>
+          <ngx-skeleton-loader count="1" [theme]="{width:'120px', height:'20px', margin:'0.4rem auto', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+        </div>
+        <div class="teamMemberBlock m-3 d-flex flex-column justify-content-center align-items-center">
+          <ngx-skeleton-loader count="1" [theme]="{height:'135px', width:'135px', margin:'0.7rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" appearance="circle" animation="progress"> </ngx-skeleton-loader>
+          <ngx-skeleton-loader count="1" [theme]="{width:'120px', height:'20px', margin:'0.4rem auto', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+        </div>
+      </ng-container>
 
     </div>
   </div>
@@ -85,7 +104,7 @@
     [long]="true"
     [thin]="true">
       <small class="font-weight-light">
-        Join {{project.projectName}}
+        Join {{project?.projectName}}
       </small>
     </custom-button>
   </div>

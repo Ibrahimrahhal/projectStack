@@ -17,21 +17,24 @@
                 <mat-icon matSuffix (click)="passwordHide = !passwordHide" class="iconPassword">{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </mat-form-field>
         </div>
-        </form>
+
         <div class="px-3">
           <span class="font-main font-weight-bold font-small">Don't Have An Account? <a  class="font-weight-light" [routerLink]="['/external/register']">Register Now</a> </span>
         </div>
-        <small class="px-3">
+        <small class="px-3 d-block">
           Forgot Your Password? <b class="pointer">Reset Your Password</b>.
         </small>
         <custom-button
         color="primary"
-        [passedClass]='{"mx-auto":true, "d-block":true,  "mt-4":true, "much-rounded":true, "px-5":true, "font-weight-light":true, "color-white":true}'
+        type="submit"
+        [disabled]="loading"
+        [thin]="true"
+        [passedClass]='{"mx-auto":true, "mt-4":true, "much-rounded":true, "px-5":true, "font-weight-light":true, "color-white":true}'
         [loading]="loading"
         (clickEvent)="login()">
             Login
         </custom-button>
-
+      </form>
       </div>
 
 

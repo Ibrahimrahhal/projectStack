@@ -1,5 +1,16 @@
 <div class="d-flex justify-content-between w-100wh min-h-100vh position-relative overflow-x-hidden" style="background:#fff;">
-<div class="position-absolute h-100 bg-pink loginSlideAnimation"
+<div
+class="logo-container"
+[ngClass]="{'logoRight':!loginSideActive, 'hideLogo':logoHidden}"
+>
+  <img src="../../assets/white-pink.svg" height="40px"  />
+</div>
+<div class="position-absolute h-100 bg-pink loginSlideAnimation loginSignUpSliders"
+[class.w-60]="!isUserCompeletingHisData"
+[class.w-100]="isUserCompeletingHisData"
+[class.loginSide]="loginSideActive">
+</div>
+<div class="position-absolute h-100 bg-pink loginSlideAnimation loginSignUpSlidersBackgound"
 [class.w-60]="!isUserCompeletingHisData"
 [class.w-100]="isUserCompeletingHisData"
 [class.loginSide]="loginSideActive">
@@ -7,6 +18,6 @@
 <app-signup class="signContainer h-100" (signingUpFinished) = "signUpFinished()" [class.active]="!loginSideActive"></app-signup>
 <app-login class="signContainer h-100" (loggingIn)="userIsLogging($event)" (needsEmailConfirmation)="signUpFinished()" [class.active]="loginSideActive"></app-login>
 <div class="completeYourDataCont shadow-lg bg-white" *ngIf="isUserCompeletingHisData">
-  <app-complete-your-data (completeDataFinished)="isUserCompeletingHisData=false;loginSideActive=true;"></app-complete-your-data>
+    <app-complete-your-data (completeDataFinished)="isUserCompeletingHisData=false;loginSideActive=true;hideShowLogo();"></app-complete-your-data>
 </div>
 </div>

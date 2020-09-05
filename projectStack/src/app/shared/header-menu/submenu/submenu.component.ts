@@ -1,4 +1,8 @@
+import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { MatDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { stringToBase64 } from 'src/util/util';
 
 @Component({
   selector: 'app-submenu',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubmenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialog:MatDialog,
+    public auth:AuthServiceService,
+    private router:Router) { }
 
   ngOnInit(): void {
   }
+
+  async goToProfile(){
+    this.dialog.closeAll();
+    this.router.navigateByUrl(`/member/${await stringToBase64(this.auth.user.email)}`)
+  }
+
+
+
 
 }

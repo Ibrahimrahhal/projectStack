@@ -9,6 +9,7 @@
     [disabled]="loading"
     [ngStyle]="styles"
     [disabled]="disabled"
+    [type]="type"
     (click)="disabled?'':click.emit($event);">
       <span *ngIf="!loading">
         <ng-container  *ngTemplateOutlet="content"></ng-container>
@@ -32,6 +33,7 @@
     [disabled]="loading"
     [ngStyle]="styles"
     [disabled]="disabled"
+    [type]="type"
     (click)="disabled?'':click.emit($event);">
       <span *ngIf="!loading">
         <ng-container  *ngTemplateOutlet="content"></ng-container>

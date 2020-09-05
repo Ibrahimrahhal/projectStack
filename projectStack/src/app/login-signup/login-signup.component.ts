@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class LoginSignupComponent implements OnInit {
   isUserCompeletingHisData:boolean = false;
   loginSideActive:boolean = false;
-
+  logoHidden:boolean = false;
   constructor(
     private auth:AuthServiceService,
     private activatedRoute:ActivatedRoute
@@ -19,6 +19,8 @@ export class LoginSignupComponent implements OnInit {
     window["loginSi"] = this;
     this.activatedRoute.paramMap.subscribe((data:any)=>{
       this.loginSideActive = data.params.type == 'login';
+      this.hideShowLogo();
+
     })
   }
 
@@ -34,5 +36,13 @@ export class LoginSignupComponent implements OnInit {
     if(this.isUserCompeletingHisData)
     return;
     this.loginSideActive = !this.loginSideActive;
+    this.hideShowLogo();
+  }
+
+  hideShowLogo(){
+    this.logoHidden = true;
+    setTimeout(()=>{
+      this.logoHidden = false;
+    },700)
   }
 }

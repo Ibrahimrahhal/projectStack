@@ -1,3 +1,4 @@
+import { AuthServiceService } from './../../services/auth-service.service';
 import { HeaderMenuComponent } from './../header-menu/header-menu.component';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,7 +14,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private router:Router,
     private dialog:MatDialog,
-    private activeRoute:ActivatedRoute) { }
+    private activeRoute:ActivatedRoute,
+    private auth:AuthServiceService) { }
 
   ngOnInit() {
     window["header"] = this;
@@ -34,6 +36,10 @@ export class HeaderComponent implements OnInit {
       return this.activeRoute.snapshot.url[0].path == 'project';
     else
       return false;
+  }
+
+  get isUserLoggedIn():boolean{
+    return this.auth.isUserSignedIn;
   }
 
 }
