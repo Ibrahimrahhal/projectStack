@@ -1,64 +1,32 @@
-<header class="px-2" [class.dropShadow]="!hideShadow">
-<div class="d-flex justify-content-between align-items-center h-100">
-    <div class="headerLogoHolder">
+<header class="px-2">
+  <div class="upperSide d-flex justify-content-between align-items-center">
+    <div class="logoContainer"></div>
+    <div (click)="openMenu()" class="sideUserAccount d-flex align-items-center mr-3 px-3 py-2">
+      <user-image
+      class="mr-3"
+      height="50px"
+      width="50px"
+      [linkToImage]="user?.profileImage" >
 
-    </div>
-
-    <div class="d-flex h-100" *ngIf="isUserLoggedIn">
-      <nav class="d-flex align-items-center mr-5 h-100">
-          <a [routerLink]="['/dashboard']" routerLinkActive="activeLink" >
-            Dashboard
-          </a>
-          <a>
-            How It Works
-          </a>
-          <a>
-            Content
-          </a>
-          <a class="position-relative exploreBtn">
-            Explore
-            <div class="position-absolute exploreContainer d-flex justify-content-around align-items-center">
-              <div class="px-5 py-2 text-center cursorPointer  scaleOnHover" (click)="navigate('/explore/projects')">
-                <small class="color-black">Explore</small>
-                <h5 class="text-center">
-                  <strong class="color-black">Projects</strong>
-                </h5>
-              </div>
-              <div class="sep">
-
-              </div>
-              <div  class="px-5 py-2 text-center cursorPointer scaleOnHover" (click)="navigate('/explore/members')">
-                <small class="color-black">Explore</small>
-                <h5 class="text-center">
-                  <strong class="color-black">Members</strong>
-                </h5>
-
-              </div>
-            </div>
-          </a>
-      </nav>
-
-      <div class="menu d-flex align-items-center mr-5">
-        <div class="bellIconCont cursorPointer scaleOnHover"  matTooltip="Notifications" (click)="openMenu()">
-          <img src="/assets/bell.svg" width="auto" height="48%">
-        </div>
-        <!-- <div class="color-white mx-3">
-          Hi, <span class="font-weight-bold">Ibrahim!</span>
-        </div> -->
+      </user-image>
+      <div class="userInfo d-flex flex-column">
+          <h6 class="m-0">Ibrahim Rahhal</h6>
+          <small class="font-weight-lighter">Fullstack Developer</small>
       </div>
     </div>
-    <div class="d-flex h-100 align-items-center" *ngIf="!isUserLoggedIn">
-      <custom-button
-      color="primary"
-      [stroked]="true"
-      [strokeColor]="'#fff'"
-      [rounded]="true"
-      [long]="true"
-      [thin]="true"
-      [styles]="{'font-weight':'light'}"
-      >
-          Join Project Corner
-      </custom-button>
-    </div>
-</div>
+  </div>
+  <nav class="d-flex justify-content-center px-3">
+    <a class="navItem px-5 py-2" [routerLink]="['/dashboard']" routerLinkActive="activeLink">
+      Dashboard
+    </a>
+    <a class="navItem px-5 py-2" >
+      How It Works
+    </a>
+    <a class="navItem px-5 py-2" [routerLink]="['/explore/choose']" routerLinkActive="activeLink">
+      Explore
+    </a>
+    <a class="navItem px-5 py-2">
+      Content
+    </a>
+  </nav>
 </header>

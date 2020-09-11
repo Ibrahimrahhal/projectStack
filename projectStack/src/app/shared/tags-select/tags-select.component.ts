@@ -11,10 +11,13 @@ export class TagsSelectComponent implements OnInit {
   @Input() control:FormControl;
   @Input() min:number;
   @Input() max:number;
+  @Input() position;
+  @Input() fullwidth;
   searchFeild:FormControl;;
   constructor() { }
 
   ngOnInit(): void {
+    this.position = this.position || 'up';
     this.searchFeild = new FormControl('');
     if(!this.control)
     return;

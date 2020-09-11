@@ -1,0 +1,15 @@
+<div class="profileSectionContainer">
+  <div
+  matTooltip="'hi there'"
+  *ngFor="let user of getDataReady()"
+  [style.height]="height+'px'"
+  [style.width]="width+'px'"
+  [style.left]="user.left+'px'">
+    <user-image
+    [height]="height+'px'"
+    [width]="width+'px'"
+    [userName]="user.user.firstName"
+    [linkToImage]="user.user.profileImage">
+    </user-image>
+  </div>
+</div>

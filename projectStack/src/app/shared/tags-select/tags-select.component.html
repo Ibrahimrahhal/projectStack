@@ -1,9 +1,10 @@
 <div class="w-100">
   <app-tags
+  *ngIf="position == 'up'"
   [tagsArray]="selectedTags"
   [deletable]="true"
   (tagDeleted)="removeTag($event)"></app-tags>
-  <mat-form-field class="example-full-width mx-auto d-block w-50">
+  <mat-form-field class="example-full-width mx-auto d-block " [class.w-50]="!fullwidth" [class.w-100]="fullwidth">
     <input type="text"
            matInput
            [matAutocomplete]="auto"
@@ -13,8 +14,12 @@
         {{option.DESC}}
       </mat-option>
     </mat-autocomplete>
-
   </mat-form-field>
+  <app-tags
+  *ngIf="position == 'down'"
+  [tagsArray]="selectedTags"
+  [deletable]="true"
+  (tagDeleted)="removeTag($event)"></app-tags>
   <div class="text-center" style="color: #da1f26;" *ngIf="control && control.errors">
     <small *ngIf="control.errors.min">{{control.errors.min}}</small>
     <small *ngIf="control.errors.max">{{control.errors.max}}</small>

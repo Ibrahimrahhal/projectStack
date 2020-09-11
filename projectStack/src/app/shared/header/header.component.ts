@@ -27,8 +27,7 @@ export class HeaderComponent implements OnInit {
 
   openMenu(){
     this.dialog.open(HeaderMenuComponent, {
-      disableClose:false
-    })
+      disableClose:false    })
   }
 
   get hideShadow():boolean{
@@ -40,6 +39,10 @@ export class HeaderComponent implements OnInit {
 
   get isUserLoggedIn():boolean{
     return this.auth.isUserSignedIn;
+  }
+
+  get user() {
+    return this.auth.user;
   }
 
 }

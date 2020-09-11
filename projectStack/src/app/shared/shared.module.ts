@@ -17,6 +17,9 @@ import { SubmenuComponent } from './header-menu/submenu/submenu.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { TagsComponent } from './tags/tags.component';
 import { TagsSelectComponent } from './tags-select/tags-select.component';
+import { ScrollService } from '../services/scroll.service';
+import { UserProfileImageComponent } from './user-profile-image/user-profile-image.component';
+import { ProfileImagesSectionComponent } from './profile-images-section/profile-images-section.component';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -24,7 +27,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 
 @NgModule({
-  declarations: [HeaderComponent, CustomButtonComponent, HeaderMenuComponent, NotificationsSectionComponent, SubmenuComponent, TagsComponent, TagsSelectComponent],
+  declarations: [HeaderComponent, CustomButtonComponent, HeaderMenuComponent, NotificationsSectionComponent, SubmenuComponent, TagsComponent, TagsSelectComponent, UserProfileImageComponent, ProfileImagesSectionComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -47,7 +50,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ToastrModule,
     NgxSkeletonLoaderModule,
     TagsComponent,
-    TagsSelectComponent
+    TagsSelectComponent,
+    UserProfileImageComponent,
+    ProfileImagesSectionComponent
   ],
   entryComponents:[ HeaderMenuComponent ],
   providers: [
@@ -55,7 +60,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     },
-    AuthServiceService
+    AuthServiceService,
+    ScrollService
   ]
 })
 export class SharedModule { }
