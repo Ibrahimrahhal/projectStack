@@ -1,3 +1,4 @@
+import { ScrollService } from 'src/app/services/scroll.service';
 import { StaticDataService } from 'src/app/services/static-data.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Component, OnInit, Input } from '@angular/core';

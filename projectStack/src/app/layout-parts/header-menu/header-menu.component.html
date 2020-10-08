@@ -1,0 +1,29 @@
+<div mat-dialog-title>
+  <div class="d-flex justify-content-center">
+    <user-image
+    [width]="'80px'"
+    [height]="'80px'"
+    [linkToImage]="user.profileImage"
+    [userName]="user.firstName"
+    >
+    </user-image>
+  </div>
+
+  <h6 class="text-center m-0 mt-3">{{user?.firstName}} {{user?.lastName}}</h6>
+  <small class="d-block text-center" style="opacity: 0.7;">{{user?.headline}}</small>
+</div>
+<div mat-dialog-content>
+  <perfect-scrollbar class="mainHeaderMenuContainer">
+
+    <section class="mt-4">
+      <small>Notifications</small>
+      <app-notifications-section></app-notifications-section>
+    </section>
+
+
+  </perfect-scrollbar>
+
+</div>
+<section class="pt-3 justify-content-center" mat-dialog-actions>
+  <app-submenu></app-submenu>
+</section>

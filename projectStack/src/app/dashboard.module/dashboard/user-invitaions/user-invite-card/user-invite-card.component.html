@@ -1,0 +1,32 @@
+<div class="userInviteContainer my-4 pt-5 pb-3 px-4">
+  <h4 class="color-black text-capitalize">
+    {{invitation.extras.project?.projectName}}
+  </h4>
+  <div class="color-black font-weight-light mt-4">
+    {{invitation.request.message}}
+  </div>
+  <div class="actionsForInvitations mt-4 d-flex justify-content-end">
+    <custom-button
+    color="primary"
+    [thin]="true"
+    [long]="true"
+    [rounded]="true"
+    [stroked]="true"
+    type="submit"
+    [passedClass]="{'mx-2':true,'font-weight-light':true}"
+    (clickEvent)="navigateToProject()">
+    <small>View Project</small>
+    </custom-button>
+    <custom-button
+    color="primary"
+    [thin]="true"
+    [long]="true"
+    [loading]="respondLoading"
+    [rounded]="true"
+    type="submit"
+    [passedClass]="{'mx-2':true,'font-weight-light':true}"
+    (clickEvent)="openRespondDialog()">
+    <small>Respond To Invitation</small>
+    </custom-button>
+  </div>
+</div>

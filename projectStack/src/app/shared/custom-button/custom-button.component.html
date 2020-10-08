@@ -9,6 +9,7 @@
     [disabled]="loading"
     [ngStyle]="styles"
     [disabled]="disabled"
+    [routerLink]="link"
     [type]="type"
     (click)="disabled?'':click.emit($event);">
       <span *ngIf="!loading">
@@ -33,6 +34,7 @@
     [disabled]="loading"
     [ngStyle]="styles"
     [disabled]="disabled"
+    [routerLink]="link"
     [type]="type"
     (click)="disabled?'':click.emit($event);">
       <span *ngIf="!loading">

@@ -10,14 +10,14 @@
             <mat-label>First Name</mat-label>
             <input matInput formControlName="firstName" placeholder="John">
             <mat-error *ngIf="signUpFormGroup.get('firstName').errors && signUpFormGroup.get('firstName').errors.minlength">
-              First name must contain at least 4 characters
+              First name must contain at least 3 characters
             </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" class="w-xl-50 w-md-100 px-2">
             <mat-label>Last Name</mat-label>
             <input matInput formControlName="lastName" placeholder="Millar">
             <mat-error *ngIf="signUpFormGroup.get('lastName').errors && signUpFormGroup.get('lastName').errors.minlength">
-              Last name must contain at least 4 characters
+              Last name must contain at least 3 characters
             </mat-error>
         </mat-form-field>
     </div>

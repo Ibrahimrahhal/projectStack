@@ -10,6 +10,7 @@ import { MatChipInputEvent, MatAutocompleteSelectedEvent } from '@angular/materi
 import { HttpService } from 'src/app/services/http.service';
 import { Router } from '@angular/router';
 import { StaticDataService } from 'src/app/services/static-data.service';
+import userTypes from 'src/app/services/staticData/userTypes';
 var MB = 1024*1024;
 @Component({
   selector: 'app-adding-user-data',
@@ -20,7 +21,7 @@ export class AddingUserDataComponent implements OnInit {
   step:number = 1;
   group:FormGroup;
   loading:boolean = false;
-
+  userStepsEnums = userDataSteps;
   constructor(
     private fb:FormBuilder,
     private storage:StorageService,
@@ -39,6 +40,7 @@ export class AddingUserDataComponent implements OnInit {
       university: this.fb.control(null,  [Validators.required]),
       department: this.fb.control(null,  [Validators.required]),
       yearOfGrad: this.fb.control(null,  [Validators.required]),
+      yearOfEnroll: this.fb.control(null,  [Validators.required]),
       headline: this.fb.control(null,  [ Validators.required, Validators.minLength(10)]),
       summery: this.fb.control(null, [Validators.required, Validators.minLength(120)])
     });
@@ -151,20 +153,7 @@ export class AddingUserDataComponent implements OnInit {
   }
 
 
-  setUnivarsity(e:MatAutocompleteSelectedEvent): void{
-    let university:University = this.staticData.Universities.find((one)=>{
-      return one.DESC == e.option.value;
-    });
-    this.group.get('university').setValue(university.ID);
 
-  }
-  setDepartment(e:MatAutocompleteSelectedEvent): void{
-    let department:University = this.staticData.Departments.find((one)=>{
-      return one.DESC == e.option.value;
-    });
-    this.group.get('department').setValue(department.ID);
-    console.log('this', this.group.get('department').value)
-  }
   async completeSignup(): Promise<boolean> {
     this.loading = true;
     await this.http.patchUser(this.group.getRawValue());
@@ -172,5 +161,38 @@ export class AddingUserDataComponent implements OnInit {
     this.router.navigate(['/dashboard']);
     return true;
   }
+  moveToNextStep(){
+    switch(this.group.get('userType').value.toString()){
+      case userTypes.Academic.toString():
+        this.group.get('yearOfGrad').clearValidators();
+        this.group.get('yearOfGrad').updateValueAndValidity();
+        this.group.get('yearOfEnroll').clearValidators();
+        this.group.get('yearOfEnroll').updateValueAndValidity();
+      break;
 
+      case userTypes.Entrep.toString():
+        this.group.get('yearOfGrad').clearValidators();
+        this.group.get('yearOfGrad').updateValueAndValidity();
+        this.group.get('yearOfEnroll').clearValidators();
+        this.group.get('yearOfEnroll').updateValueAndValidity();
+        this.group.get('university').clearValidators();
+        this.group.get('university').updateValueAndValidity();
+        this.group.get('department').clearValidators();
+        this.group.get('department').updateValueAndValidity();
+      break;
+    }
+    this.step++;
+  }
+
+}
+
+
+const userDataSteps = {
+  selectUserType:1,
+  fillSummery:2,
+  uploadImage:3,
+  addSkills:4,
+  uploadResume:5,
+  addInterests:6,
+  userHeadLine:7
 }

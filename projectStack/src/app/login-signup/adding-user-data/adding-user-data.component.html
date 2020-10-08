@@ -1,36 +1,14 @@
 <div class="fullWidthHeight bg-pink d-flex justify-content-center align-items-center">
-  <div style=" " class="px-3 py-2 shadow-lg bg-white completeDataContainer">
-  <section *ngIf="step ==1">
-    <h4 class="font-weight-light font-main text-center color-black mt-4">
-      <span class="font-weight-bold ">Now,</span> Let’s Start By Getting To Know
-      <h3 class="font-weight-bold mt-2 ">
-        Who You Are?
-      </h3>
+  <div style=" " class="px-3 py-2 shadow-lg bg-white completeDataContainer" *ngIf="group">
+  <section *ngIf="step == userStepsEnums.selectUserType">
+    <h4 class="font-weight-light font-main text-center color-black mt-4 ">
+     What <span class="">Describes</span> You Best
     </h4>
-    <div class="d-flex justify-content-center mt-5">
-      <div class="mx-5" (click)="selectUserType(1)">
-          <div class="iconBox d-flex justify-content-center align-items-center">
-            <img src="/assets/teacher.svg" width="50%" height="auto">
+    <small class="font-weight-light d-block text-center mb-5">Click on any of the choices to get a clear description about each one</small>
 
-          </div>
-
-          <h6 class="text-center font-main font-weight-light mt-3">
-              Instructor
-          </h6 >
-      </div >
-      <div class="mx-5" (click)="selectUserType(2)">
-        <div class="iconBox d-flex justify-content-center align-items-center">
-          <img src="/assets/student.svg" width="50%" height="auto">
-        </div>
-
-        <h6 class="text-center font-main font-weight-light mt-3">
-            Student
-        </h6>
-      </div>
-
-  </div>
+    <user-type-select [formControlPass]="group.get('userType')" (proceed)="moveToNextStep()"></user-type-select>
 </section>
-<section *ngIf="step == 2">
+<section *ngIf="step == userStepsEnums.fillSummery">
   <div >
     <h4 class="font-weight-light text-center mt-1">
       Describe Yourself
@@ -50,7 +28,7 @@
     </mat-form-field>
     <custom-button
     color="primary"
-    (clickEvent)="step = step+1"
+    (clickEvent)="moveToNextStep()"
     [thin]="true"
     [long]="true"
     [rounded]="true"
@@ -59,7 +37,7 @@
   </div>
   <input type="file" class="d-none" (change)="uploadFileHandler($event)" #fileInput/>
 </section>
-<section *ngIf="step == 3">
+<section *ngIf="step == userStepsEnums.uploadImage">
   <div >
     <h4 class="font-weight-light text-center mt-1">
       Setup Your Profile.
@@ -96,7 +74,7 @@
   <input type="file" class="d-none" (change)="uploadFileHandler($event)" #fileInput/>
 </section>
 
-<section *ngIf="step == 4">
+<section *ngIf="step == userStepsEnums.addSkills">
   <div >
     <h4 class="font-weight-light text-center mt-1">
       List Your Skills
@@ -118,7 +96,7 @@
     </div>
     <custom-button
     color="primary"
-    (clickEvent)="step=step+1"
+    (clickEvent)="moveToNextStep()"
     [loading]="loading"
     [thin]="true"
     [long]="true"
@@ -130,7 +108,7 @@
   </div>
 </section>
 
-<section *ngIf="step == 5">
+<section *ngIf="step == userStepsEnums.uploadResume">
   <div >
     <h4 class="font-weight-light text-center mt-1 mb-4">
       Upload Your Resume
@@ -150,6 +128,7 @@
     [thin]="true"
     [long]="true"
     [disabled]="loading"
+    [loading]="loading"
     [rounded]="true"
     [passedClass]="{'mx-auto':true, 'font-weight-lighter':true, 'font-main':true, 'mt-5':true, 'mb-3':true}">Upload Resume</custom-button>
     <custom-button
@@ -167,7 +146,7 @@
 
   </div>
 </section>
-<section *ngIf="step == 6">
+<section *ngIf="step == userStepsEnums.addInterests">
   <div >
     <h4 class="font-weight-light text-center mt-1">
       Tell Is What Interests You ?
@@ -186,7 +165,7 @@
       </app-tags-select>
       <custom-button
       color="primary"
-      (clickEvent)="step=step+1"
+      (clickEvent)="moveToNextStep()"
       [loading]="loading"
       [thin]="true"
       [long]="true"
@@ -200,8 +179,9 @@
   </div>
 
 </section>
-<section *ngIf="step == 7">
-  <div >
+<section *ngIf="step == userStepsEnums.userHeadLine">
+  <app-user-head-line-info [group]="group"></app-user-head-line-info>
+  <!-- <div >
     <h4 class="font-weight-light text-center mt-1">
       Finally
     </h4>
@@ -266,13 +246,14 @@
       </div>
     </div>
 
-  </div>
+  </div> -->
   <custom-button
   color="primary"
   [thin]="true"
   [long]="true"
   [disabled]="loading || group.invalid"
   [rounded]="true"
+  [loading]="loading"
   [passedClass]="{'mx-auto':true, 'font-weight-lighter':true, 'font-main':true, 'mt-5':true, 'mb-3':true}"
   (clickEvent)="completeSignup()">
   Complete

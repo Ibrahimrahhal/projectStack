@@ -1,3 +1,4 @@
+import { ScrollService } from 'src/app/services/scroll.service';
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot,RouterStateSnapshot } from '@angular/router';
 import { AuthServiceService } from '../services/auth-service.service';
@@ -8,11 +9,15 @@ import { AuthServiceService } from '../services/auth-service.service';
 })
 export default class AuthGaurdForProtectedRoutes implements CanActivate {
 
-    constructor(private _router:Router, private auth:AuthServiceService ) {
+    constructor(
+      private _router:Router,
+      private auth:AuthServiceService,
+      private scroll:ScrollService ) {
     }
 
     canActivate(route: ActivatedRouteSnapshot,
                 state: RouterStateSnapshot): Promise<boolean> {
+                  this.scroll.scrollToTop()
                   return new Promise((resolve, reject)=>{
                     if(typeof this.auth.isUserSignedIn == typeof undefined)
                         this.auth.signInState.subscribe(()=>{

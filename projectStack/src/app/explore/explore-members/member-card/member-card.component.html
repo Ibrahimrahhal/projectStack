@@ -1,7 +1,13 @@
 <div class="memberCard m-3">
   <ng-container *ngIf="!loading">
-    <div class="memberImage my-4" [style.backgroundImage]="backgroundImageStyle" >
-
+    <div class="my-3 d-flex justify-content-center">
+      <user-image
+      [width]="'60px'"
+      [height]="'60px'"
+      [linkToImage]="user.profileImage"
+      [userName]="user.firstName"
+      >
+      </user-image>
     </div>
     <h6 class="text-center color-black m-0">{{Username}}</h6>
     <small class="d-block text-center color-black" style="opacity: 0.5;">{{user.headline}}</small>

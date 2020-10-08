@@ -1,8 +1,11 @@
+import { StaticDataService } from 'src/app/services/static-data.service';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 import { ProjectsDataService } from '../services/projects-data.service';
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-new-project',
@@ -19,12 +22,13 @@ export class NewProjectComponent implements OnInit {
     private router:Router,
     private fb:FormBuilder,
     private http:HttpService,
-    private data:ProjectsDataService
+    private data:ProjectsDataService,
+    public staticData:StaticDataService
   ) { }
 
   ngOnInit() {
     this.projectFormGroup = this.fb.group({
-      projectName: this.fb.control("", [Validators.required, Validators.minLength(10)]),
+      projectName: this.fb.control("", [Validators.required, Validators.minLength(4)]),
       maxNumberOfMembers:[null, Validators.required],
       projectType:[null, Validators.required],
       slogan: this.fb.control(null, [Validators.required, Validators.minLength(10)]),
@@ -48,6 +52,7 @@ export class NewProjectComponent implements OnInit {
       return;
     this.loading = true;
     await this.http.postProject(this.projectFormGroup.getRawValue());
+    await of(true).pipe(delay(1000)).toPromise()
     await this.data.updateProjects();
     this.loading = false;
     this.navigateBack();

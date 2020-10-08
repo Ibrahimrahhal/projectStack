@@ -1,0 +1,35 @@
+<h6 class="font-weight-light mt-4 color-black" *ngIf="loading || projects.length > 0">
+  You can access the dashbaord of a project by simply clicking on the project's card
+</h6>
+
+<div *ngIf="!loading" class="p-3 mt-2 d-flex flex-wrap">
+  <app-project-card *ngFor="let project of projects" (click)="navigateToProject(project.ID)" [project]="project" class="m-3">
+
+  </app-project-card>
+</div>
+<div *ngIf="loading" class="p-3 mt-2 d-flex flex-wrap">
+  <app-project-card [loading]="true" class="m-3">
+
+  </app-project-card>
+  <app-project-card [loading]="true" class="m-3">
+
+  </app-project-card>
+</div>
+<div *ngIf="!loading && projects.length == 0">
+  <h4 class="text-center color-black">
+    Ops, <h5 class="font-weight-light d-inline">You aren't enrolled in any project yet.</h5>
+  </h4>
+    <img src="../../../assets/teamBold.svg" width="40%" class="mx-auto d-block" style="margin-top: 3rem; margin-bottom: 2rem;"/>
+  <h6 class="text-center color-black">
+    Create new project now & start building your teams here.
+  </h6>
+  <custom-button
+  color="primary"
+  [thin]="true"
+  [long]="true"
+  [rounded]="true"
+  [passedClass]="{'mt-3':true,'font-weight-light':true,'mx-auto':true}"
+  (clickEvent)="navigateToProject()">
+  <small>Start New Project</small>
+  </custom-button>
+</div>

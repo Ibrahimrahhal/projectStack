@@ -5,3 +5,17 @@
   background-position:center;
   background-color: #fff;
 }
+
+.lightShadow{
+  box-shadow:  0 1px 4px 3px rgba(0,0,0,0.2);
+}
+
+
+.CharImage{
+  background-color: #e25252;
+  color: white;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

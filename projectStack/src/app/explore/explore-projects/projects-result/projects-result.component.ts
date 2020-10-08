@@ -8,6 +8,8 @@ import Project from 'src/app/types/Project';
 })
 export class ProjectsResultComponent implements OnInit {
   @Input("projects") projects:Project[];
+  @Input() loading;
+  @Input() moreProjectsExist;
   constructor() { }
 
   ngOnInit(): void {

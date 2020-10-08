@@ -1,3 +1,4 @@
+import { DataServiceService } from './../services/data-service.service';
 import { Component, OnInit, Input } from '@angular/core';
 import Project from 'src/app/types/Project';
 
@@ -7,10 +8,20 @@ import Project from 'src/app/types/Project';
   styleUrls: ['./project-home-tab.component.scss']
 })
 export class ProjectHomeTabComponent implements OnInit {
-  @Input() project:Project;
-  constructor() { }
+  project:Project;
+  constructor(private dataService:DataServiceService) { }
 
   ngOnInit(): void {
+    this.dataService.activatedProject.subscribe((activatedProject:Project)=>{
+      this.project = activatedProject;
+    })
+  }
+
+
+
+
+  get loading():boolean{
+    return this.dataService.loadingState;
   }
 
 }

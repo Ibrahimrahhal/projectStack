@@ -1,7 +1,16 @@
 <div
 class="userImage"
+[class.lightShadow]="lightShadow"
+[class.CharImage]="!linkToImage"
 [style.width]="width"
 [style.height]="height"
-[style.backgroundImage]="safeLink">
+>
+  <ng-container *ngIf="!linkToImage">
+      {{userName&&userName[0]}}
+  </ng-container>
+  <ng-container>
+  <load-image [width]="width" [height]="height" [styles]="{borderRadius:'50%'}" [link]="linkToImage" *ngIf="linkToImage">
 
+    </load-image>
+  </ng-container>
 </div>

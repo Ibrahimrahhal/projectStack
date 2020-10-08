@@ -1,0 +1,15 @@
+.userInviteContainer{
+  border-top: solid 20px #e25252;
+  background-color: #fff;
+  width: 70%;
+  overflow-x: hidden;
+
+}
+.actionsForInvitations{
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.userInviteContainer:hover .actionsForInvitations{
+  opacity: 1;
+}

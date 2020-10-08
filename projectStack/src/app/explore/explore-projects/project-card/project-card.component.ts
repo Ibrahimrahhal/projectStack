@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgZone } from '@angular/core';
 import Project from 'src/app/types/Project';
 
 @Component({
@@ -10,13 +10,15 @@ import Project from 'src/app/types/Project';
 export class ProjectCardComponent implements OnInit {
   @Input("project") project:Project;
   @Input("loading") loading:boolean;
-  constructor(private router:Router) { }
+  constructor(
+    private router:Router,
+    private zone:NgZone) { }
 
   ngOnInit(): void {
   }
 
   navigateToProject():void{
-    this.router.navigate(['/project/'+this.project.ID])
+    this.zone.run(() => this.router.navigate(['project',this.project.ID]));
   }
 
 }

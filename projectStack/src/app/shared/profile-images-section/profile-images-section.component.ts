@@ -7,24 +7,28 @@ import User from 'src/app/types/User';
   styleUrls: ['./profile-images-section.component.scss']
 })
 export class ProfileImagesSectionComponent implements OnInit {
-  @Input() height:number;
-  @Input() width:number;
+  @Input('height') _height:number;
+  @Input('width') _width:number;
   @Input() diff:number;
   @Input() users:User[];
+  height:string;
+  width:string;
+  readeyData:Array<{
+    user:User,
+    left:string;
+  }>;
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  getDataReady(){
-    return (this.users || []).map((user,index)=>{
+    this.height = this._height+'px';
+    this.width = this._width+'px';
+    this.readeyData = (this.users || []).map((user,index)=>{
       return {
         user,
-        left: index == 0 ? 0 : index*(this.width - this.diff)
+        left: (index == 0 ? 0 : index*(this._width - this.diff)) + 'px'
       };
     })
+
   }
-
-
 
 }

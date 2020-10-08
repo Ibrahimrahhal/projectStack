@@ -1,0 +1,8 @@
+<div
+class="imageContainer"
+[style.height]="height"
+[style.width]="width"
+[ngStyle]="StylesObject">
+  <img [src]="link" (load)="imageLoadedEvent()" class="imageStyle"/>
+  <ngx-skeleton-loader *ngIf="!removeLoaderFromDom" class="imageLoader" [class.hideSelector]="imageLoaded" count="1" [theme]="{width:'130%', height:'130%', position:'absolute', display:'block', top:'-10%', left:'-10%', zIndex:'100'}" animation="progress"> </ngx-skeleton-loader>
+</div>

@@ -1,0 +1,10 @@
+.mobileContainer{
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: #e25252;
+  z-index: 99999999;
+  top: 0;
+  left: 0;
+  display: flex;
+}

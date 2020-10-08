@@ -1,0 +1,89 @@
+<div >
+  <h4 class="font-weight-light text-center mt-1">
+    Finally
+  </h4>
+  <img src="/assets/university.svg" class="d-block mx-auto mt-2" height="235px" width="auto">
+
+  <h6 class="font-weight-light text-center mt-1">
+    Just More Typical Information So We Can Do Better Matches
+  </h6>
+  <div class="d-flex justify-content-center mt-3">
+    <div class="col-10">
+      <mat-form-field appearance="outline" class="mx-auto d-block">
+        <mat-label>Member Headline</mat-label>
+        <input
+        type="text"
+        [formControl]="group.get('headline')"
+        matInput
+        placeholder="Graphic Desinger">
+        <mat-error *ngIf="group.get('headline').errors && group.get('headline').errors.minlength">
+          Headline must contain at least 10 characters
+        </mat-error>
+        <mat-error *ngIf="group.get('headline').errors && group.get('headline').errors.required">
+          This feild is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class=" mt-1 d-flex justify-content-center align-items-center" *ngIf="group.get('userType').value == 1 ||  group.get('userType').value == 2">
+    <div class="col-5 ">
+      <mat-form-field appearance="outline" class="mx-auto d-block ">
+        <mat-label>University</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Sumaya University"
+        [matAutocomplete]="auto">
+        <mat-error *ngIf="group.get('university').errors && group.get('university').errors.required">
+          This feild is required & must match the suggested results
+        </mat-error>
+        <mat-error *ngIf="group.get('university').errors && group.get('university').errors.required">
+          This feild is required
+        </mat-error>
+      </mat-form-field>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="setUnivarsity($event)" >
+        <mat-option *ngFor="let option of staticData.Universities" [value]="option.DESC">
+          {{ option.DESC }}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+    <div class="col-5" >
+      <mat-form-field appearance="outline" class="mx-auto d-block">
+        <mat-label>Department</mat-label>
+        <input type="text"  matInput form  placeholder="Computer Science" [matAutocomplete]="AutoForDep">
+        <mat-error *ngIf="group.get('department').errors && group.get('department').errors.required">
+          This feild is required & must match the suggested results
+        </mat-error>
+        <mat-error *ngIf="group.get('department').errors && group.get('department').errors.required">
+          This feild is required
+        </mat-error>
+      </mat-form-field>
+      <mat-autocomplete #AutoForDep="matAutocomplete" (optionSelected)="setDepartment($event)" >
+        <mat-option *ngFor="let option of staticData.Departments" [value]="option.DESC">
+          {{ option.DESC }}
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+  </div>
+  <div *ngIf="group.get('userType').value == 2" class="mt-1 d-flex justify-content-center align-items-center">
+    <div class="col-5">
+      <mat-form-field appearance="outline" class="mx-auto d-block">
+        <mat-label>Year Of Enrollment</mat-label>
+        <input type="number" [formControl]="group.get('yearOfEnroll')"  matInput  placeholder="2023" >
+        <mat-error *ngIf="group.get('yearOfEnroll').errors && group.get('yearOfEnroll').errors.required">
+          This feild is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-5">
+      <mat-form-field appearance="outline" class="mx-auto d-block">
+        <mat-label>Year Of Graduation</mat-label>
+        <input type="number" [formControl]="group.get('yearOfGrad')"  matInput  placeholder="2023" >
+        <mat-error *ngIf="group.get('yearOfGrad').errors && group.get('yearOfGrad').errors.required">
+          This feild is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+</div>

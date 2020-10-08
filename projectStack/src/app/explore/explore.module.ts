@@ -11,15 +11,18 @@ import { HotProjectsComponent } from './explore-projects/hot-projects/hot-projec
 import { ProjectsResultComponent } from './explore-projects/projects-result/projects-result.component';
 import { ProjectCardComponent } from './explore-projects/project-card/project-card.component';
 import { AdvancedFiltersComponent } from './explore-projects/advanced-filters/advanced-filters.component';
+import { SearchBoxComponent } from './explore-members/search-box/search-box.component';
+import { LayoutPartsModule } from '../layout-parts/layout-parts.module';
 
 
 
 @NgModule({
-  declarations: [ExploreComponent, ExploreMembersComponent, ExploreProjectsComponent, MemberCardComponent, HotProjectsComponent, ProjectsResultComponent, ProjectCardComponent, AdvancedFiltersComponent],
+  declarations: [ExploreComponent, ExploreMembersComponent, ExploreProjectsComponent, MemberCardComponent, HotProjectsComponent, ProjectsResultComponent, ProjectCardComponent, AdvancedFiltersComponent, SearchBoxComponent],
   imports: [
     CommonModule,
     ExploreRoutingModule,
-    SharedModule
+    SharedModule,
+    LayoutPartsModule
   ],
   providers:[
     ExploreDataService

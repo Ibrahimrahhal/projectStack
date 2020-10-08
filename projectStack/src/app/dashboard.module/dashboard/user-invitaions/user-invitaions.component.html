@@ -1,0 +1,10 @@
+<div class="py-5 px-3">
+  <ng-container *ngIf="!loading">
+      <app-user-invite-card
+      *ngFor="let invite of userInvitations; let i = index;"
+      [joinRequest]="invite"
+      (joinRequestResponded)="deleteInvite(i)">
+
+      </app-user-invite-card>
+  </ng-container>
+</div>

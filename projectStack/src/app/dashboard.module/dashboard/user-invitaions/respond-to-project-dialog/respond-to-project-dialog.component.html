@@ -1,0 +1,40 @@
+<div class="containerOfRespond">
+  <h5 class="mb-5">
+    Respond to {{data.extras.project.projectName}}
+  </h5>
+  <p class="font-weight-light color-black mt-5">
+    <span class="font-weight-bold text-capitalize">{{data.extras.project.projectName}}</span> wants you to join there team you can view the project details and respond to the invitation professionally please make sure to follow the platform guidelines
+  </p>
+
+  <h6 class="mt-5">Write Your Respond Message</h6>
+  <mat-form-field class="w-100 mx-auto d-block mt-3"  appearance="outline">
+    <textarea  style="min-height: 200px;" [formControl]="respondMessage" matInput placeholder="Your Message..."></textarea>
+    <mat-error *ngIf="respondMessage.touched && respondMessage.invalid && respondMessage.errors?.minlength">Message length should be at least 200 characters</mat-error>
+  </mat-form-field>
+  <div class="d-flex justify-content-center mt-4 mb-3">
+    <custom-button
+    color="primary"
+    [long]="true"
+    [rounded]="true"
+    [thin]="true"
+    [stroked]="true"
+    [disabled]="respondMessage.invalid"
+    [passedClass]="{'px-5':true, 'mx-3':true}"
+    (clickEvent)="closeDialog({message:respondMessage.value, accept:false})"
+    >
+    Reject
+    </custom-button>
+
+    <custom-button
+    color="primary"
+    [long]="true"
+    [rounded]="true"
+    [thin]="true"
+    [disabled]="respondMessage.invalid"
+    [passedClass]="{'px-5':true, 'mx-3':true}"
+    (clickEvent)="closeDialog({message:respondMessage.value, accept:true})"
+    >
+    Accept
+    </custom-button>
+  </div>
+</div>

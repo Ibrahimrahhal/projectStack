@@ -14,6 +14,7 @@ export class UserProfileImageComponent implements OnInit {
   @Input() height;
   @Input() linkToImage;
   @Input() userName;
+  @Input() lightShadow;
   ngOnInit(): void {
   }
 

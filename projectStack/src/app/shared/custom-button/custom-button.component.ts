@@ -11,6 +11,7 @@ export class CustomButtonComponent implements OnInit {
   @Input() passedClass;
   @Input() color;
   @Input('styles') _styles;
+  @Input('link') _link;
   @Input() disabled;
   @Input() rounded;
   @Input() stroked;
@@ -41,6 +42,10 @@ export class CustomButtonComponent implements OnInit {
         borderColor:this.stroked?`${this.strokeColor}`:'',
         color:this.strokeColor?`${this.strokeColor}`:''
       }
+  }
+
+  get link():string[]{
+    return this._link || null;
   }
 
 }

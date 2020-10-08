@@ -1,196 +1,204 @@
-<app-header></app-header>
-<div class="memberContainer">
-  <div class="backdrop"></div>
-  <div class="userImageNameBlock d-flex flex-column align-items-center">
-    <ng-container *ngIf="!loading">
-      <div class="userImage" [style.backgroundImage]="backgroundImageStyle">
-
-      </div>
-        <h5 class="color-black font-weight-bold mt-2 mb-0">
-          {{Username}}
-        </h5>
-        <small class="color-black" style="opacity: 0.8;">
-         {{member?.headline}}
-        </small>
-      </ng-container>
-      <ng-container *ngIf="loading">
-        <div class="item">
-          <ngx-skeleton-loader count="1" [theme]="{height:'85px', width:'85px', margin:'0.7rem auto', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" appearance="circle" animation="progress"> </ngx-skeleton-loader>
-          <ngx-skeleton-loader count="1" [theme]="{width:'200px', height:'20px', margin:'0 auto', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
-          <ngx-skeleton-loader count="1" [theme]="{width:'100px', height:'15px', margin:'0.4rem auto', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
-        </div>
-      </ng-container>
-      <div class="d-flex mt-3">
-        <custom-button
-        color="primary"
-        [passedClass]="{'mx-2':true}"
-        [loading]="loading"
-        [rounded]="true"
-        [long]="true"
-        [stroked]="false"
-        [thin]="true">
-        <small>
-          Invite To Project
-        </small>
-        </custom-button>
-        <custom-button
-        color="primary"
-        [passedClass]="{'mx-2':true}"
-        [loading]="loading"
-        [rounded]="true"
-        [long]="true"
-        [stroked]="true"
-        [thin]="true">
-        <small>
-          Share Profile
-        </small>
-        </custom-button>
-
-      </div>
-  </div>
-  <div class="d-flex w-90 justify-content-center mx-auto">
-
-    <div class=" w-40 mx-4 ">
-
-      <div class="w-100 rawBlock">
-        <div class="label mb-2">
-          Summary
-        </div>
-        <ng-container *ngIf="!loading">
-          <small class="color-black">
-            {{member?.summery}}
+<div class="layoutContainer">
+  <div class="memberContainer">
+    <div class="backdrop"></div>
+    <div class="userImageNameBlock d-flex flex-column align-items-center">
+      <ng-container *ngIf="!loading">
+        <user-image
+        [width]="'85px'"
+        [height]="'85px'"
+        [linkToImage]="member.profileImage"
+        [userName]="member.firstName"
+        >
+        </user-image>
+          <h5 class="color-black font-weight-bold mt-2 mb-0">
+            {{Username}}
+          </h5>
+          <small class="color-black" style="opacity: 0.8;">
+          {{member?.headline}}
           </small>
         </ng-container>
         <ng-container *ngIf="loading">
-          <div class="mt-4">
-            <ngx-skeleton-loader count="1" [theme]="{width:'80%', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'80%', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'60%', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+          <div class="item">
+            <ngx-skeleton-loader count="1" [theme]="{height:'85px', width:'85px', margin:'0.7rem auto', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" appearance="circle" animation="progress"> </ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{width:'200px', height:'20px', margin:'0 auto', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+            <ngx-skeleton-loader count="1" [theme]="{width:'100px', height:'15px', margin:'0.4rem auto', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
           </div>
         </ng-container>
-      </div>
+        <div class="d-flex mt-3">
+          <custom-button
+          color="primary"
+          [passedClass]="{'mx-2':true}"
+          [loading]="loading || inviteLoading"
+          [disabled]="loading || inviteLoading"
+          [rounded]="true"
+          [long]="true"
+          [stroked]="false"
+          [thin]="true"
+          (clickEvent)="openInviteDialog()">
+          <small>
+            Invite To Project
+          </small>
+          </custom-button>
+          <custom-button
+          color="primary"
+          [passedClass]="{'mx-2':true}"
+          [loading]="loading"
+          [rounded]="true"
+          [long]="true"
+          [stroked]="true"
+          [thin]="true">
+          <small>
+            Share Profile
+          </small>
+          </custom-button>
 
-      <div class="w-100 rawBlock mt-4">
-        <div class="label mb-2">
-          Interests
         </div>
-        <div class="d-flex flex-wrap justify-content-center">
-          <ng-container *ngIf="!loading">
-            <div class="tag" *ngFor="let interestID of member?.interests">
-              {{staticData.getInterestNameByID(interestID)}}
-            </div>
-          </ng-container>
-          <ng-container *ngIf="loading">
-            <ngx-skeleton-loader count="1" [theme]="{width:'100px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'90px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'120px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-          </ng-container>
-        </div>
-      </div>
-      <div class="w-100 rawBlock mt-4">
-        <div class="label mb-2">
-          Projects
-        </div>
-        <div  class="d-flex flex-wrap justify-content-center">
-            <app-project-slides class="w-100">
-
-            </app-project-slides>
-        </div>
-      </div>
     </div>
-    <div class=" w-40 mx-4 ">
+    <div class="d-flex w-90 justify-content-center mx-auto">
 
+      <div class=" w-40 mx-4 ">
 
-      <div class="w-100 rawBlock">
-        <div class="label mb-2">
-          Information
-        </div>
-        <table class="infoTable">
-          <tr>
-            <ng-container *ngIf="!loading">
-              <th>University</th>
-              <td>{{staticData.getUniversityNameByID(member?.university)}}</td>
-            </ng-container>
-            <ng-container *ngIf="loading">
-              <td>
-                <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-              </td>
-              <td>
-                <ngx-skeleton-loader count="1" [theme]="{width:'170px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-              </td>
-            </ng-container>
-          </tr>
-          <tr>
+        <div class="w-100 rawBlock">
+          <div class="label mb-2">
+            Summary
+          </div>
           <ng-container *ngIf="!loading">
-            <th>Department</th>
-            <td>{{staticData.getDepartmentNameByID(member?.department)}}</td>
+            <small class="color-black">
+              {{member?.summery}}
+            </small>
           </ng-container>
           <ng-container *ngIf="loading">
-            <td>
-              <ngx-skeleton-loader count="1" [theme]="{width:'100px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            </td>
-            <td>
-              <ngx-skeleton-loader count="1" [theme]="{width:'170px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            </td>
-          </ng-container>
-          </tr>
-          <tr>
-            <ng-container *ngIf="!loading">
-              <th>Graduation Year</th>
-              <td>{{member?.yearOfGrad}}</td>
-            </ng-container>
-            <ng-container *ngIf="loading">
-              <td>
-                <ngx-skeleton-loader count="1" [theme]="{width:'120px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-              </td>
-              <td>
-                <ngx-skeleton-loader count="1" [theme]="{width:'200px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-              </td>
-            </ng-container>
-          </tr>
-          <tr>
-            <ng-container *ngIf="!loading">
-              <th>Email</th>
-              <td>{{member?.email}}</td>
-            </ng-container>
-            <ng-container *ngIf="loading">
-              <td>
-                <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-              </td>
-              <td>
-                <ngx-skeleton-loader count="1" [theme]="{width:'170px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-              </td>
-            </ng-container>
-          </tr>
-        </table>
-      </div>
-
-      <div class="w-100 rawBlock mt-4">
-        <div class="label mb-2">
-          Top Skills
-        </div>
-        <div class="d-flex flex-wrap justify-content-center">
-          <ng-container *ngIf="!loading">
-            <div class="tag" *ngFor="let skillID of member?.skills">
-              {{staticData.getSkillNameByID(skillID)}}
+            <div class="mt-4">
+              <ngx-skeleton-loader count="1" [theme]="{width:'80%', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'80%', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'60%', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
             </div>
           </ng-container>
-          <ng-container *ngIf="loading">
-            <ngx-skeleton-loader count="1" [theme]="{width:'100px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'90px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'120px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'100px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>            <ngx-skeleton-loader count="1" [theme]="{width:'100px', height:'27px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-            <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
-          </ng-container>
+        </div>
+
+        <div class="w-100 rawBlock mt-4">
+          <div class="label mb-2">
+            Interests
+          </div>
+          <div class="d-flex flex-wrap justify-content-center">
+            <ng-container *ngIf="!loading">
+              <div class="tag" *ngFor="let interestID of member?.interests">
+                {{staticData.getInterestNameByID(interestID)}}
+              </div>
+            </ng-container>
+            <ng-container *ngIf="loading">
+              <ngx-skeleton-loader count="1" [theme]="{width:'100px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'90px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'120px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+            </ng-container>
+          </div>
+        </div>
+        <div class="w-100 rawBlock mt-4">
+          <div class="label mb-2">
+            Projects
+          </div>
+          <div  class="d-flex flex-wrap justify-content-center">
+              <app-project-slides [projects]="projects" [user]="member" [loading]="loading" class="w-100">
+
+              </app-project-slides>
+          </div>
+        </div>
+      </div>
+      <div class=" w-40 mx-4 ">
+
+
+        <div class="w-100 rawBlock">
+          <div class="label mb-2">
+            Information
+          </div>
+          <table class="infoTable">
+            <tr *ngIf="loading || member?.university">
+              <ng-container *ngIf="!loading">
+                <th>University</th>
+                <td>{{staticData.getUniversityNameByID(member?.university)}}</td>
+              </ng-container>
+              <ng-container *ngIf="loading">
+                <td>
+                  <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+                </td>
+                <td>
+                  <ngx-skeleton-loader count="1" [theme]="{width:'170px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+                </td>
+              </ng-container>
+            </tr>
+            <tr *ngIf="loading || member?.department">
+            <ng-container *ngIf="!loading">
+              <th>Department</th>
+              <td>{{staticData.getDepartmentNameByID(member?.department)}}</td>
+            </ng-container>
+            <ng-container *ngIf="loading">
+              <td>
+                <ngx-skeleton-loader count="1" [theme]="{width:'100px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              </td>
+              <td>
+                <ngx-skeleton-loader count="1" [theme]="{width:'170px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              </td>
+            </ng-container>
+            </tr>
+            <tr *ngIf="loading || member?.yearOfGrad">
+              <ng-container *ngIf="!loading">
+                <th>Graduation Year</th>
+                <td>{{member?.yearOfGrad}}</td>
+              </ng-container>
+              <ng-container *ngIf="loading">
+                <td>
+                  <ngx-skeleton-loader count="1" [theme]="{width:'120px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+                </td>
+                <td>
+                  <ngx-skeleton-loader count="1" [theme]="{width:'200px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+                </td>
+              </ng-container>
+            </tr>
+            <tr>
+              <ng-container *ngIf="!loading">
+                <th>Email</th>
+                <td>{{member?.email}}</td>
+              </ng-container>
+              <ng-container *ngIf="loading">
+                <td>
+                  <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+                </td>
+                <td>
+                  <ngx-skeleton-loader count="1" [theme]="{width:'170px', height:'20px', margin:'0.4rem 0', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+                </td>
+              </ng-container>
+            </tr>
+          </table>
+        </div>
+
+        <div class="w-100 rawBlock mt-4">
+          <div class="label mb-2">
+            Top Skills
+          </div>
+          <div class="d-flex flex-wrap justify-content-center">
+            <ng-container *ngIf="!loading">
+              <div class="tag" *ngFor="let skillID of member?.skills">
+                {{staticData.getSkillNameByID(skillID)}}
+              </div>
+            </ng-container>
+            <ng-container *ngIf="loading">
+              <ngx-skeleton-loader count="1" [theme]="{width:'100px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'90px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'120px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'100px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>            <ngx-skeleton-loader count="1" [theme]="{width:'100px', height:'27px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+              <ngx-skeleton-loader count="1" [theme]="{width:'80px', height:'20px', borderRadius: '17px', margin:'0.4rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.01)'}" animation="progress"> </ngx-skeleton-loader>
+            </ng-container>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>

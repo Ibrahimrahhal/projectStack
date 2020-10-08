@@ -1,4 +1,8 @@
-<perfect-scrollbar style="width: 100vw; height: 100vh;">
+<perfect-scrollbar (psYReachEnd)="scroll.scrollReachedEnd()" style="width: 100vw; height: 100vh;" class="allContent">
   <app-messages-component></app-messages-component>
+  <app-header *ngIf="!isHeaderDisabled"></app-header>
   <router-outlet></router-outlet>
+  <app-footer *ngIf="!isFooterDisabled"></app-footer>
 </perfect-scrollbar>
+
+<app-mobile-view></app-mobile-view>

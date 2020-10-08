@@ -1,0 +1,55 @@
+<h4 mat-dialog-title>Invite {{data.user.firstName}} to
+  <ng-container *ngIf="!selectedProject">
+    your project
+  </ng-container>
+  <ng-container *ngIf="selectedProject">
+    {{selectedProject.projectName}}
+  </ng-container>
+</h4>
+
+<div mat-dialog-content >
+  <h6 class="font-weight-light color-black mb-5">
+    <ng-container *ngIf="!selectedProject">
+      Please select the project you want to invite ibrahim to.
+    </ng-container>
+    <ng-container *ngIf="selectedProject">
+      Now enter your invitation message.
+    </ng-container>
+  </h6>
+  <div class="projects mt-4" *ngIf="!selectedProject">
+    <div
+    *ngFor="let project of projects" class="projectSelectItem"
+    matRipple
+    [matRippleColor]="'rgba(0, 0, 0, 0.06)'"
+    (click)="selectProject(project)">
+      <span>{{project.projectName}}</span>
+      <mat-icon>
+        navigate_next
+      </mat-icon>
+    </div>
+  </div>
+  <div class="inviteMessage mt04" *ngIf="selectedProject">
+    <h6 class="my-1 color-black">Your Message</h6>
+    <mat-form-field class="w-100 mx-auto d-block mt-3"  appearance="outline">
+      <textarea  style="min-height: 200px;" [formControl]="invitationMessage" matInput placeholder="Your Message..."></textarea>
+      <mat-error *ngIf="invitationMessage.touched && invitationMessage.invalid && invitationMessage.errors?.minlength">Message length should be at least 200 characters</mat-error>
+      <mat-hint>
+        <div>Make elegent, professional and clear.</div>
+      </mat-hint>
+    </mat-form-field>
+  </div>
+</div>
+
+<mat-dialog-actions class="d-flex justify-content-center">
+  <custom-button
+  color="primary"
+  [long]="true"
+  [rounded]="true"
+  [thin]="true"
+  [disabled]="invitationMessage.invalid"
+  [passedClass]="{'px-5':true, 'mx-3':true}"
+  (clickEvent)="closeDialog({message:invitationMessage.value, projectID:selectedProject.ID})"
+  >
+  Send Invitation
+  </custom-button>
+</mat-dialog-actions>

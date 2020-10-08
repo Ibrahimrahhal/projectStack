@@ -1,13 +1,16 @@
-.welcomeSection{
-  height: 34vh;
+.sideSection{
+  max-width: 330px;
+  min-width: 250px;
+}
+.mainSecion{
+  max-width: calc(90vw - 330px);
+  min-width: calc(90vw - 250px);
 }
 
-
-.dashboardImage{
-  height: 110px;
-  width: 110px;
-  border-radius: 50%;
-  background-color: #000;
-  background-size: cover;
-  background-position: center;
+mat-icon{
+  font-size:20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+

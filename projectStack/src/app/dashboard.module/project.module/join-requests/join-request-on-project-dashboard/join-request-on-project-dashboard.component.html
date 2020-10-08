@@ -1,0 +1,49 @@
+<div class="joinRequestCard px-4 py-4">
+  <div class="d-flex justify-content-between">
+    <div class="joinUser d-flex align-items-center"
+    [matTooltipPosition]="'after'"
+    matTooltip="View {{joinRequest?.extras.user.firstName}} Profile">
+      <user-image
+      [userName]="joinRequest?.extras.user.firstName"
+      [linkToImage]="joinRequest?.extras.user.profileImage"
+      [height]="'100px'"
+      [width]="'100px'">
+      </user-image>
+      <div class="mx-3">
+        <h5 class="text-capitalize color-black m-0">
+          {{joinRequest?.extras.user.firstName}}
+          {{joinRequest?.extras.user.lastName}}
+        </h5>
+        <small class="font-weight-light color-black text-capitalize">
+          {{joinRequest?.extras.user.headline}}
+        </small>
+      </div>
+    </div>
+    <div>
+    </div>
+
+
+  </div>
+
+  <div class="color-black font-weight-light mt-4">
+    <p>
+      <small>
+        {{joinRequest.request.message}}
+      </small>
+    </p>
+  </div>
+  <div class="d-flex justify-content-center my-4">
+    <custom-button
+    color="primary"
+    [long]="true"
+    [rounded]="true"
+    [thin]="true"
+    [loading]="loading"
+    [disabled]="loading"
+    [passedClass]="{'px-5':true}"
+    (clickEvent)="openRespondDialog()"
+    >
+    <small>Respond to {{joinRequest?.extras.user.firstName}}</small>
+    </custom-button>
+  </div>
+</div>

@@ -1,13 +1,14 @@
 <div class="mainSlidesContainer p-2">
+<ng-container *ngIf="!loading && projects.length > 0">
   <div>
     <small class="font-weight-light">
-      1/2
+      {{selectedNumber+1}}/{{projects?.length}}
     </small>
   </div>
-    <h6 class="mt-2">The Fuckedup Project</h6>
+    <h6 class="mt-2">{{selectedProject?.project.projectName}}</h6>
     <p>
       <small>
-        A fuzzy search is a process that locates Web pages that are likely to be relevant to a search argument even when the argument does not exactly correspond to the desired information. A fuzzy search is done by means of a fuzzy matching program, which returns a list of results based on likely relevance even though search argument words and spellings may not exactly match. Exact and highly relevant matches appear near the top of the list.
+        {{selectedProject?.project.projectDesc}}
       </small>
     </p>
     <div class="d-flex w-100 justify-content-end m-2 mt-4">
@@ -16,6 +17,7 @@
         color="primary"
         [thin]="true"
         [styles]="{'border-radius':'5px'}"
+        (clickEvent)="navigateToSelectedProject()"
         [passedClass]="{'mx-1':true,  'font-weight-light':true, 'color-white':true}"
         >
             <small>View Project</small>
@@ -24,6 +26,8 @@
         color="primary"
         [thin]="true"
         [styles]="{'border-radius':'5px 1rem 1rem 5px '}"
+        (clickEvent)="nextProject()"
+        *ngIf="!loading && projects.length > 1"
         [passedClass]="{  'font-weight-light':true,  'color-white':true}">
             <div class="h-100 d-flex">
               <mat-icon inline="true">
@@ -33,4 +37,8 @@
         </custom-button>
       </div>
     </div>
+</ng-container>
+<ng-container *ngIf="!loading && projects.length == 0">
+    <h6 class="font-weight-light color-black mt-4 text-capitalize text-center"><span class="font-weight-bold">{{user.firstName}}</span> Doesn't have any projects yet.</h6>
+</ng-container>
 </div>

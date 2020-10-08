@@ -1,0 +1,28 @@
+<div class="d-flex w-100 flex-wrap  justify-content-center">
+
+  <div
+  [popperTrigger]="'click'"
+  [popper]="type.longDesc"
+  [popperApplyClass]="'userTypeDesc'"
+  [popperPlacement]="'top'"
+  *ngFor="let type of userTypes"
+  [class.selected]="type.type == formControlPass.value"
+  class="userTypeContainer d-flex flex-column m-4 justify-content align-items-center"
+  (click)="formControlPass.setValue(type.type)">
+    <img class="userTypeImage"  src="../../../../assets/{{type.image}}.svg"/>
+    <h6 class="userTypeTitle mt-2">
+        {{type.DESC}}
+    </h6>
+
+  </div>
+</div>
+<custom-button
+color="primary"
+(clickEvent)="proceed.emit()"
+[thin]="true"
+[long]="true"
+[rounded]="true"
+[disabled]="formControlPass.invalid"
+[passedClass]="{'mx-auto':true, 'font-weight-lighter':true, 'font-main':true, 'mt-5':true, 'mb-3':true}">
+Proceed
+</custom-button>

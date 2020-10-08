@@ -1,0 +1,14 @@
+<div class="mt-3 section">
+  <ng-container *ngIf="loading">
+    <div class="m-3 w-100" >
+      <ngx-skeleton-loader count="4" [theme]="{width:'80%', height:'50px', borderRadius: '1px', margin:'0.8rem', display:'block', boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.07)'}" animation="progress"> </ngx-skeleton-loader>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!loading">
+      <div class="my-2 pr-3" *ngFor="let noti of notifications">
+        <app-notification  [notification]="noti">
+
+        </app-notification>
+      </div>
+  </ng-container>
+</div>

@@ -1,0 +1,25 @@
+<div class="projectCard px-3 pt-4 pb-1" matRipple [matRippleColor]="'rgba(226, 82, 82, 1)'">
+  <ng-container *ngIf="!loading">
+    <h4 class="color-black font-weight-bold text-capitalize">
+      {{project?.projectName}}
+    </h4>
+    <p class="color-black font-weight-lighter project-text">
+      <small>
+        {{formatText(project?.projectDesc, 20)}}
+      </small>
+    </p>
+    <div >
+      <app-profile-images-section  [diff]="10" [users]="project?.members" [height]="40" [width]="40"  >
+
+      </app-profile-images-section>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="loading">
+    <ngx-skeleton-loader count="1" [theme]="{width:'55%', height:'30px', margin:'0.7rem 0', marginTop:'0.3rem', display:'block'}" animation="progress"> </ngx-skeleton-loader>
+      <div class="project-text">
+        <ngx-skeleton-loader count="2" [theme]="{width:'90%', height:'14px', margin:'0.7rem 0', display:'block'}" animation="progress"> </ngx-skeleton-loader>
+        <ngx-skeleton-loader count="1" [theme]="{width:'60%', height:'14px', margin:'0.7rem 0', display:'block'}" animation="progress"> </ngx-skeleton-loader>
+      </div>
+      <ngx-skeleton-loader count="1" [theme]="{height:'40px', width:'40px', margin:'0.5rem 0', display:'block'}" appearance="circle" animation="progress"> </ngx-skeleton-loader>
+  </ng-container>
+</div>

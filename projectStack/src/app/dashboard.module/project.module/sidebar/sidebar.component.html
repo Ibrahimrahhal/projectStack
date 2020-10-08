@@ -9,7 +9,7 @@
 
   <div class="menuBlock mt-3">
     <ul class="resetList">
-      <li class="menuItem" [class.active]="activeTab == 'home'">
+      <li class="menuItem" [class.active]="activeTab == 'home'" (click)="navigate()">
         <div class="activeIcon"></div>
         <div class="label">
           <small class="color-black font-weight-light d-flex align-items-center">
@@ -37,7 +37,7 @@
         </div>
       </li>
 
-      <li class="menuItem">
+      <li class="menuItem" [class.active]="activeTab == 'join-requests'" (click)="navigate(['join-requests'])">
         <div class="activeIcon"></div>
         <div class="label">
           <small class="color-black font-weight-light d-flex align-items-center">

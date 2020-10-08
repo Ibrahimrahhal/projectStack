@@ -1,7 +1,8 @@
+import { ProjectWithExtras } from './../../types/projectWithExtras';
 import { HttpWrapperService } from './../../services/http-wrapper.service';
 import  Project  from 'src/app/types/Project';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
-import { decryptData } from 'src/util/util';
+import { decryptData, encryptData } from 'src/util/util';
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import User from 'src/app/types/User';
@@ -13,19 +14,27 @@ export class ExploreDataService {
 
   constructor(private http:HttpWrapperService, private auth:AuthServiceService) { }
 
-  getMembers():Promise<User[]>{
-    return this.http.get(`${environment.baseApi}/users`,{})
+  getMembers(query:any):Promise<{results:User[], pages:number}>{
+    return this.http.post(`${environment.baseApi}/users`,{
+      data: encryptData(query)
+    }, {})
     .pipe(map((body:any)=>{
       let data = JSON.parse(decryptData(body.data));
-      return data as Array<User>;
+      return data as {results:User[], pages:number};
     })).toPromise();
   }
 
-  getProjects():Promise<Project[]>{
-    return this.http.get(`${environment.baseApi}/projects`,{})
-    .pipe(map((body:any)=>{
+  getProjects(query):Promise<{
+    results:Project[],
+    pages:number
+  }>{
+    return this.http.post(`${environment.baseApi}/projects`,{
+      data:encryptData(query)
+    }, {}).pipe(map((body:any)=>{
       let data = JSON.parse(decryptData(body.data));
-      return data as Array<Project>;
+      return data as any;
     })).toPromise();
   }
+
+
 }

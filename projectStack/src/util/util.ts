@@ -1,3 +1,4 @@
+import { Observable, Subject } from 'rxjs';
 import CryptoJS from "crypto-js";
 import { environment } from './../environments/environment';
 
@@ -29,5 +30,16 @@ export async function stringToBase64(str:string|String):Promise<string>{
         resolve(reader.result.toString().split(',')[1]);
     }
   });
+}
+
+export function trimText(text:string, numberOfWords:number){
+  return (text || "").split(" ").filter((word,index)=>index<numberOfWords).join(" ");
+}
+
+
+export function convertObservableReturnTypeFromArrayToSingleRespond(input:Observable<any[]>):Observable<any>{
+  let sub = new Subject<any>();
+  input.subscribe(x=>x.forEach(subX=>sub.next(subX)), (e)=>{sub.error(e)}, ()=>sub.complete());
+  return sub.asObservable();
 }
 window["stringToBase"] = stringToBase64;

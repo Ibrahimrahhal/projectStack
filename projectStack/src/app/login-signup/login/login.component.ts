@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.http.login(this.loginFormGroup.value.email, this.loginFormGroup.value.password).then((user:any)=>{
+    this.http.login(this.loginFormGroup.value.email.toLowerCase(), this.loginFormGroup.value.password).then((user:any)=>{
       this.loading =false;
 
       if(user.userCompletedSignup)

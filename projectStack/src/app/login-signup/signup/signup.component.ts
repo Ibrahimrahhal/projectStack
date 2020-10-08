@@ -28,8 +28,8 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     this.signUpFormGroup = this.fb.group({
-      firstName: this.fb.control('', [Validators.required, Validators.minLength(4)]),
-      lastName: this.fb.control('', [Validators.required, Validators.minLength(4)]),
+      firstName: this.fb.control('', [Validators.required, Validators.minLength(3)]),
+      lastName: this.fb.control('', [Validators.required, Validators.minLength(3)]),
       email:[null,[ Validators.required, Validators.email]],
       password:[null, [Validators.required, this.validatePassword]],
       confirmPassword:[null, [Validators.required, this.validateConfirmPassword]]
@@ -65,7 +65,7 @@ export class SignupComponent implements OnInit {
     this.signingUp.emit();
     this.loading = true;
     Auth.signUp({
-        username: this.signUpFormGroup.getRawValue().email,
+        username: this.signUpFormGroup.getRawValue().email.toLowerCase(),
         password: this.signUpFormGroup.getRawValue().password,
         attributes: {
             'custom:firstName': this.signUpFormGroup.getRawValue().firstName,
@@ -73,7 +73,7 @@ export class SignupComponent implements OnInit {
         },
         validationData: []
         }).then((result)=>{
-      this.auth.hldEmail = this.signUpFormGroup.getRawValue().email;
+      this.auth.hldEmail = this.signUpFormGroup.getRawValue().email.toLowerCase();
       this.loading = false;
       this.signingUpFinished.emit();
     }).catch((error)=>{

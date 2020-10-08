@@ -1,0 +1,17 @@
+.imageStyle{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.imageContainer{
+  position: relative;
+  overflow: hidden;
+}
+.imageLoader{
+  opacity: 1;
+  transition: all 0.3s ease-out;
+}
+.hideSelector{
+  opacity: 0;
+}

@@ -1,46 +1,56 @@
-<app-header></app-header>
-<div class="welcomeSection d-flex justify-content-center flex-column align-items-center">
-    <div class="dashboardImage" [style.backgroundImage]="safeUserImage">
+<div class="layoutContainer">
+  <div class="w-100 p-5 my-4 d-flex justify-content-between" >
+    <section class="sideSection d-flex flex-column align-items-center px-3">
+        <user-image height="220px" width="220px" [linkToImage]="user?.profileImage" [userName]="user?.firstName"></user-image>
+        <h3 class="color-black text-center m-0 mt-4 text-capitalize font-weight-bold">{{user?.firstName}} {{user?.lastName}}</h3>
+        <h6 class="color-black font-weight-lighter mt-2 text-center m-0 ">{{user?.headline}}</h6>
+        <custom-button
+        color="primary"
+        [thin]="true"
+        [long]="true"
+        [rounded]="true"
+        [stroked]="true"
+        type="submit"
+        [passedClass]="{'mt-3':true,'font-weight-light':true}"
+        (clickEvent)="navigateToProject()">
+        <small>Start New Project</small>
+        </custom-button>
+    </section>
+    <section class="mainSecion">
+      <mat-tab-group animationDuration="0ms">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon mx-2">work</mat-icon>
+            Your Projects
+          </ng-template>
+          <app-projects-view></app-projects-view>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon mx-2">inbox</mat-icon>
+            Project Invitation
+          </ng-template>
 
-    </div>
-    <h4 class="color-black mt-3">
-      <span class="font-weight-bold ">Welcome Back,</span>
-      <span class="font-weight-normal text-capitalize">
-        {{user?.firstName}}
-      </span>
-    </h4>
-</div>
-<div class=" w-100 d-flex" style="min-height: 50vh;">
-  <div class="w-50 px-4" >
-      <h4 class="font-weight-bold color-black">
-        Your Projects
-      </h4>
-      <perfect-scrollbar style="height: 40vh;">
-        <div class="px-5 py-4">
-          <ng-container *ngIf="!loading">
-            <div class="mx-2 my-3" *ngFor="let project of projects">
-              <project-widget  [project]="project">
+          <h6 class="font-weight-light mt-4 color-black">
+            Here you can view your project invitations and respond to them.
+          </h6>
+          <app-user-invitaions>
 
-              </project-widget>
-            </div>
-            <div class="mx-2 my-3">
-              <project-widget isNewProject="true">
-
-              </project-widget>
-            </div>
-          </ng-container>
-          <ng-container *ngIf="loading">
-            <project-widget  loading="true" class="mx-2 my-3">
-
-            </project-widget>
-            <project-widget  loading="true" class="mx-2 my-3">
-
-            </project-widget>
-          </ng-container>
-
-
-        </div>
-      </perfect-scrollbar>
+          </app-user-invitaions>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon mx-2">note</mat-icon>
+            Latest News
+          </ng-template>
+        </mat-tab>
+        <mat-tab label="Third">
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon mx-2">insert_chart</mat-icon>
+            Insights
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </section>
   </div>
 </div>
-

@@ -1,17 +1,16 @@
-<app-header></app-header>
-<div class="d-flex justify-content-end">
-<div class="sidebar">
-  <project-sidebar [project]="project" [(activeTab)]="activeTab">
+<div class="layoutContainer">
 
-  </project-sidebar>
+  <div class="d-flex justify-content-end">
+  <div class="sidebar">
+    <project-sidebar>
+
+    </project-sidebar>
+  </div>
+
+
+  <section class="mainDashboard px-5 py-2">
+    <router-outlet></router-outlet>
+  </section>
+  </div>
 </div>
 
-
-<section class="mainDashboard px-4 py-5">
-  <project-home-tab
-    *ngIf="activeTab == 'home'"
-    [project]="project">
-  </project-home-tab>
-
-</section>
-</div>

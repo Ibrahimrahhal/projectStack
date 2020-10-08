@@ -1,26 +1,31 @@
-<app-header></app-header>
+<div class="layoutContainer">
 
-<div>
-  <h1 class="text-center color-pink font-weight-bolder  mt-5">Explore Talents</h1>
-  <div class="d-block mx-auto d-flex justify-content-center align-items-center searchIcon cursorPointer scaleOnHover mt-3">
-    <mat-icon class="color-pink" style="transform: scale(0.9); opacity: 0.8;">search</mat-icon>
+  <div>
+    <h1 class="text-center color-pink font-weight-bolder  mt-5">Explore Talents</h1>
+    <div (click)="openSearchDialog()" matTooltip="Open Search Dialog" class="d-block mx-auto d-flex justify-content-center align-items-center searchIcon cursorPointer scaleOnHover mt-3">
+      <mat-icon class="color-pink" style="transform: scale(0.9); opacity: 0.8;">search</mat-icon>
+    </div>
+  </div>
+
+  <h6 class="color-black mx-5 my-4" [style.opacity]="loading?0:1">
+    <small >
+      {{members.length}} Members Found
+    </small>
+  </h6>
+
+  <div class="d-flex justify-content-center flex-wrap">
+  <ng-container *ngIf="!loading">
+    <member-card *ngFor="let user of members" (click)="navigateToUser(user)" [user]="user"></member-card>
+    <member-card loading="true"  *ngIf="thereIsMoreData"></member-card>
+  </ng-container>
+  <ng-container *ngIf="loading">
+    <member-card loading="true" ></member-card>
+    <member-card loading="true"></member-card>
+    <member-card loading="true"></member-card>
+    <member-card loading="true"></member-card>
+  </ng-container>
   </div>
 </div>
 
-<h6 class="color-black mx-5 my-4" [style.opacity]="loading?0:1">
-  <small >
-    {{members.length}} Members Found
-  </small>
-</h6>
 
-<div class="d-flex justify-content-center flex-wrap">
-<ng-container *ngIf="!loading">
-  <member-card *ngFor="let user of members" (click)="navigateToUser(user)" [user]="user"></member-card>
-</ng-container>
-<ng-container *ngIf="loading">
-  <member-card loading="true" ></member-card>
-  <member-card loading="true"></member-card>
-  <member-card loading="true"></member-card>
-  <member-card loading="true"></member-card>
-</ng-container>
-</div>
+

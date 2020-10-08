@@ -12,4 +12,10 @@
 member-card{
   user-select: none;
   cursor: pointer;
+  transform: scale(0.95);
+  transition: all 0.3s ease-out;
+}
+
+member-card:hover{
+  transform: scale(1.05);
 }

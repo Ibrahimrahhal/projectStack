@@ -1,0 +1,43 @@
+<div class="px-2 py-5">
+  <ng-container *ngIf="joinRequest && joinRequest.length > 0 ">
+    <h5 class="color-black">
+      <span class="font-weight-bold text-capitalize">
+        {{project.projectName}}
+      </span> {{joinRequest.length}} Join Requests
+    </h5>
+    <h6 class="color-black font-weight-light">
+      People are seeking to join your project try to pick the best fit and respond to them professionally
+    </h6>
+    <div class="requestsContainer d-flex flex-column mt-5">
+      <ng-container >
+        <join-request-project-dashboard
+        *ngFor="let req of joinRequest"
+        [joinRequest]="req"
+        (joinRequestResponded)="refreshJoinRequests()">
+
+        </join-request-project-dashboard>
+      </ng-container>
+    </div>
+</ng-container>
+<ng-container *ngIf="joinRequest && joinRequest.length == 0">
+  <h5 class="color-black">
+    No Join Requests Arrived Yet.
+  </h5>
+  <img
+  width="35%"
+  height="auto"
+  src="../../../../assets/notTeam.svg"
+  class="d-block mx-auto"/>
+  <h6 class="color-black text-center mt-5 my-3 font-weight-light "><span class="font-weight-bold">Why Wait ?</span> Start Looking For Team Members.</h6>
+  <custom-button
+  color="primary"
+  [long]="true"
+  [rounded]="true"
+  [thin]="true"
+  [passedClass]="{'px-5':true, 'mx-auto':true}"
+  (clickEvent)="navigateToExploreMe()"
+  >
+  <small>Invite Users</small>
+  </custom-button>
+</ng-container>
+</div>

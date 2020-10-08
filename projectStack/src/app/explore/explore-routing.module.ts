@@ -7,9 +7,15 @@ import { RouterModule, Routes } from '@angular/router';
 import AuthGaurdForProtectedRoutes from '../routeGaurds/canActivateProtectedRoutes';
 
 const appRoutes: Routes = [
-  { path:'explore', component: ExploreComponent, canActivate: [AuthGaurdForProtectedRoutes] },
-  { path:'explore/members', component: ExploreMembersComponent, canActivate: [AuthGaurdForProtectedRoutes] },
-  { path:'explore/projects', component: ExploreProjectsComponent, canActivate: [AuthGaurdForProtectedRoutes] }
+  { path:'explore/choose', component: ExploreComponent,
+    canActivate: [AuthGaurdForProtectedRoutes]
+   },
+  { path:'explore/members', component: ExploreMembersComponent,
+    canActivate: [AuthGaurdForProtectedRoutes]
+  },
+  { path:'explore/projects', component: ExploreProjectsComponent,
+    canActivate: [AuthGaurdForProtectedRoutes]
+  }
 ];
 
 @NgModule({

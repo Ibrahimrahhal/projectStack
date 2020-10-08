@@ -1,0 +1,39 @@
+<div class="px-3 py-2 notiContainer">
+<div class="d-flex align-items-center">
+  <div class="m-2">
+    <user-image
+    height="50px"
+    width="50px"
+    [linkToImage]="notification.extras.user.profileImage"
+    [userName]="notification.extras.user.firstName" >
+    </user-image>
+  </div>
+  <small class="color-black d-block">
+    <span class="font-weight-bold text-capitalize">
+      <span class="d-block">
+        {{ notification.extras.user.firstName }}
+      {{ notification.extras.user.lastName }}
+      </span>
+    </span>Has request to join a project that you're admin in
+  </small>
+</div>
+
+<div class="buttons d-flex justify-content-end">
+  <custom-button
+  color="primary"
+  [loading]="false"
+  [disabled]="false"
+  [thin]="true"
+  [rounded]="true"
+  [long]="true"
+  [stroked]="true"
+  [passedClass]="{'font-weight-light':true}"
+  (clickEvent)="navigateToProject()"
+  >
+      <small>
+        Project Dashboard
+      </small>
+  </custom-button>
+
+</div>
+</div>

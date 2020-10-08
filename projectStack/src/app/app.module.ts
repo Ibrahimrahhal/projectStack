@@ -19,6 +19,14 @@ import { ExploreModule } from './explore/explore.module';
 import { ProfileModule } from './profile/profile.module';
 import { MessagesComponentComponent } from './messages-component/messages-component.component';
 import AuthGaurdForProtectedRoutes from './routeGaurds/canActivateProtectedRoutes';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { NotificatiosModule } from './notificatios/notificatios.module';
+import { NotificationsService } from './services/notifications.service';
+import { LayoutPartsModule } from './layout-parts/layout-parts.module';
+import { UserTypeComponent } from './login-signup/adding-user-data/user-type/user-type.component';
+import { NgxPopperModule } from 'ngx-popper';
+import { UserHeadLineInfoComponent } from './login-signup/adding-user-data/user-head-line-info/user-head-line-info.component';
+import { MobileViewComponent } from './mobile-view/mobile-view.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +36,10 @@ import AuthGaurdForProtectedRoutes from './routeGaurds/canActivateProtectedRoute
     SignupComponent,
     CompleteYourDataComponent,
     AddingUserDataComponent,
-    MessagesComponentComponent
+    MessagesComponentComponent,
+    UserTypeComponent,
+    UserHeadLineInfoComponent,
+    MobileViewComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +51,12 @@ import AuthGaurdForProtectedRoutes from './routeGaurds/canActivateProtectedRoute
     FormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    ProfileModule
-
+    ProfileModule,
+    NotificatiosModule,
+    LayoutPartsModule,
+    NgxPopperModule.forRoot()
   ],
-  providers: [AuthServiceService, AmplifyService, AuthGaurdForProtectedRoutes],
+  providers: [AuthServiceService, AmplifyService, AuthGaurdForProtectedRoutes, NotificationsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

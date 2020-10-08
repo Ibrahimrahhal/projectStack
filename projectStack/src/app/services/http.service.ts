@@ -1,3 +1,4 @@
+import JoinRequest from 'src/app/types/JoinRequest';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { decryptData, encryptData } from 'src/util/util';
@@ -8,6 +9,8 @@ import Project from '../types/Project';
 import { map } from 'rxjs/operators';
 import User from '../types/User';
 import { HttpWrapperService } from './http-wrapper.service';
+import { JoinReuqestWithExtras } from '../types/JoinRequest';
+import { ProjectWithExtras } from '../types/projectWithExtras';
 
 @Injectable({
   providedIn: 'root'
@@ -30,10 +33,16 @@ export class HttpService {
     ).toPromise();
   }
 
-  getUser(userID): Promise<User>{
-    return this.http.get(`${environment.baseApi}/user/${userID}`,{}).pipe(map((body:any)=>{
+  getUser(userID:string, withProject:boolean = false): Promise<{
+    user:User,
+    projects:ProjectWithExtras[]
+  }>{
+    return this.http.get(`${environment.baseApi}/user/${userID}${withProject?'?projects=true':''}`,{}).pipe(map((body:any)=>{
         let user = JSON.parse(decryptData(body.data))
-        return user as User;
+        return user as {
+          user:User,
+          projects:ProjectWithExtras[]
+        };
       })).toPromise();
   }
 
@@ -45,11 +54,11 @@ export class HttpService {
       ).toPromise();
   }
 
-  getProjects():Promise<Project[]>{
+  getProjects():Promise<ProjectWithExtras[]>{
     return this.http.get(
       environment.baseApi+"/project", {}
       ).pipe(map((result:any)=>{
-        return JSON.parse(decryptData(result.data)) as Project[];
+        return JSON.parse(decryptData(result.data)) as ProjectWithExtras[];
       })).toPromise();
   }
 
@@ -89,5 +98,29 @@ export class HttpService {
     })).toPromise();
   }
 
+
+  getAllJoinRequestsByProject(ID:string): Promise<JoinReuqestWithExtras[]>{
+    return this.http
+    .get(`${environment.baseApi}/project/${ID}/join-requests`, {})
+    .pipe(map((result:any)=>{
+      return JSON.parse(decryptData(result.data)) as JoinReuqestWithExtras[];
+    })).toPromise();
+  }
+
+
+  respondToUserJoinRequest(isAcceptance, message, joinRequest:JoinRequest):Promise<void>{
+    let url:string = `${environment.baseApi}/invitation/${joinRequest.ID}/${isAcceptance ? 'accept' : 'reject'}`;
+    return this.http
+    .post(url, {data: encryptData({message})}, {})
+    .pipe(map((result:any)=>{
+      return;
+    })).toPromise();
+  }
+
+  getAllProjectInvitationsForUser(){
+    return this.http.get(`${environment.baseApi}/invitaions/`,{}).pipe(map((result:any)=>{
+      return JSON.parse(decryptData(result.data)) as JoinReuqestWithExtras[];
+    })).toPromise();
+  }
 
 }
