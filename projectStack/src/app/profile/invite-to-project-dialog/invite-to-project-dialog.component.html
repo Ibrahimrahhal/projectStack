@@ -32,7 +32,7 @@
     <h6 class="my-1 color-black">Your Message</h6>
     <mat-form-field class="w-100 mx-auto d-block mt-3"  appearance="outline">
       <textarea  style="min-height: 200px;" [formControl]="invitationMessage" matInput placeholder="Your Message..."></textarea>
-      <mat-error *ngIf="invitationMessage.touched && invitationMessage.invalid && invitationMessage.errors?.minlength">Message length should be at least 200 characters</mat-error>
+      <mat-error *ngIf="invitationMessage.touched && invitationMessage.invalid && invitationMessage.errors?.minlength">Message length should be at least 10 characters</mat-error>
       <mat-hint>
         <div>Make elegent, professional and clear.</div>
       </mat-hint>

@@ -31,7 +31,7 @@ export class NewProjectComponent implements OnInit {
       projectName: this.fb.control("", [Validators.required, Validators.minLength(4)]),
       maxNumberOfMembers:[null, Validators.required],
       projectType:[null, Validators.required],
-      slogan: this.fb.control(null, [Validators.required, Validators.minLength(10)]),
+      slogan: this.fb.control(""),
       tags:[null, Validators.required],
       isPublic:[true],
       projectDesc: this.fb.control(null, [Validators.required, Validators.minLength(120)])

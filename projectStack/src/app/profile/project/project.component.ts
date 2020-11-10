@@ -40,7 +40,7 @@ export class ProjectComponent implements OnInit {
 
     this.projectID = this.activatedRoute.snapshot.params["projectID"];
     this.selectedSlogen = this.teamSlogens[Math.ceil(Math.random()*3)];
-    this.joinMessage = new FormControl('', [Validators.minLength(300), Validators.required]);
+    this.joinMessage = new FormControl('', [Validators.minLength(10), Validators.required]);
     this.loading = true;
     this.joinRequestLoading = false;
     this.http.getProject(this.projectID, true).then((project)=>{
