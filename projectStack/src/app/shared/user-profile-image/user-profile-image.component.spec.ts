@@ -23,3 +23,4 @@ describe('UserProfileImageComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
