@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
 
   validatePassword(c: FormControl) {
     if(!(/[A-Z]/g).test(c.value))
-      return {password:"Password Must Contain Uppercase Characters"};
+      return {password:"Password Must Contain Uppercase Char;lko;pll,;acters"};
     if(!(/[a-z]/g).test(c.value))
       return {password:"Password Must Contain Lowercase Characters"};
     if(c.value && c.value.length < 8)
