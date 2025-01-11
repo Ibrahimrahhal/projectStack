@@ -6,7 +6,8 @@ export const environment = {
   production: true,
   encryptKey: "Gosh",
   baseApi:"http://localhost:3000",
-  disableEncryption:true
+  disableEncryption:true,
+  "secret_asdas": "password"
 };
 
 /*
