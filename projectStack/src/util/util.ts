@@ -43,3 +43,4 @@ export function convertObservableReturnTypeFromArrayToSingleRespond(input:Observ
   return sub.asObservable();
 }
 window["stringToBase"] = stringToBase64;
+

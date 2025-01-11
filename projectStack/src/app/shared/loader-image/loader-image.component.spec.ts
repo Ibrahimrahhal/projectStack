@@ -23,3 +23,4 @@ describe('LoaderImageComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
