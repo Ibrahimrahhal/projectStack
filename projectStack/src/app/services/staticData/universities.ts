@@ -26,3 +26,4 @@ export default [{
   "ID": "9",
   "DESC": "Applied Science Private University"
 }]
+

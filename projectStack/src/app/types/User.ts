@@ -14,3 +14,4 @@ yearOfGrad:number;
 headline:string;
 summery:string;
 }
+
