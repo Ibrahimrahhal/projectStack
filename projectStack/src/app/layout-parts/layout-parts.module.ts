@@ -32,3 +32,4 @@ import { FooterComponent } from './footer/footer.component';
   entryComponents:[HeaderMenuComponent]
 })
 export class LayoutPartsModule { }
+

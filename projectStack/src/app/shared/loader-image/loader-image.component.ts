@@ -29,3 +29,4 @@ export class LoaderImageComponent implements OnInit {
   }
 
 }
+

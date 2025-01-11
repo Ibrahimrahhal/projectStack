@@ -23,3 +23,4 @@ describe('JoinRequestsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
