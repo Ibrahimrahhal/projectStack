@@ -23,3 +23,4 @@ describe('UserHeadLineInfoComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
