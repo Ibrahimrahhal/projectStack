@@ -14,3 +14,4 @@ describe('StaticDataService', () => {
     expect(service).toBeTruthy();
   });
 });
+
