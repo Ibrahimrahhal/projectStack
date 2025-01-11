@@ -23,3 +23,4 @@ describe('MobileViewComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
