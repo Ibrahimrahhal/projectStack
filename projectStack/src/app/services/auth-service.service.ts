@@ -39,7 +39,7 @@ signUpUser(username, password, email, phonenumber){
 async signOut(){
   this.dialog.closeAll()
   await this.amplifyService.auth().signOut();
-  location.reload()
+  location.href='https://www.teamslounge.com';
 }
 
 

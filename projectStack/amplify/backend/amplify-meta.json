@@ -1,0 +1,60 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-projectstack-local-214545-authRole",
+            "UnauthRoleArn": "arn:aws:iam::503977315440:role/amplify-projectstack-local-214545-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::503977315440:role/amplify-projectstack-local-214545-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-projectstack-local-214545-deployment",
+            "UnauthRoleName": "amplify-projectstack-local-214545-unauthRole",
+            "StackName": "amplify-projectstack-local-214545",
+            "StackId": "arn:aws:cloudformation:us-east-1:503977315440:stack/amplify-projectstack-local-214545/efaee400-50f4-11ea-b6ec-12b94cd95a93",
+            "AmplifyAppId": "d2a4qaeeq7l83l"
+        },
+        "categories": {
+            "auth": {
+                "projectstackad3c7d3c": {}
+            }
+        }
+    },
+    "auth": {
+        "projectstackad3c7d3c": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [],
+            "output": {
+                "AppClientSecret": "10aoc7lcv11jp12cml8gr9m6f82t4c5o3l50e5i8conuun81dklv",
+                "UserPoolId": "us-east-1_fWbOPPSaj",
+                "AppClientIDWeb": "4b2rsh0da16vo8g74fmicseion",
+                "AppClientID": "298iqp49qj1bcqsfie5mcjqsjs",
+                "IdentityPoolId": "us-east-1:064fa81c-9ec7-4fed-ad13-a3f54de39319",
+                "IdentityPoolName": "projectstackad3c7d3c_identitypool_ad3c7d3c__local",
+                "UserPoolName": "projectstackad3c7d3c_userpool_ad3c7d3c"
+            },
+            "lastPushTimeStamp": "2020-03-21T19:42:29.911Z",
+            "providerMetadata": {
+                "s3TemplateURL": "https://s3.amazonaws.com/amplify-projectstack-local-214545-deployment/amplify-cfn-templates/auth/projectstackad3c7d3c-cloudformation-template.yml",
+                "logicalId": "authprojectstackad3c7d3c"
+            }
+        }
+    },
+    "storage": {
+        "dynamo2352b6c0": {
+            "service": "DynamoDB",
+            "providerPlugin": "awscloudformation",
+            "output": {
+                "PartitionKeyName": "ib",
+                "Region": "us-east-1",
+                "Arn": "arn:aws:dynamodb:us-east-1:503977315440:table/dynamo2352b6c0-local",
+                "StreamArn": "arn:aws:dynamodb:us-east-1:503977315440:table/dynamo2352b6c0-local/stream/2020-02-17T19:19:14.007",
+                "PartitionKeyType": "S",
+                "Name": "dynamo2352b6c0-local"
+            },
+            "lastPushTimeStamp": "2020-03-21T19:42:29.912Z",
+            "providerMetadata": {
+                "s3TemplateURL": "https://s3.amazonaws.com/amplify-projectstack-local-214545-deployment/amplify-cfn-templates/storage/dynamo2352b6c0-cloudformation-template.json",
+                "logicalId": "storagedynamo2352b6c0"
+            }
+        }
+    }
+}

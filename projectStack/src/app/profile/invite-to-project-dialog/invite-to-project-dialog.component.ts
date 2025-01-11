@@ -23,7 +23,7 @@ export class InviteToProjectDialogComponent implements OnInit {
   private projectData:ProjectsDataService) { }
 
   ngOnInit(): void {
-    this.invitationMessage = new FormControl(null, [Validators.required, Validators.minLength(200)])
+    this.invitationMessage = new FormControl(null, [Validators.required, Validators.minLength(10)])
     this.projectData.getProjects().then((projects)=>{
         this.projects = (projects || []).filter((project)=>{
           return project.extras.isAdmin;

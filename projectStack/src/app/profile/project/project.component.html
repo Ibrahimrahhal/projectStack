@@ -101,7 +101,7 @@
       <h6 class="text-center color-pink font-weight-light">Please Write a short message telling why are intersted in trash project & what can your provide for the team</h6>
       <mat-form-field class="w-50 mx-auto d-block mt-5"  appearance="outline">
         <textarea  style="min-height: 200px;" [formControl]="joinMessage" matInput placeholder="Describe your added value..."></textarea>
-        <mat-error *ngIf="joinMessage.touched && joinMessage.invalid && joinMessage.errors?.minlength">Message length should be at least 300 characters</mat-error>
+        <mat-error *ngIf="joinMessage.touched && joinMessage.invalid && joinMessage.errors?.minlength">Message length should be at least 10 characters</mat-error>
       </mat-form-field>
       <custom-button
       color="primary"

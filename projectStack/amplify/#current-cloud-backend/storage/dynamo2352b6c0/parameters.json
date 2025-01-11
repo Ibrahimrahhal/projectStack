@@ -1,0 +1,5 @@
+{
+    "tableName": "dynamo2352b6c0",
+    "partitionKeyName": "ib",
+    "partitionKeyType": "S"
+}

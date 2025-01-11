@@ -9,7 +9,7 @@
   <h6 class="mt-5">Write Your Respond Message</h6>
   <mat-form-field class="w-100 mx-auto d-block mt-3"  appearance="outline">
     <textarea  style="min-height: 200px;" [formControl]="respondMessage" matInput placeholder="Your Message..."></textarea>
-    <mat-error *ngIf="respondMessage.touched && respondMessage.invalid && respondMessage.errors?.minlength">Message length should be at least 200 characters</mat-error>
+    <mat-error *ngIf="respondMessage.touched && respondMessage.invalid && respondMessage.errors?.minlength">Message length should be at least 10 characters</mat-error>
   </mat-form-field>
   <div class="d-flex justify-content-center mt-4 mb-3">
     <custom-button

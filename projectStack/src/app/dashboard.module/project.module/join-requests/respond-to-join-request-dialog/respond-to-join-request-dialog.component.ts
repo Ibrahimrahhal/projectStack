@@ -16,7 +16,7 @@ export class RespondToJoinRequestDialogComponent implements OnInit {
     public dialModRef:MatDialogRef<any>) { }
 
   ngOnInit(): void {
-    this.respondMessage = new FormControl(null, [Validators.minLength(200), Validators.required]);
+    this.respondMessage = new FormControl(null, [Validators.minLength(10), Validators.required]);
 
   }
 
