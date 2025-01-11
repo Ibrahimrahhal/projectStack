@@ -13,3 +13,4 @@ export class MobileViewComponent implements OnInit {
   }
 
 }
+
