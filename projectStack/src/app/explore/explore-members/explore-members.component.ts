@@ -83,3 +83,4 @@ export class ExploreMembersComponent implements OnInit {
     return !(this.pagesCount-1 == this.queryObject.getRawValue().page)
   }
 }
+
