@@ -23,3 +23,4 @@ describe('SearchBoxComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

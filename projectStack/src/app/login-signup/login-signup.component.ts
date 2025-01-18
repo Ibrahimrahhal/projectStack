@@ -46,3 +46,4 @@ export class LoginSignupComponent implements OnInit {
     },700)
   }
 }
+
