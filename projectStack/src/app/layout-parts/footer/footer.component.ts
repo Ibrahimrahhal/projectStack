@@ -21,3 +21,4 @@ export class FooterComponent implements OnInit {
     return window.location.pathname.split('/').filter(x=>x);
   }
 }
+
