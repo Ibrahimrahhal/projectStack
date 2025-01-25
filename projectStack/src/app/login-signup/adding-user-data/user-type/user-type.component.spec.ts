@@ -23,3 +23,4 @@ describe('UserTypeComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
