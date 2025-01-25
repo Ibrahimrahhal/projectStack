@@ -26,3 +26,4 @@ export class RespondToJoinRequestDialogComponent implements OnInit {
   }
 
 }
+
