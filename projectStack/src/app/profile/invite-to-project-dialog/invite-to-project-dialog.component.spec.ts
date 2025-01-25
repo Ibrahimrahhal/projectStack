@@ -23,3 +23,4 @@ describe('InviteToProjectDialogComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
