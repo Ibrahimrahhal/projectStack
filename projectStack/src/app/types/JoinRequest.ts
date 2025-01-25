@@ -27,3 +27,4 @@ export const JoinRequestEnum  = {
   ProjectJoinRequest:1,
   UserJoinRequest:2
 }
+
