@@ -8,3 +8,4 @@ export interface Skill{
   ID:string;
   DESC:string;
 }
+
