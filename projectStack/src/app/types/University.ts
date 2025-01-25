@@ -7,3 +7,4 @@ export interface Department{
   DESC:string;
   ID:string;
 }
+
