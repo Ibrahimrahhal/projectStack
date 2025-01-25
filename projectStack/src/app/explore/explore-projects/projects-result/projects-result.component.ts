@@ -16,3 +16,4 @@ export class ProjectsResultComponent implements OnInit {
   }
 
 }
+
