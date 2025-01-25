@@ -23,3 +23,4 @@ describe('NotificationsSectionComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
