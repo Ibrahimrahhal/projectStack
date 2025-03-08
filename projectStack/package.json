@@ -24,7 +24,7 @@
     "@angular/router": "~9.1.1",
     "@nicky-lenaers/ngx-scroll-to": "^9.0.0",
     "arraybuffer-to-string": "^1.0.2",
-    "aws-amplify": "^2.2.5",
+    "aws-amplify": "^6.13.4",
     "aws-amplify-angular": "^4.1.6",
     "bootstrap": "^4.4.1",
     "crypto-js": "^4.0.0",
