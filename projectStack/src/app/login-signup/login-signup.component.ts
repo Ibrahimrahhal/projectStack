@@ -16,6 +16,16 @@ export class LoginSignupComponent implements OnInit {
     private activatedRoute:ActivatedRoute
     ) { }
   ngOnInit() {
+    this.activatedRoute.paramMap.subscribe((data:any)=>{
+      this.loginSideActive = data.params.type == 'login';
+      this.hideShowLogo();
+
+    });
+    this.activatedRoute.paramMap.subscribe((data:any)=>{
+      this.loginSideActive = data.params.type == 'login';
+      this.hideShowLogo();
+
+    });
     window["loginSi"] = this;
     this.activatedRoute.paramMap.subscribe((data:any)=>{
       this.loginSideActive = data.params.type == 'login';
@@ -46,3 +56,4 @@ export class LoginSignupComponent implements OnInit {
     },700)
   }
 }
+

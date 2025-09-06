@@ -43,3 +43,4 @@ export class UserInvitaionsComponent implements OnInit {
   }
 
 }
+
