@@ -70,3 +70,4 @@ export class NewProjectComponent implements OnInit {
   }
 
 }
+

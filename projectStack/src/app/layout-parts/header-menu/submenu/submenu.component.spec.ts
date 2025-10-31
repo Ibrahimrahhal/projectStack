@@ -23,3 +23,4 @@ describe('SubmenuComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

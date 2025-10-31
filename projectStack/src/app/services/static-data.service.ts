@@ -76,3 +76,4 @@ export class StaticDataService {
     return this.ProjectCategories.find(x=>x.ID == ID).DESC;
   }
 }
+
