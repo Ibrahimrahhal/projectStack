@@ -4,3 +4,4 @@ export default {
   Entrep:3,
   Organization:4
 }
+

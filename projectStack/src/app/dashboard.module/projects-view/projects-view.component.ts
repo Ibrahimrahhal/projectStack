@@ -36,3 +36,4 @@ export class ProjectsViewComponent implements OnInit {
     return this._projects.map(pe=>pe.project);
   }
 }
+

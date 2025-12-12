@@ -23,3 +23,4 @@ describe('RespondToJoinRequestDialogComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
