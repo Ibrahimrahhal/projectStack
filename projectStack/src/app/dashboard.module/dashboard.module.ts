@@ -24,3 +24,4 @@ import { ProjectsViewComponent } from './projects-view/projects-view.component';
   ]
 })
 export class DashboardModule { }
+
