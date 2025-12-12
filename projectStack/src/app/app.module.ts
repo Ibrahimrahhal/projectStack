@@ -60,3 +60,4 @@ import { MobileViewComponent } from './mobile-view/mobile-view.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

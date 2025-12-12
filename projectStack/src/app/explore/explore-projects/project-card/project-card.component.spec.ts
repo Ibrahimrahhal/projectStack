@@ -23,3 +23,4 @@ describe('ProjectCardComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

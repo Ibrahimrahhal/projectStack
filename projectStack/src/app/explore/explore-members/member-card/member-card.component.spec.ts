@@ -23,3 +23,4 @@ describe('MemberCardComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
