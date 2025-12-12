@@ -24,3 +24,4 @@ export class ProjectJoinRequestNotificationComponent implements OnInit {
   }
 
 }
+
