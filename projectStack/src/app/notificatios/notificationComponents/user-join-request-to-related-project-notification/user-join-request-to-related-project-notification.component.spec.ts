@@ -23,3 +23,4 @@ describe('UserJoinRequestToRelatedProjectNotificationComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

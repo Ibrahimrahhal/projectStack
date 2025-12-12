@@ -26,3 +26,4 @@ export const NotificationsEnum = {
   ProjectJoinRequestNotification: 2,
   UserJoinRequestToRelatedProjectNotification: 3
 };
+
