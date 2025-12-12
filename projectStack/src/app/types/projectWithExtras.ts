@@ -6,3 +6,4 @@ export interface ProjectWithExtras{
         isAdmin:boolean
     }
 }
+

@@ -24,3 +24,4 @@ import { RespondToJoinRequestDialogComponent } from './join-requests/respond-to-
   ]
 })
 export class ProjectModule { }
+

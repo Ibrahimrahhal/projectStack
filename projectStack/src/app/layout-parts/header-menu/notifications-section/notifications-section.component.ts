@@ -25,3 +25,4 @@ export class NotificationsSectionComponent implements OnInit {
   }
 
 }
+

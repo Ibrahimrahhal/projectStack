@@ -23,3 +23,4 @@ describe('ProjectsViewComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
