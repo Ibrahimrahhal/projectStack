@@ -23,3 +23,4 @@ describe('TagsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

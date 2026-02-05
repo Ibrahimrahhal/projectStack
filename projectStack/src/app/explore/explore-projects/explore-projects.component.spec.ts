@@ -23,3 +23,4 @@ describe('ExploreProjectsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

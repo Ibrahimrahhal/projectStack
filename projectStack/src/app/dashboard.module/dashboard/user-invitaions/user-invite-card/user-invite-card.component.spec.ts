@@ -23,3 +23,4 @@ describe('UserInviteCardComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

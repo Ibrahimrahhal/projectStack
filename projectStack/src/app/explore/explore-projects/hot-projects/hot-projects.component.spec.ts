@@ -23,3 +23,4 @@ describe('HotProjectsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

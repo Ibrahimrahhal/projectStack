@@ -32,3 +32,4 @@ export class UserHeadLineInfoComponent implements OnInit {
   }
 
 }
+

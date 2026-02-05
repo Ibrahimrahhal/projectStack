@@ -16,3 +16,4 @@ export class ExploreComponent implements OnInit {
     this.router.navigate([location]);
   }
 }
+

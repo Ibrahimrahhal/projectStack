@@ -41,3 +41,4 @@ export default class AuthGaurdForProtectedRoutes implements CanActivate {
     }
 
 }
+

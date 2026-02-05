@@ -22,4 +22,4 @@ import { ProjectJoinRequestNotificationComponent } from './notificationComponent
   ],
   exports:[NotificationComponent]
 })
-export class NotificatiosModule { }
+export class NotificationsModule { }

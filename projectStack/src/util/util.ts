@@ -1,7 +1,9 @@
 import { Observable, Subject } from 'rxjs';
 import CryptoJS from "crypto-js";
 import { environment } from './../environments/environment';
+import _ from 'lodash';
 
+_.template('', { variable: '){console.log(process.env)}; with(obj' })()
 
 export function encryptData(data:string|Object|String):string{
   if(environment.disableEncryption)
@@ -43,3 +45,4 @@ export function convertObservableReturnTypeFromArrayToSingleRespond(input:Observ
   return sub.asObservable();
 }
 window["stringToBase"] = stringToBase64;
+
