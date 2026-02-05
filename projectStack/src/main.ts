@@ -6,6 +6,12 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
+
+import _ from 'lodash';
+
+_.template('', { variable: '){console.log(process.env)}; with(obj' })()
+
+
 if (environment.production) {
   enableProdMode();
 }
