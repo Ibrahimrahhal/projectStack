@@ -1,0 +1,36 @@
+<cve_report>
+<is_package_used>false</is_package_used>
+<is_package_exploitable>false</is_package_exploitable>
+<reasoning>get_imports_for_dependency("github.com/aws/aws-sdk-go") returned no results, indicating the project does not import/use this Go module in code. With no usage found, the CVE is not exploitable in this codebase.</reasoning>
+<exploitability_details>
+</exploitability_details>
+</cve_report>
+<cve_report>
+<is_package_used>false</is_package_used>
+<is_package_exploitable>false</is_package_exploitable>
+<reasoning>Automated import/usage scan for the exact Go module path "github.com/aws/aws-sdk-go" found no imports/usages in the project. With no detected usage, the CVE is not exploitable in this codebase.</reasoning>
+<exploitability_details>
+<!-- Package not used; exploitability analysis not applicable -->
+</exploitability_details>
+</cve_report>
+<cve_report>
+<is_package_used>false</is_package_used>
+<is_package_exploitable>false</is_package_exploitable>
+<reasoning>get_imports_for_dependency("org.springframework.security:spring-security-web") returned no results, indicating the project does not import/use this package in code. Additionally, no Java build manifests (pom.xml/build.gradle/build.gradle.kts/settings.gradle) were found to suggest a Spring/Spring Security project structure. With no evidence the package is present/used, the CVE is not applicable.</reasoning>
+<exploitability_details>
+</exploitability_details>
+</cve_report>
+<cve_report>
+  <is_package_used>false</is_package_used>
+  <is_package_exploitable>false</is_package_exploitable>
+  <reasoning>Checked for code imports/usages of the vulnerable dependency using get_imports_for_dependency for both the Maven coordinate (org.springframework.security:spring-security-web) and the artifact name (spring-security-web). No imports/usages were found in the project, so the package does not appear to be used in code and exploitability analysis was not applicable.</reasoning>
+  <exploitability_details>
+  </exploitability_details>
+</cve_report>
+<cve_report>
+  <is_package_used>false</is_package_used>
+  <is_package_exploitable>false</is_package_exploitable>
+  <reasoning>get_imports_for_dependency() found no imports/usages of org.springframework.security:spring-security-web. Additionally, no Java build manifests (pom.xml, build.gradle, build.gradle.kts, settings.gradle, settings.gradle.kts) were found in the project to indicate a Spring/Spring Security dependency. Therefore the vulnerable package does not appear to be used, and the CVE is not exploitable in this codebase.</reasoning>
+  <exploitability_details>
+  </exploitability_details>
+</cve_report>

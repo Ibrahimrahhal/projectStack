@@ -40,3 +40,4 @@ export class InviteToProjectDialogComponent implements OnInit {
     this.dialModRef.close(result);
   }
 }
+

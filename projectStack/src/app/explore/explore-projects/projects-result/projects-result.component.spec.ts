@@ -23,3 +23,4 @@ describe('ProjectsResultComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
