@@ -23,3 +23,4 @@ describe('AddingUserDataComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

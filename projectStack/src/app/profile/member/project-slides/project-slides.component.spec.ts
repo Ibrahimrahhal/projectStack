@@ -23,3 +23,4 @@ describe('ProjectSlidesComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

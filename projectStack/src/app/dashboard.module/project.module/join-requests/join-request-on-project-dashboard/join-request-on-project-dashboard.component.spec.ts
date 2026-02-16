@@ -23,3 +23,4 @@ describe('JoinRequestOnProjectDashboardComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
