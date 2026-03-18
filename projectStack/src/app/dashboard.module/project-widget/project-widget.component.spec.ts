@@ -23,3 +23,4 @@ describe('ProjectWidgetComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

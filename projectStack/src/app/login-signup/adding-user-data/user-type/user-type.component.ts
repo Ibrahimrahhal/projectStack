@@ -53,3 +53,4 @@ interface UserType{
   longDesc?:string,
   type?:number
 }
+

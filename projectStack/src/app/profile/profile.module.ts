@@ -20,3 +20,4 @@ import { InviteToProjectDialogComponent } from './invite-to-project-dialog/invit
   ]
 })
 export class ProfileModule { }
+
